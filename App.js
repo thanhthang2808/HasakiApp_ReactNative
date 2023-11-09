@@ -1,20 +1,17 @@
+
 import * as React from 'react';
-import { Text, View, Image, TextInput } from 'react-native';
+import { Text, View, Image, TextInput, StyleSheet } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Category from './screens/Category';
+import Homepage from './screens/Homepage';
 
-function Home() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home!</Text>
-    </View>
-  );
-}
 
 function Cart() {
   return (
+
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Cart!</Text>
     </View>
@@ -51,7 +48,7 @@ const Tab = createBottomTabNavigator();
 function MyTabs() {
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="Homepage"
       screenOptions={{
         tabBarActiveTintColor: '#306E51',
         headerStyle: {
@@ -82,8 +79,8 @@ function MyTabs() {
       }}
     >
       <Tab.Screen
-        name="Home"
-        component={Home}
+        name="Homepage"
+        component={Homepage}
         options={{
           tabBarLabel: 'Trang chủ',
           tabBarIcon: ({ color, size }) => (
