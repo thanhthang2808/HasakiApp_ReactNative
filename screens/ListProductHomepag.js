@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { View, Image, FlatList, StyleSheet, Dimensions, Text } from 'react-native';
-import { ScrollView } from 'react-native-web';
+import { ScrollView } from 'react-native';
 
 
 const ItemProduct = (props) => {
@@ -66,10 +66,11 @@ const ListProduct = () => {
                     marginLeft: '10px'
 
                 }}>DEALS NỔI BẬT</Text>
-            <View style={{
-                flexDirection: 'row'
-            }}>
-                <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            <ScrollView horizontal style={styles.scrollView}>
+                <View style={{
+                    flexDirection: 'row'
+                }}>
+
                     {dt.map((item) => {
                         return (
                             <ItemProduct
@@ -82,8 +83,9 @@ const ListProduct = () => {
                             />
                         )
                     })}
-                </ScrollView>
-            </View>
+
+                </View>
+            </ScrollView>
         </View>
     );
 
@@ -112,6 +114,13 @@ const styles = StyleSheet.create({
         display: 'flex',
 
     }
+    ,
+    scrollView: {
+        marginHorizontal: 5,
+    },
+    text: {
+        fontSize: 42,
+    },
 
 });
 export default ListProduct;
