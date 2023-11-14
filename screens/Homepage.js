@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { FlatList } from 'react-native';
@@ -29,6 +30,49 @@ const Banner = () => {
                 renderItem={renderItem}
             />
         </View>
+    );
+};
+
+const CountdownTimer = () => {
+    const [seconds, setSeconds] = useState(180); // 10 minutes in seconds
+  
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        if (seconds > 0) {
+          setSeconds(seconds - 1);
+        } else {
+          setSeconds(180); // Reset to 10 minutes when countdown reaches zero
+        }
+      }, 1000);
+  
+      return () => clearTimeout(timer); // Clear the timer on component unmount
+  
+    }, [seconds]);
+  
+    const displayTime = () => {
+      const hours = Math.floor(seconds / 3600);
+      const remainingMinutes = Math.floor((seconds % 3600) / 60);
+      const remainingSeconds = seconds % 60;
+  
+      return (
+        <View style={{ flexDirection: 'row', backgroundColor: 'white', padding: 10 }}>
+          <Text style={{ color: 'white', backgroundColor: 'black', borderRadius: 3, fontSize: 14, height: 20, width: 20, textAlign: 'center', marginRight: 5 }}>
+            {hours < 10 ? '0' : ''}{hours}
+          </Text>
+          <Text style={{ color: 'white', backgroundColor: 'black', borderRadius: 3, fontSize: 14, height: 20, width: 20, textAlign: 'center', marginRight: 5 }}>
+            {remainingMinutes < 10 ? '0' : ''}{remainingMinutes}
+          </Text>
+          <Text style={{ color: 'white', backgroundColor: 'black', borderRadius: 3, fontSize: 14, height: 20, width: 20, textAlign: 'center', marginRight: 5 }}>
+            {remainingSeconds < 10 ? '0' : ''}{remainingSeconds}
+          </Text>
+        </View>
+      );
+    };
+  
+    return (
+      <View style={{ padding: 10 }}>
+        <Text>{displayTime()}</Text>
+      </View>
     );
 };
 
@@ -73,6 +117,10 @@ export default function Homepage() {
         <View>
             <Banner />
             <Menu />
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginLeft: 10}}>
+                <Text>Flash deals</Text>
+                <CountdownTimer />
+            </View>
         </View>
 
     )
