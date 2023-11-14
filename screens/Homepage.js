@@ -34,18 +34,18 @@ const Banner = () => {
 };
 
 const CountdownTimer = () => {
-    const [seconds, setSeconds] = useState(180); // 10 minutes in seconds
+    const [seconds, setSeconds] = useState(180); 
   
     useEffect(() => {
       const timer = setTimeout(() => {
         if (seconds > 0) {
           setSeconds(seconds - 1);
         } else {
-          setSeconds(180); // Reset to 10 minutes when countdown reaches zero
+          setSeconds(180); 
         }
       }, 1000);
   
-      return () => clearTimeout(timer); // Clear the timer on component unmount
+      return () => clearTimeout(timer); 
   
     }, [seconds]);
   
