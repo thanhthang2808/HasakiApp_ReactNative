@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 import { FlatList } from 'react-native';
 import Menu from './Menu';
 import Banner from './Banner';
@@ -8,9 +8,12 @@ import ListProduct from './ListProductHomepag';
 export default function Homepage() {
     return (
         <View>
-            <Banner />
-            <Menu />
-            <ListProduct />
+            <ScrollView>
+                <Banner />
+                <Menu />
+                <ListProduct />
+            </ScrollView>
+
         </View>
 
     )
