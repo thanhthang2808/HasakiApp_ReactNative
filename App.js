@@ -7,16 +7,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Category from './screens/Category';
 import Homepage from './screens/Homepage';
-
-
-function Cart() {
-  return (
-
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Cart!</Text>
-    </View>
-  );
-}
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import Cart from './screens/Cart';
 
 function Notifications() {
   return (
@@ -134,8 +127,10 @@ function MyTabs() {
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <MyTabs />
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <MyTabs />
+      </NavigationContainer>
+    </Provider>
   );
 }
