@@ -1,0 +1,69 @@
+{
+    "products": [
+        {
+            "name": "name 1",
+            "price": 16,
+            "decription": "decription 1",
+            "image": "image 1",
+            "quantity": 12,
+            "brand": "brand 1",
+            "origin": "origin 1",
+            "category": "category 1",
+            "ingredient": "ingredient 1",
+            "id": "1"
+        },
+        {
+            "name": "name 2",
+            "price": 27,
+            "decription": "decription 2",
+            "image": "image 2",
+            "quantity": 35,
+            "brand": "brand 2",
+            "origin": "origin 2",
+            "category": "category 2",
+            "ingredient": "ingredient 2",
+            "id": "2"
+        },
+        {
+            "name": "name 3",
+            "price": 30,
+            "decription": "decription 3",
+            "image": "image 3",
+            "quantity": 20,
+            "brand": "brand 3",
+            "origin": "origin 3",
+            "category": "category 3",
+            "ingredient": "ingredient 3",
+            "id": "3"
+        }
+    ],
+    "user": [
+        {
+            "name": "name 1",
+            "email": "email 1",
+            "password": "password 1",
+            "phone": "phone 1",
+            "address": "address 1",
+            "id": "1"
+        },
+        {
+            "name": "name 2",
+            "email": "email 2",
+            "password": "password 2",
+            "phone": "phone 2",
+            "address": "address 2",
+            "id": "2"
+        },
+        {
+            "name": "name 3",
+            "email": "email 3",
+            "password": "password 3",
+            "phone": "phone 3",
+            "address": "address 3",
+            "id": "3"
+        }
+    ], 
+    "category":[
+        
+    ]
+}
