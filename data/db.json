@@ -371,6 +371,121 @@
         { 
             "id": 11, 
             "category": "Thư Giãn & Chăm Sóc" 
+    ],
+    "categoryHomepage": [
+        {
+            "id": "1",
+            "name": "Trang điểm môi",
+            "image": "https://github.com/VuLanTuong/TH_LTTBDD/blob/main/img_week7/image1.png?raw=true",
+            "color": "#FACBCB"
+        },
+        {
+            "id": "2",
+            "name": "Trang điểm môi",
+            "image": "https://github.com/VuLanTuong/TH_LTTBDD/blob/main/img_week7/image1.png?raw=true",
+            "color": "#9ADCFF"
+        },
+        {
+            "id": "3",
+            "name": "Trang điểm môi",
+            "image": "https://github.com/VuLanTuong/TH_LTTBDD/blob/main/img_week7/image1.png?raw=true",
+            "color": "#CDFAD5"
+        },
+        {
+            "id": "4",
+            "name": "Trang điểm môi",
+            "image": "https://github.com/VuLanTuong/TH_LTTBDD/blob/main/img_week7/image1.png?raw=true",
+            "color": "#FFEBD8"
+        },
+        {
+            "id": "5",
+            "name": "Trang điểm môi",
+            "image": "https://github.com/VuLanTuong/TH_LTTBDD/blob/main/img_week7/image1.png?raw=true",
+            "color": "#FFFBC1"
+        },
+        {
+            "id": "6",
+            "name": "Trang điểm môi",
+            "image": "https://github.com/VuLanTuong/TH_LTTBDD/blob/main/img_week7/image1.png?raw=true",
+            "color": "#FDCEDF"
+        },
+        {
+            "id": "7",
+            "name": "Trang điểm môi",
+            "image": "https://github.com/VuLanTuong/TH_LTTBDD/blob/main/img_week7/image1.png?raw=true",
+            "color": "#DDFFBB"
+        },
+        {
+            "id": "8",
+            "name": "Trang điểm môi",
+            "image": "https://github.com/VuLanTuong/TH_LTTBDD/blob/main/img_week7/image1.png?raw=true",
+            "color": "#FDCEDF"
+        },
+        {
+            "id": "9",
+            "name": "Trang điểm môi",
+            "image": "https://github.com/VuLanTuong/TH_LTTBDD/blob/main/img_week7/image1.png?raw=true",
+            "color": "#CDFAD5"
+        },
+        {
+            "id": "10",
+            "name": "Trang điểm môi",
+            "image": "https://github.com/VuLanTuong/TH_LTTBDD/blob/main/img_week7/image1.png?raw=true",
+            "color": "#B7E5DD"
+        },
+        {
+            "id": "11",
+            "name": "Trang điểm môi",
+            "image": "https://github.com/VuLanTuong/TH_LTTBDD/blob/main/img_week7/image1.png?raw=true",
+            "color": "#FFF6BD"
+        },
+        {
+            "id": "12",
+            "name": "Trang điểm môi",
+            "image": "https://github.com/VuLanTuong/TH_LTTBDD/blob/main/img_week7/image1.png?raw=true",
+            "color": "#DDFFBB"
+        },
+        {
+            "id": "13",
+            "name": "Trang điểm môi",
+            "image": "https://github.com/VuLanTuong/TH_LTTBDD/blob/main/img_week7/image1.png?raw=true",
+            "color": "#DFCCFB"
+        },
+        {
+            "id": "14",
+            "name": "Trang điểm môi",
+            "image": "https://github.com/VuLanTuong/TH_LTTBDD/blob/main/img_week7/image1.png?raw=true",
+            "color": "#B4E4FF"
+        },
+        {
+            "id": "15",
+            "name": "Trang điểm môi",
+            "image": "https://github.com/VuLanTuong/TH_LTTBDD/blob/main/img_week7/image1.png?raw=true",
+            "color": "#B9F3E4"
+        },
+        {
+            "id": "16",
+            "name": "Trang điểm môi",
+            "image": "https://github.com/VuLanTuong/TH_LTTBDD/blob/main/img_week7/image1.png?raw=true",
+            "color": "#E5E0FF"
+        },
+        {
+            "id": "17",
+            "name": "Trang điểm môi",
+            "image": "https://github.com/VuLanTuong/TH_LTTBDD/blob/main/img_week7/image1.png?raw=true",
+            "color": "#B4E4FF"
+        },
+        {
+            "id": "18",
+            "name": "Trang điểm môi",
+            "image": "https://github.com/VuLanTuong/TH_LTTBDD/blob/main/img_week7/image1.png?raw=true",
+            "color": "#FFFBC1"
+        },
+        {
+            "id": "19",
+            "name": "Trang điểm môi",
+            "image": "https://github.com/VuLanTuong/TH_LTTBDD/blob/main/img_week7/image1.png?raw=true",
+            "color": "#DFCCFB"
         }
     ]
 }
