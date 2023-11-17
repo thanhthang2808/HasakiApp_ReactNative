@@ -4,12 +4,15 @@ import { Text, View, Image, TextInput, StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import Toast from 'react-native-toast-message';
 import Category from './screens/Category';
 import Homepage from './screens/Homepage';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import Cart from './screens/Cart';
+import ProductDetail from './screens/ProductDetail';
 
 function Notifications() {
   return (
@@ -37,6 +40,7 @@ function LogoTitle() {
 }
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 function MyTabs() {
   return (
@@ -82,8 +86,8 @@ function MyTabs() {
         }}
       />
       <Tab.Screen
-        name="Category"
-        component={Category}
+        name="CategoryStack"
+        component={CategoryStack}
         options={{
           tabBarLabel: 'Danh mục',
           tabBarIcon: ({ color, size }) => (
@@ -99,6 +103,7 @@ function MyTabs() {
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name='cart' color={color} size={size} />
           ),
+          headerShown: false,
         }}
       />
       <Tab.Screen
@@ -125,12 +130,22 @@ function MyTabs() {
   );
 }
 
+const CategoryStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Category" component={Category} options={{ headerShown: false }}/>
+      <Stack.Screen name="ProductDetail" component={ProductDetail} />
+    </Stack.Navigator>
+  );
+};
+
 export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
         <MyTabs />
       </NavigationContainer>
+      <Toast ref={(ref) => Toast.setRef(ref)} />
     </Provider>
   );
 }
