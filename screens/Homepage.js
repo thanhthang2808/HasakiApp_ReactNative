@@ -12,8 +12,12 @@ export default function Homepage() {
   return (
     <ScrollView>
       <View>
-        <Banner />
-        <Menu />
+        <View style={{
+          backgroundColor: 'rgb(48, 110, 81)'
+        }}>
+          <Banner />
+          <Menu />
+        </View>
         <ListProduct />
         <CategoryHomepage />
       </View>

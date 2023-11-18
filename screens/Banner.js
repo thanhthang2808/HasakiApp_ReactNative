@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { View, Image, FlatList, StyleSheet, Dimensions } from 'react-native';
+import Menu from './Menu';
 
 export default function Banner() {
     const data = [
@@ -66,11 +67,15 @@ export default function Banner() {
 }
 
 const styles = StyleSheet.create({
-    container: {},
+    container: {
+        backgroundColor: 'rgb(48, 110, 81)'
+    },
     bannerItem: {
         justifyContent: 'center',
         marginHorizontal: 1,
         padding: 7,
+        width: '100%',
+        backgroundColor: 'rgb(48, 110, 81)'
 
     },
     bannerImage: {
