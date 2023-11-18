@@ -22,7 +22,8 @@ const Menu = () => {
                 <Text style={{
                     fontSize: '11px',
                     width: '50px',
-                    margin: 'auto'
+                    margin: 'auto',
+                    color: 'white'
                 }}>{item.name}</Text>
             </View>
         ));
@@ -47,7 +48,8 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         width: '100%',
-        marginTop: '10px'
+        marginTop: '10px',
+        backgroundColor: 'rgb(48, 110, 81)'
     },
     row: {
         flex: 1,

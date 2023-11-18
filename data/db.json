@@ -308,7 +308,15 @@
             "password": "password 1",
             "phone": "phone 1",
             "address": "address 1",
-            "id": "1"
+            "id": "1",
+            "cart":[
+                {
+                    "id":"1",
+                    "quantity":2,
+                    "productId":"1"
+
+                }
+            ]
         },
         {
             "name": "name 2",

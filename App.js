@@ -12,7 +12,11 @@ import Homepage from './screens/Homepage';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import Cart from './screens/Cart';
+import Account from './screens/Account';
+import Login from './screens/Login';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ProductDetail from './screens/ProductDetail';
+
 
 function Notifications() {
   return (
@@ -22,13 +26,7 @@ function Notifications() {
   );
 }
 
-function Account() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Account</Text>
-    </View>
-  );
-}
+
 
 function LogoTitle() {
   return (
@@ -49,7 +47,7 @@ function MyTabs() {
       screenOptions={{
         tabBarActiveTintColor: '#306E51',
         headerStyle: {
-          backgroundColor: '#306E51', 
+          backgroundColor: '#306E51',
         },
         headerTitle: (props) => (
           <LogoTitle {...props} />
@@ -57,7 +55,7 @@ function MyTabs() {
         headerTitleStyle: { flex: 1 },
         headerTitleAlign: 'left',
         headerRight: () => (
-          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', marginRight: 15}}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', marginRight: 15 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: "#FFF", borderRadius: 20, marginRight: 10, marginLeft: 10, paddingVertical: 8, paddingHorizontal: 10, width: "60%", height: "70%" }}>
               <MaterialCommunityIcons name="magnify" color="gray" size={18} />
               <TextInput
@@ -66,12 +64,12 @@ function MyTabs() {
                 style={{ flex: 1, height: 25, fontSize: 11, marginLeft: 5, width: "80%" }}
               />
             </View>
-            <View style={{ flexDirection: 'row', alignItems: 'center', paddingLeft: 10}}> 
-              <MaterialCommunityIcons name="barcode-scan" color="#fff" size={25} style={{marginRight: 15}} />
-              <MaterialCommunityIcons name="map-marker" color="#fff" size={25} style={{marginRight: 15}} />
+            <View style={{ flexDirection: 'row', alignItems: 'center', paddingLeft: 10 }}>
+              <MaterialCommunityIcons name="barcode-scan" color="#fff" size={25} style={{ marginRight: 15 }} />
+              <MaterialCommunityIcons name="map-marker" color="#fff" size={25} style={{ marginRight: 15 }} />
               <MaterialCommunityIcons name="package-variant-closed" color="#fff" size={25} />
-            </View> 
-          </View>                   
+            </View>
+          </View>
         ),
       }}
     >
@@ -124,11 +122,14 @@ function MyTabs() {
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="account" color={color} size={size} />
           ),
-        }}
-      />
+        }} />
+      
+
+
     </Tab.Navigator>
   );
 }
+
 
 const CategoryStack = () => {
   return (
@@ -144,6 +145,7 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <MyTabs />
+
       </NavigationContainer>
       <Toast ref={(ref) => Toast.setRef(ref)} />
     </Provider>
