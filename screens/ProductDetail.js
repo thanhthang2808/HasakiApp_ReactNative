@@ -30,8 +30,8 @@ const ProductDetail = ({ route }) => {
       <View style={{ backgroundColor: '#DDD', flex: 1 }}>
       <Image source={{uri: product.image}} style={{ width: '100%', height: 300, resizeMode: 'contain', backgroundColor: '#FFF' }} defaultSource={require("../assets/notfound.png")}/>
       <View style={{ width: '100%', padding: 10, backgroundColor: '#F5F5F5', flexDirection: 'row', alignItems: 'baseline' }}>
-        <Text style={{ color: '#FF5C00', fontWeight: 'bold', fontSize: 18 }}>{formatCurrency(product.price)} đ</Text>
-        <Text style={{ color: 'gray', fontSize: 11, textDecorationLine: 'line-through', marginLeft: 10 }}>{formatCurrency(product.price*2)} đ</Text>
+        <Text style={{ color: '#FF5C00', fontWeight: 'bold', fontSize: 18 }}>{formatCurrency(product.price)} ₫</Text>
+        <Text style={{ color: 'gray', fontSize: 11, textDecorationLine: 'line-through', marginLeft: 10 }}>{formatCurrency(product.price*2)} ₫</Text>
         <Text style={{ color: '#FFF', backgroundColor: '#FF5C00', fontSize: 11, marginLeft: 5, borderRadius: 2, padding: 1 }}>-50%</Text>
       </View>
       <View style={{ padding: 5, flexDirection: 'row', alignItems: 'flex-end', width: '100%', backgroundColor: '#FFF' }}>
@@ -43,10 +43,10 @@ const ProductDetail = ({ route }) => {
       </View>
       <View style={{ paddingHorizontal: 10, paddingVertical: 5, backgroundColor: '#FFF', flexDirection: 'row', alignItems: 'baseline' }}>
         <View style={{ flexDirection: 'row', backgroundColor: '#FF5C00', borderRadius: 2, padding: 2, marginRight: 5 }}>
-        <Text style={{ fontWeight: 'bold', fontSize: 10, color: '#FFF' }}>4.7</Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 10, color: '#FFF' }}>{product.rating}</Text>
         <MaterialCommunityIcons name="star" color="#FFF" size={14} />
         </View>
-        <Text style={{ fontSize: 10, color: 'gray' }}>(69 đánh giá) | 375 Hỏi đáp</Text>
+        <Text style={{ fontSize: 10, color: 'gray' }}>({product.reviews} đánh giá) | {product.comment} Hỏi đáp</Text>
       </View>
       {/* NowFree */}
       <View style={{ padding: 5, paddingHorizontal: 5, backgroundColor: '#FFF', marginTop: 10 }}>
@@ -100,7 +100,7 @@ const ProductDetail = ({ route }) => {
       <View style={{ padding: 5, paddingHorizontal: 5, backgroundColor: '#FFF', marginTop: 10 }}>
         <View style={{ flexDirection: 'row' }}>
         <Text style={{ fontWeight: 'bold', fontSize: 14, color: '#333333', marginRight: 5 }}>Đánh giá</Text>
-        <Text style={{ fontSize: 14, color: '#333333' }}>(69)</Text>
+        <Text style={{ fontSize: 14, color: '#333333' }}>({product.reviews})</Text>
         </View>
         <Text style={{ flexWrap: 'wrap', fontSize: 10, paddingTop: 5, color: 'gray' }}>Hình ảnh thực tế của khách hàng</Text>
         <View style={{ flexDirection: 'row', padding: 5, justifyContent: 'center'}}>
@@ -147,7 +147,7 @@ const ProductDetail = ({ route }) => {
       <View style={{ padding: 5, paddingHorizontal: 5, backgroundColor: '#FFF', marginTop: 10 }}>
         <View style={{ flexDirection: 'row' }}>
         <Text style={{ fontWeight: 'bold', fontSize: 14, color: '#333333', marginRight: 5 }}>Hỏi đáp</Text>
-        <Text style={{ fontSize: 14, color: '#333333' }}>(375)</Text>
+        <Text style={{ fontSize: 14, color: '#333333' }}>({product.comment})</Text>
         </View>
         <View>
           

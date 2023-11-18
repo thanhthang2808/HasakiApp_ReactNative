@@ -68,7 +68,7 @@ const Cart = ({ navigation }) => {
                     style={styles.quantityButton}
                 />
               </TouchableOpacity>
-              <Text style={styles.productPrice}>x  {formatCurrency(item.price)} đ</Text>
+              <Text style={styles.productPrice}>x  {formatCurrency(item.price)} ₫</Text>
             </View>
           </View>
         </View>
@@ -97,7 +97,7 @@ const Cart = ({ navigation }) => {
         <View style={styles.footer}>
           <View style={{ flexDirection: 'row', padding: 10 }}>
             <Text style={{ fontSize: 16, textAlignVertical: 'bottom' }}>Tổng thanh toán:</Text>
-            <Text style={styles.totalAmount}> {formatCurrency(total)} đ</Text>
+            <Text style={styles.totalAmount}> {formatCurrency(total)} ₫</Text>
           </View>
           <TouchableOpacity style={styles.checkoutButton}>
             <Text style={styles.checkoutButtonText} onPress={() => {

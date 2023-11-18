@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { Text, View, Image, TextInput, StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -17,6 +17,7 @@ import Login from './screens/Login';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ProductDetail from './screens/ProductDetail';
 import Signup from './screens/Signup';
+import SearchEngine from './screens/SearchEngine';
 
 function Notifications() {
   return (
@@ -41,6 +42,8 @@ const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 function MyTabs() {
+  const navigation = useNavigation();
+  const [searchKeyword, setSearchKeyword] = React.useState();
   return (
     <Tab.Navigator
       initialRouteName="Homepage"
@@ -61,6 +64,9 @@ function MyTabs() {
               <TextInput
                 placeholder="Tìm kiếm"
                 placeholderTextColor="gray"
+                value={searchKeyword}
+                onSubmitEditing={() => navigation.navigate('SearchEngine', { keyword: searchKeyword })}
+                onChangeText={text => setSearchKeyword(text)}
                 style={{ flex: 1, height: 25, fontSize: 11, marginLeft: 5, width: "80%" }}
               />
             </View>
@@ -74,8 +80,8 @@ function MyTabs() {
       }}
     >
       <Tab.Screen
-        name="Homepage"
-        component={Homepage}
+        name="HomepageStack"
+        component={HomepageStack}
         options={{
           tabBarLabel: 'Trang chủ',
           tabBarIcon: ({ color, size }) => (
@@ -128,6 +134,16 @@ function MyTabs() {
   );
 }
 
+const HomepageStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Homepage" component={Homepage} options={{ headerShown: false }} />
+      <Stack.Screen name="SearchEngine" component={SearchEngine} options={{ headerShown: false }}/>
+      <Stack.Screen name="ProductDetail" component={ProductDetail} />
+    </Stack.Navigator>
+  );
+};
+
 
 const CategoryStack = () => {
   return (
@@ -144,12 +160,11 @@ const AccountStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Account" component={Account} options={{ headerShown: false }} />
-      <Stack.Screen name="Login" component={Login} options={{
-      }} />
+      <Stack.Screen name="Login" component={Login} options={{   }} />
       <Stack.Screen name="Signup" component={Signup} />
     </Stack.Navigator>
-  )
-}
+  );
+};
 
 const CartStack = () => {
   return (
