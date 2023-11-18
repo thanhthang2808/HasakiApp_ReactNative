@@ -7,7 +7,8 @@ const Category = () => {
 
   const [productsData, setProducts] = useState([]);
   useEffect(() => {
-    fetch('http://192.168.0.4:3000/products')
+    //local host dum cai
+    fetch('http://192.168.0.22:3000/products')
       .then(response => response.json())
       .then(data => setProducts(data))
       .catch(error => console.error(error));
@@ -15,7 +16,7 @@ const Category = () => {
 
   const [categoryData, setCategory] = useState([]);
   useEffect(() => {
-    fetch('http://192.168.0.4:3000/category')
+    fetch('http://192.168.0.22:3000/category')
       .then(response => response.json())
       .then(data => setCategory(data))
       .catch(error => console.error(error));
@@ -23,7 +24,7 @@ const Category = () => {
 
   const [selectedCategory, setSelectedCategory] = useState("Hasaki Deals");
   const filteredProducts = productsData.filter(productsData => productsData.category === selectedCategory);
-  
+
   console.log('selectedCategory:', selectedCategory);
   console.log('filteredProducts:', filteredProducts);
 
@@ -38,17 +39,17 @@ const Category = () => {
   const renderCategoryItem = ({ item }) => (
     <TouchableOpacity onPress={() => setSelectedCategory(item.category)}>
       <View style={{ flex: 1, minHeight: 50, justifyContent: 'center', padding: 10, borderLeftWidth: 3, backgroundColor: item.category === selectedCategory ? '#FFF' : '#EEEEEE', borderLeftColor: item.category === selectedCategory ? '#FF5C00' : '#EEEEEE', borderBottomWidth: 1, borderBottomColor: "#DDD" }}>
-        <Text style={{fontSize: 10, flexWrap: 'wrap', color: item.category === selectedCategory ? '#FF5C00' : '#111111'}}>{item.category}</Text>
+        <Text style={{ fontSize: 10, flexWrap: 'wrap', color: item.category === selectedCategory ? '#FF5C00' : '#111111' }}>{item.category}</Text>
       </View>
     </TouchableOpacity>
-    );
+  );
 
   const renderProductItem = ({ item }) => (
-    <TouchableOpacity onPress={() => navigation.navigate('ProductDetail', { product: item })} style={{ width: '33%', height: 150, padding: 10, alignItems: 'center'}}>
-      <Image source={{ uri: item.image }} style={{ width: 90, height: 90, resizeMode: 'contain' }} defaultSource={require("../assets/notfound.png")}/>
+    <TouchableOpacity onPress={() => navigation.navigate('ProductDetail', { product: item })} style={{ width: '33%', height: 150, padding: 10, alignItems: 'center' }}>
+      <Image source={{ uri: item.image }} style={{ width: 90, height: 90, resizeMode: 'contain' }} defaultSource={require("../assets/notfound.png")} />
       <Text numberOfLines={2} ellipsizeMode="tail" style={{ fontSize: 11, textAlign: 'center' }}>{item.name}</Text>
     </TouchableOpacity>
-    );
+  );
 
   return (
     <View style={{ flex: 1, flexDirection: 'row' }}>
@@ -63,22 +64,22 @@ const Category = () => {
       <View style={{ flex: 3 }}>
         {selectedCategory === "Hasaki Deals" ? (
           <FlatList
-          data={randomProducts}
-          renderItem={renderProductItem}
-          keyExtractor={(item) => item.id.toString()}
-          style={{ flex: 3, backgroundColor: '#FFF'}}
-          numColumns={3}
-        />
+            data={randomProducts}
+            renderItem={renderProductItem}
+            keyExtractor={(item) => item.id.toString()}
+            style={{ flex: 3, backgroundColor: '#FFF' }}
+            numColumns={3}
+          />
         ) : (
           <FlatList
-          data={filteredProducts}
-          renderItem={renderProductItem}
-          keyExtractor={(item) => item.id.toString()}
-          style={{ flex: 3, backgroundColor: '#FFF'}}
-          numColumns={3}
-        />
-        )}        
-      </View>      
+            data={filteredProducts}
+            renderItem={renderProductItem}
+            keyExtractor={(item) => item.id.toString()}
+            style={{ flex: 3, backgroundColor: '#FFF' }}
+            numColumns={3}
+          />
+        )}
+      </View>
     </View>
   );
 };
