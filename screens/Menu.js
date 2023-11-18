@@ -11,14 +11,14 @@ const Menu = () => {
         { id: 6, name: 'Tra cứu đơn hàng', imageUrl: require('../assets/menu6.png') },
         { id: 7, name: 'High end', imageUrl: require('../assets/menu7.png') },
         { id: 8, name: ' Mua 1      tặng 1', imageUrl: require('../assets/menu8.png') },
-        { id: 9, name: 'Đặt hẹn', imageUrl: require('../assets/menu9.png') },
+        { id: 9, name: 'Đặt hẹn', imageUrl: '../assets/menu9.png' },
         { id: 10, name: 'Cẩm nang', imageUrl: require('../assets/menu10.png') },
     ];
 
     const renderMenuItems = () => {
         return data.map((item) => (
             <View style={styles.menuItem} key={item.id}>
-                <Image source={item.imageUrl} style={styles.menuImage} />
+                <Image source={{ uri: item.imageUrl }} style={styles.menuImage} />
                 <Text style={{
                     fontSize: '11px',
                     width: '50px',

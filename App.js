@@ -96,8 +96,8 @@ function MyTabs() {
         }}
       />
       <Tab.Screen
-        name="Cart"
-        component={Cart}
+        name="CartStack"
+        component={CartStack}
         options={{
           tabBarLabel: 'Giỏ hàng',
           tabBarIcon: ({ color, size }) => (
@@ -134,6 +134,23 @@ const CategoryStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Category" component={Category} options={{ headerShown: false }}/>
+      <Stack.Screen name="ProductDetail" component={ProductDetail} />
+    </Stack.Navigator>
+  );
+};
+
+const CartStack = () => {
+  return (
+    <Stack.Navigator
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: '#306E51', 
+      },
+      headerTitleStyle: { color: '#FFF' },
+      headerTitleAlign: 'center',
+    }}
+    >
+      <Stack.Screen name="Giỏ hàng" component={Cart} />
       <Stack.Screen name="ProductDetail" component={ProductDetail} />
     </Stack.Navigator>
   );
