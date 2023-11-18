@@ -222,7 +222,7 @@
             "decription": "Liệu trình Giảm mỡ công nghệ RF cực kỳ phù hợp với các đối tượng muốn cải thiện số đo cơ thể nhanh chóng nhưng vẫn đảm bảo an toàn cho sức khỏe. Đặc biệt: công nghệ RF sẽ giúp các mô mỡ trở nên săn chắc, cải thiện hiệu quả tình trạng chảy xệ, da nhăn nheo.",
             "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/GiamBeo/GiamBeoVungBungRF.jpg?raw=true",
             "quantity": 100,
-            "brand": "Hasaki",
+            "brand": "Hasaki Clinic",
             "origin": "",
             "category": "Giảm Béo",
             "ingredient": "",
@@ -234,7 +234,7 @@
             "decription": "Triệt lông Diode Laser là phương pháp triệt lông được ưa chuộng nhất hiện nay với khả năng triệt lông tận gốc, lông mọc lại rất lâu và mảnh. Không chỉ dừng lại ở việc triệt lông, sau khi sử dụng dịch vụ, vùng da của bạn còn được giảm mùi, giảm thâm và hạn chế được tình trạng viêm nang lông hiệu quả. ",
             "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/TrietLongDiodeLaser/TrietLongVungBikini.jpg?raw=true",
             "quantity": 100,
-            "brand": "Hasaki",
+            "brand": "Hasaki Clinic",
             "origin": "",
             "category": "Triệt Lông Diode Laser",
             "ingredient": "",
@@ -246,7 +246,7 @@
             "decription": "Triệt lông Diode Laser là phương pháp triệt lông được ưa chuộng nhất hiện nay với khả năng triệt lông tận gốc, lông mọc lại rất lâu và mảnh. Không chỉ dừng lại ở việc triệt lông, sau khi sử dụng dịch vụ, vùng da của bạn còn được giảm mùi, giảm thâm và hạn chế được tình trạng viêm nang lông hiệu quả. ",
             "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/TrietLongDiodeLaser/TrietLongNguyenChan.jpg?raw=true",
             "quantity": 100,
-            "brand": "Hasaki",
+            "brand": "Hasaki Clinic",
             "origin": "",
             "category": "Triệt Lông Diode Laser",
             "ingredient": "",
@@ -258,7 +258,7 @@
             "decription": "Liệu trình tẩy da chết Coffee Body Scrub tẩy da chết giúp da láng mịn, đàn hồi, săn chắc hơn nhờ công dụng dưỡng ẩm rất tốt và đặc biệt còn cực kì hiệu quả trong việc chống lại Cellulite - tác nhân gây rạn da - kẻ thù truyền kiếp của các bà mẹ và các nàng teen dậy thì. Các tế bào già ở lớp sừng cằn cỗi sẽ bị lấy đi thay vào đó là làn da mịn màng, ẩm mượt, trơn láng mịn như vừa chạm tay lên da em bé.",
             "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/ThuGianChamSoc/TayDaChetToanThan.jpg?raw=true",
             "quantity": 100,
-            "brand": "Hasaki",
+            "brand": "Hasaki Clinic",
             "origin": "",
             "category": "Thư Giãn & Chăm Sóc",
             "ingredient": "",
@@ -270,7 +270,7 @@
             "decription": "Sử dụng các thành phần có nguồn gốc từ thiên nhiên an toàn, lành tính cho da kết hợp với các phương pháp thư giãn nhẹ nhàng, làn da của bạn không chỉ được thanh lọc mà còn được nuôi dưỡng thêm mịn màng, căng mướt từ sâu bên trong.",
             "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/ThuGianChamSoc/ChamSocDaMatCoBan.jpg?raw=true",
             "quantity": 100,
-            "brand": "Hasaki",
+            "brand": "Hasaki Clinic",
             "origin": "",
             "category": "Thư Giãn & Chăm Sóc",
             "ingredient": "",
@@ -282,7 +282,7 @@
             "decription": "Hasaki Clinic sử dụng nguyên liệu nhập khẩu từ Úc cùng kỹ thuật nối mi hiện đại không gây cộm, ngứa mắt, đau rát, nặng mắt và đặc biệt không làm rụng mi thật.",
             "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/ThuGianChamSoc/NoiMiThienThan2D.jpg?raw=true",
             "quantity": 100,
-            "brand": "Hasaki",
+            "brand": "Hasaki Clinic",
             "origin": "",
             "category": "Thư Giãn & Chăm Sóc",
             "ingredient": "",
@@ -378,7 +378,12 @@
         },  
         { 
             "id": 11, 
-            "category": "Thư Giãn & Chăm Sóc" 
+            "category": "Thư Giãn & Chăm Sóc"
+        },
+        { 
+            "id": 12, 
+            "category": "Phiếu mua hàng"
+        }
     ],
     "categoryHomepage": [
         {

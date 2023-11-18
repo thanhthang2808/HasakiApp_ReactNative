@@ -49,7 +49,8 @@ const Cart = ({ navigation }) => {
         <View style={styles.productInfo}>
           <Image style={styles.productImage} source={{ uri: item.image }} />
           <View style={styles.productDetails}>
-            <View style={{ height: '70%' }}>
+            <View style={{ height: '70%', paddingTop: 1 }}>
+              <Text style={{ fontSize: 12, color: '#306E51', fontWeight: 'bold' }}>{item.brand}</Text>
               <Text style={styles.productName}>{item.name}</Text>
             </View>
             <View style={styles.priceContainer}>
@@ -72,18 +73,12 @@ const Cart = ({ navigation }) => {
             </View>
           </View>
         </View>
-        <View style={styles.quantityContainer}>
-          
-        </View>
       </View>
     );
   };
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={{ color: '#FFF', fontSize: 16 }}>Giỏ hàng</Text>
-      </View>
       <View style={styles.cartContent}>
         {cart.length === 0 ? (
           <View style={styles.emptyCartView}>
@@ -106,7 +101,7 @@ const Cart = ({ navigation }) => {
             <Text style={styles.totalAmount}> {formatCurrency(total)} đ</Text>
           </View>
           <TouchableOpacity style={styles.checkoutButton}>
-            <Text style={styles.checkoutButtonText}>Tiến hành đặt hàng</Text>
+            <Text style={styles.checkoutButtonText} onPress={console.log(cart)}>Tiến hành đặt hàng</Text>
           </TouchableOpacity>
         </View>
       )}
@@ -128,16 +123,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   cartContent: {
-    flexDirection: 'column',
     flex: 1,
-    paddingHorizontal: 10,
+    paddingHorizontal: 5,
   },
   itemContainer: {
     flexDirection: 'row',
     width: '100%',
+    height: 100,
     justifyContent: 'space-between',
     marginVertical: 5,
-    paddingHorizontal: 10,
+    paddingHorizontal: 5,
+    backgroundColor: '#F5F5F5',
   },
   productInfo: {
     flexDirection: 'row',
@@ -145,17 +141,17 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   productImage: {
-    width: 100,
     height: 100,
-    flex: 1,
+    flex: 2,
     resizeMode: 'contain',
+    marginRight: 10,
   },
   productDetails: {
     flexDirection: 'column',
-    flex: 8,
+    flex: 7,
   },
   productName: {
-    fontSize: 16,
+    fontSize: 14,
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     flexWrap: 'wrap',
@@ -170,7 +166,7 @@ const styles = StyleSheet.create({
   },
   productPrice: {
     fontSize: 16,
-    marginLeft: 20,
+    marginLeft: 50,
     fontWeight: 'bold',
   },
   quantityButton: {
@@ -197,6 +193,14 @@ const styles = StyleSheet.create({
     height: 100,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#FFF',
+    shadowColor: '#000', 
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.25, 
+    shadowRadius: 3.84,
   },
   totalAmount: {
     textAlign: 'center',
