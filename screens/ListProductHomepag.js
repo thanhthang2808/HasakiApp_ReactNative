@@ -114,7 +114,7 @@ const ListProduct = () => {
     var [dt, setDT] = useState([])
     // var data = [];
     useEffect(() => {
-        fetch('http://localhost:3000/products')
+        fetch('http://192.168.0.4:3000/products')
             .then(response => response.json())
             .then(json => {
                 setDT(json)
