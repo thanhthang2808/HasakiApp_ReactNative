@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { Text, View, Image, TextInput, StyleSheet, Pressable } from 'react-native';
+import { Text, View, Image, TextInput, StyleSheet, Pressable, SafeAreaView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer, useFocusEffect } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -84,43 +84,46 @@ export default function Account({ navigation, route }) {
 
     return (
         <PaperProvider>
-            <View style={{
-                flexDirection: 'row', alignItems: 'center',
-                justifyContent: 'center',
-
-                backgroundColor: '#306E51', height: '64px', width: '428px',
+            <SafeAreaView style={{
+                backgroundColor: '#306E51'
             }}>
-                <Image
-                    style={{
-                        width: '40px', height: '40px',
-                        marginRight: '20px'
-                    }}
-                    source={require('../assets/logo.png')}
-                />
                 <View style={{
-                    flexDirection: 'row', alignItems: 'center', backgroundColor: "#FFF", borderRadius: 20,
-                    marginRight: 10, marginLeft: 30, paddingVertical: 8,
-                    paddingHorizontal: 10, width: "42%", height: "45%"
+                    flexDirection: 'row', alignItems: 'center',
+                    justifyContent: 'center',
+
+                    backgroundColor: '#306E51', height: '64px', width: '428px',
                 }}>
-                    <MaterialCommunityIcons name="magnify" color="gray" size={18} />
-                    <TextInput
-                        placeholder="Tìm kiếm"
-                        placeholderTextColor="gray"
-                        style={{ flex: 1, height: 25, fontSize: 11, marginLeft: 5, width: "80%" }}
+                    <Image
+                        style={{
+                            width: '40px', height: '40px',
+                            marginRight: '20px'
+                        }}
+                        source={require('../assets/logo.png')}
                     />
+
+                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', marginRight: 15 }}>
+                        <View style={{
+                            flexDirection: 'row', alignItems: 'center', backgroundColor: "#FFF",
+                            borderRadius: 20, marginLeft: 10,
+                            paddingVertical: 8, paddingHorizontal: 10, width: "60%", height: "10%"
+                        }}>
+                            <MaterialCommunityIcons name="magnify" color="gray" size={18} />
+                            <TextInput
+                                placeholder="Tìm kiếm"
+                                placeholderTextColor="gray"
+                                style={{ flex: 1, height: 25, fontSize: 11, marginLeft: 5, width: "80%" }}
+                            />
+                        </View>
+                    </View>
+
                 </View>
-                <View style={{ flexDirection: 'row', alignItems: 'center', paddingLeft: 10 }}>
-                    <MaterialCommunityIcons name="barcode-scan" color="#fff" size={25} style={{ marginRight: 15 }} />
-                    <MaterialCommunityIcons name="map-marker" color="#fff" size={25} style={{ marginRight: 15 }} />
-                    <MaterialCommunityIcons name="package-variant-closed" color="#fff" size={25} />
-                </View>
-            </View>
-            {user ? componentWhenUserFound() : componentWhenUserNotFound()}
-            <View>
-                {/* <Render /> */}
+                {user ? componentWhenUserFound() : componentWhenUserNotFound()}
+                <View>
+                    {/* <Render /> */}
 
 
-            </View>
+                </View>
+            </SafeAreaView>
         </PaperProvider>
 
     )

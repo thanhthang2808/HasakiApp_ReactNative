@@ -165,18 +165,17 @@ const AccountStack = () => {
     </Stack.Navigator>
   );
 };
-    
 
 const CartStack = () => {
   return (
     <Stack.Navigator
-    screenOptions={{
-      headerStyle: {
-        backgroundColor: '#306E51', 
-      },
-      headerTitleStyle: { color: '#FFF' },
-      headerTitleAlign: 'center',
-    }}
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#306E51',
+        },
+        headerTitleStyle: { color: '#FFF' },
+        headerTitleAlign: 'center',
+      }}
     >
       <Stack.Screen name="Giỏ hàng" component={Cart} />
       <Stack.Screen name="ProductDetail" component={ProductDetail} />
