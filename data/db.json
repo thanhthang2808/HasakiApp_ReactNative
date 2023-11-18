@@ -500,5 +500,12 @@
             "image": "https://github.com/VuLanTuong/TH_LTTBDD/blob/main/img_week7/image1.png?raw=true",
             "color": "#DFCCFB"
         }
+    ],
+    "notifications": [
+        {
+            "id": "1",
+            "name": "Thông báo 1",
+            "detail": "Detail 1"
+        }
     ]
 }
