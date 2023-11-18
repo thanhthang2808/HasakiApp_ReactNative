@@ -9,9 +9,9 @@ export const cartSlice = createSlice({
         addToCart: (state, action) => {
             const itemInCart = state.cart.find((item) => item.id == action.payload.id);
             if (itemInCart) {
-                itemInCart.quantity++;
+                console.log("Đã có trong giỏ hàng");
             } else {
-                state.cart.push({ ...action.payload, quantity: 1 })
+                state.cart.push({ ...action.payload, quantityInCart: 1 })
             }
         },
         removeFromCart: (state, action) => {
@@ -20,16 +20,15 @@ export const cartSlice = createSlice({
         },
         incrementQuantity: (state, action) => {
             const itemInCart = state.cart.find((item) => item.id == action.payload.id);
-            itemInCart.quantity++;
+            itemInCart.quantityInCart++;
         },
         decrementQuantity: (state, action) => {
             const itemInCart = state.cart.find((item) => item.id == action.payload.id);
-            if (itemInCart.quantity == 1) {
+            if (itemInCart.quantityInCart == 1) {
                 const removeFromCart = state.cart.filter((item) => item.id !== action.payload.id);
                 state.cart = removeFromCart;
             } else {
-                itemInCart.quantity--;
-
+                itemInCart.quantityInCart--;
             }
 
         }

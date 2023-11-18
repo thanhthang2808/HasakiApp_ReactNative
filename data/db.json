@@ -1,40 +1,304 @@
 {
     "products": [
         {
-            "name": "name 1",
-            "price": 16,
-            "decription": "decription 1",
-            "image": "image 1",
+            "name": "Sữa Rửa Mặt CeraVe Sạch Sâu Cho Da Thường Đến Da Dầu 473ml",
+            "price": 352000,
+            "decription": "Sữa Rửa Mặt Cerave Sạch Sâu là sản phẩm sữa rửa mặt đến từ thương hiệu mỹ phẩm Cerave của Mỹ, với sự kết hợp của ba Ceramides thiết yếu, Hyaluronic Acid sản phẩm giúp làm sạch và giữ ẩm cho làn da mà không ảnh hưởng đến hàng rào bảo vệ da mặt và cơ thể.",
+            "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/ChamSocDaMat/SuaRuaMatCerave.png?raw=true",
             "quantity": 12,
-            "brand": "brand 1",
-            "origin": "origin 1",
-            "category": "category 1",
-            "ingredient": "ingredient 1",
+            "brand": "Cerave",
+            "origin": "Mỹ",
+            "category": "Chăm Sóc Da Mặt",
+            "ingredient": "Purified Water (Aqua), Cocamidopropyl Hydroxysultaine, Glycerin, Sodium Lauroyl Sarcosinate, Peg-150 Pentaerythrityl Tetrastearate (And) Peg-6 Caprylic/Capric Glycerides, Niacinamide, Propylene Glycol, Sodium Methyl Cocoyl Taurate, Ceramide 3, Ceramide 6-Ii, Ceramide 1, Hyaluronic Acid, Cholesterol, Sodium Chloride, Phytosphingosine, Citric Acid, Edetate Disodium Dihydrate, Sodium Lauroyl Lactylate, Methylparaben, Propylparaben, Carbomer, Xanthan Gum.",
             "id": "1"
         },
         {
-            "name": "name 2",
-            "price": 27,
-            "decription": "decription 2",
-            "image": "image 2",
+            "name": "Nước Tẩy Trang L'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp 400ml",
+            "price": 155000,
+            "decription": "Với công nghệ mới nhất, nước làm sạch và tẩy trang L'Oréal Paris 3-in-1 Micellar Water Refreshing Even For Sensitive Skin đa tác dụng vừa giúp làm sạch lấy đi sạch cặn trang điểm những vẫn giúp da giữ ẩm, thông thoáng và mềm mượt chỉ trong một bước.",
+            "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/ChamSocDaMat/NuocTayTrangLoreal.png?raw=true",
             "quantity": 35,
-            "brand": "brand 2",
-            "origin": "origin 2",
-            "category": "category 2",
-            "ingredient": "ingredient 2",
+            "brand": "L'Oreal",
+            "origin": "Pháp",
+            "category": "Chăm Sóc Da Mặt",
+            "ingredient": "Aqua / Water, Cyclopentasiloxane, Isohexadecane, Potassium Phosphate, Sodium Chloride, Dipotassium Phosphate, Disodium Edta, Decyl Glucoside, Hexylene Glycol, Polyaminopropyl Biguanide, CI 61565 / Green 6",
             "id": "2"
         },
         {
-            "name": "name 3",
-            "price": 30,
-            "decription": "decription 3",
-            "image": "image 3",
+            "name": "Nước Hoa Hồng Klairs Không Mùi Cho Da Nhạy Cảm 180ml",
+            "price": 252000,
+            "decription": "Nước Hoa Hồng Klairs Supple Preparation là dòng sản phẩm toner được thương hiệu dear, Klairs thiết kế chuyên biệt dành cho làn da nhạy cảm.",
+            "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/ChamSocDaMat/NuocHoaHongKlairs.jpg?raw=true",
             "quantity": 20,
-            "brand": "brand 3",
-            "origin": "origin 3",
-            "category": "category 3",
-            "ingredient": "ingredient 3",
+            "brand": "Klairs",
+            "origin": "Hàn Quốc",
+            "category": "Chăm Sóc Da Mặt",
+            "ingredient": "Water, Butylene Glycol, Dimethyl Sulfone, Betaine, Caprylic/Capric Triglyceride, Natto Gum, Sodium Hyaluronate, Disodium EDTA, Centella Asiatica Extract, Glycyrrhiza Glabra (Licorice) Root Extract, Polyquaternium-51, Chlorphenesin, Tocopheryl Acetate, Carbomer, Panthenol, Arginine, Luffa Cylindrica Fruit/Leaf/Stem Extract, Beta-Glucan, Althaea Rosea Flower Extract, Aloe Barbadensis Leaf Extract, Hydroxyethylcellulose, Portulaca Oleracea Extract, Lysine HCL, Proline, Sodium Ascorbyl Phosphate, Acetyl Methionine, Theanine, Lavandula Angustifolia (Lavender) Oil, Eucalyptus Globulus Leaf Oil, Pelargonium Graveolens Flower Oil, Citrus Limon (Lemon) Peel Oil, Citrus Aurantium Dulcis (Orange) Peel Oil, Cananga Odorata Flower Oil, Copper Tripeptide-1",
             "id": "3"
+        },
+        {
+            "name": "Son Kem Lì Black Rouge A12 Dashed Brown Nâu Gạch 4.5g",
+            "price": 164000,
+            "decription": "Son Kem Lì Black Rouge Air Fit Velvet Version 2 Mood Filter 4.5g là sản phẩm son kem lì đến từ thương hiệu mỹ phẩm Black Rouge, với thiết kế giữ nguyên nét thiết kế đặc trưng của dòng Version 1, chỉ khác về màu nắp son tím pastel. Đầu cọ vát chép với khoảng không giữa đầu cọ giúp kiểm soát lượng son lấy ra, đường di cọ lướt êm trên môi, chất son mướt mịn.",
+            "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/TrangDiem/SonKemLiBlackRouge.jpg?raw=true",
+            "quantity": 69,
+            "brand": "Black Rouge",
+            "origin": "Hàn Quốc",
+            "category": "Trang Điểm",
+            "ingredient": "Dimethicone, dimethicone/vinyldimethicone crosspolymer, purified water, polyglyceryl-2 isostearate, isododecane, polymethylsilsesquioxane, cetylPG/PPG-10/1 die Methicone, polymethyl methacrylate, synthetic fluorophlogopite, silica, cyclopentasiloxane, trimethylsiloxysilicate, 1,2-hexanediol, VP/hexadecene copolymer, sorbitane sesquioleate, PEG-60 Hydrogenated Castor Oil, Disteadimonium Hectorite, Silica Dimethylsilylate, Palmitic Acid, Stearic Acid, Propylene Carbonate, Ethylhexyl Glycerin, Phenoxyethanol, Rosehip Fruit Oil, Shea Butter , Caprylic/Capric Triglyceride, Butylene Glycol, Propylene Glycol, Honey, Hydrogenated Lecithin, Ceramide NP, Red Iron Oxide, Titanium Dioxide, Red No. 202, Yellow No. 5, Yellow Iron Oxide, Black Iron Oxide, Spices",
+            "id": "4"
+        },
+        {
+            "name": "Kem Nền Maybelline Mịn Nhẹ Kiềm Dầu Chống Nắng 30ml",
+            "price": 199000,
+            "decription": "Kem Nền Mịn Nhẹ Kiềm Dầu Chống Nắng Fit Me Maybelline New York Matte Poreless Foundation SPF 22 30ml là dòng sản phẩm kem nền đến từ thương hiệu mỹ phẩm MAYBELLINE của Mỹ, gây tiếng vang trong giới làm đẹp toàn thế giới và được mệnh danh là kem nền 'quốc dân' khi có mặt tại Việt Nam.",
+            "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/TrangDiem/KemNenMaybelline.png?raw=true",
+            "quantity": 13,
+            "brand": "Maybelline",
+            "origin": "Mỹ",
+            "category": "Trang Điểm",
+            "ingredient": "Water, Cyclohexasiloxane, Nylon-12, Isododecane, Alcohol Denat., Cyclopentasiloxane, Peg-10 Dimethicone, Cetyl Peg/Ppg-10/1 Dimethicone, Peg-20, Polyglyceryl-4 Isostearate, Disteardimonium Hectorite, Phenoxyethanol, Magnesium Sulfate, Disodium Stearoyl Glutamate, Hdi/Trimethylol Hexyllactone Crosspolymer, Titanium Dioxide [Nano] / Titanium Dioxide, Methylparaben, Acrylates Copolymer, Tocopherol, Butylparaben, Aluminum Hydroxide, Alumina, Silica, Glycerin, Ci 77891 / Titanium Dioxide, Ci 77491, Ci 77492, Ci 77499",
+            "id": "5"
+        },
+        {
+            "name": "Dầu Gội Bưởi Cocoon Giảm Rụng & Kích Thích Mọc Tóc 310ml",
+            "price": 196000,
+            "decription": "Dầu Gội Bưởi Cocoon Giảm Gãy Rụng & Kích Thích Mọc Tóc là dòng dầu gội đến từ thương hiệu mỹ phẩm Cocoon của Việt Nam, với thiết kế đặc biệt công thức dịu nhẹ không chứa sulfate thân thiện cho mái tóc và da đầu.",
+            "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/ChamSocTocVaDaDau/DauGoiBuoiCocoon.png?raw=true",
+            "quantity": 26,
+            "brand": "Cocoon",
+            "origin": "Việt Nam",
+            "category": "Chăm Sóc Tóc Và Da Đầu",
+            "ingredient": "Aqua/Water, Sodium Cocoyl Isethionate, Sodium Laurylglucosides Hydroxypropylsulfonate, Glycerin, Disodium Laureth Sulfosuccinate, Cocamidopropyl Betaine, PEG-12 Dimethicone, PEG-7 Glyceryl Cocoate, Dimethicone, Citrus Grandis Peel Oil, Panthenol, Amodimethicone, Epilobium Angustifolium Flower/Leaf/Stem Extract, Thymus Vulgaris (Thyme) Extract, Triticum Vulgare (Wheat) Seed Extract, Cocoyl Methyl Glucamide, Calcium Pantothenate, Pyridoxine Hcl, Sodium PCA, Sodium Lactate, Arginine, Aspartic Acid, PCA, Glycine, Alanine, Serine, Valine, Proline, Threonine, Isoleucine, Histidine, Phenylalanine, Xylitylglucoside, Anhydroxylitol, Maltitol, Xylitol, Pelvetia Canaliculata Extract, Propanediol, Bis-(Isostearoyl/Oleoyl Isopropyl) Dimonium Methosulfate, Trisodium Ethylenediamine Disuccinate, Acrylates/C10-30 Alkyl Acrylate Crosspolymer, Cocamide MEA, Parfum, Polysorbate-20, Xanthan Gum, PEG-120 Methyl Glucose Dioleate, PEG-45M, Laureth-23, Polyquaternium-10, Laureth-4, Trideceth-10, Sodium Hydroxide, Phenoxyethanol, Ethylhexylglycerin.",
+            "id": "6"
+        },
+        {
+            "name": "Dung Dịch Tẩy Da Chết Paula's Choice 2% BHA 30ml",
+            "price": 279000,
+            "decription": "Dung Dịch Loại Bỏ Tế Bào Chết Paula's Choice Skin Perfecting 2% BHA Liquid Exfoliant đến từ thương hiệu dược mỹ phẩm Paula's Choice nổi tiếng của Mỹ là sản phẩm tẩy tế bào chết hóa học với nồng độ 2% BHA (Salicylic Acid) giúp làm sạch sâu lỗ chân lông, cải thiện tình trạng mụn ẩn - mụn đầu đen, đồng thời làm mờ nếp nhăn sâu, cải thiện tông màu da, mang lại cho bạn làn da sáng mịn, rạng rỡ và khỏe mạnh.",
+            "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/ChamSocDaMat/DungDichTayDaChetPaulasChoice.jpg?raw=true",
+            "quantity": 5,
+            "brand": "Paula's Choice",
+            "origin": "Mỹ",
+            "category": "Chăm Sóc Da Mặt",
+            "ingredient": "Water (Aqua), Methylpropanediol (hydration), Butylene Glycol (hydration), Salicylic Acid (beta hydroxy acid/exfoliant), Polysorbate 20 (stabilizer), Camellia Oleifera Leaf Extract (green tea/skin calming/antioxidant), Sodium Hydroxide (pH balancer), Tetrasodium EDTA (stabilizer)",
+            "id": "7"
+        },
+        {
+            "name": "Dầu Gội Selsun Ngừa Gàu Và Ngứa 1% Selenium Sulfide 100ml",
+            "price": 82000,
+            "decription": "Dầu Gội Selsun Ngăn Ngừa Gàu Và Ngứa là dầu gội đến từ thương hiệu chăm sóc tóc Selsun của công ty Rohto-Mentholatum, sản xuất bởi công ty Rohto Việt Nam - dưới quyền và sự giám sát chất lượng bởi Rohto Nhật Bản.",
+            "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/ChamSocTocVaDaDau/DauGoiSelsun.jpg?raw=true",
+            "quantity": 9,
+            "brand": "Selsun",
+            "origin": "Nhật Bản",
+            "category": "Chăm Sóc Tóc Và Da Đầu",
+            "ingredient": "Selenium Sulfide, Dimethicone, Dihydrogenated Tallow Phthalic Acid Amide (Tab 2), Ammonium Lauryl Sulfate, Water, Ammonium Laureth Sulfate, Dihydrogenated Tallow Phthalic Acid Amide, Cocamide DEA, Fragrance, DMDM Hydantoin, Hydroxypropyl Methylcellulose, Citric Acid, Sodium Chloride, Sodium Citrate, Bentonite.",
+            "id": "8"
+        },
+        {
+            "name": "Dầu Gội TRESemmé Keratin Smooth Vào Nếp Suôn Mượt 640g",
+            "price": 175000,
+            "decription": "Dầu Gội TRESemmé Keratin Smooth Vào Nếp Suôn Mượt là dòng sản phẩm dầu gội chuyên nghiệp được nhãn hàng chăm sóc tóc cao cấp TRESemmé thiết kế dành riêng dành cho mái tóc khô - xơ - rối.",
+            "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/ChamSocTocVaDaDau/DauGoiTreSemme.jpg?raw=true",
+            "quantity": 5,
+            "brand": "TRESemmé",
+            "origin": "Mỹ",
+            "category": "Chăm Sóc Tóc Và Da Đầu",
+            "ingredient": "Water, Sodium Laureth Sulfate, Dimethiconol, Cocamidopropyl Betaine, Sodium Chloride, Perfume, Sodium Benzoate, Citric Acid, Carbomer, TEA-Dodecylbenzenesulfonate, Amodimethicone, Glycol Distearate, Guar Hydroxypropyltrimonium Chloride, PEG-45M, Cyclotetrasiloxane, Trideceth-10, Disodium EDTA, Cocamide MEA, Phenoxyethanol, Mica, Trideceth-12, Cetrimonium Chloride, Cyclopentasiloxane, Titanium Dioxide, Dimethyl Palmitamine, Glycerin, Acetic Acid, Silica, Hydrolyzed Keratin, Sodium Hydroxide, Argania Spinosa Kernel Oil, Butyrospermum Parkii (Shea) Butter, Simmondsia Chinensis (Jojoba) Seed Oil, Sclerocarya Birrea Seed Oil, Lysine HCl, Iodopropynyl Butylcarbamate, BHT, Potassium Sorbate +Hydrolyzed Keratin (Sheep Wool Source)",
+            "id": "9"
+        },
+        {
+            "name": "Sữa Tắm Hatomugi Dưỡng Ẩm, Sáng Da Chiết Xuất Ý Dĩ 800ml",
+            "price": 72000,
+            "decription": "Sữa Tắm Hatomugi Dưỡng Ẩm, Sáng Da Chiết Xuất Ý Dĩ 800ml đến từ thương hiệu HATOMUGI thường xuyên lọt vào top sữa tắm được yêu thích của các tạp chí làm đẹp tại Nhật, với thành phần chiết xuất hạt ý dĩ giàu dưỡng chất, không chỉ giúp làm sạch da mà còn dưỡng ẩm cho da, nuôi dưỡng cho làn da sáng mịn từ bên trong.",
+            "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/ChamSocCoThe/SuaTamHatomugi.jpg?raw=true",
+            "quantity": 16,
+            "brand": "Hatomugi",
+            "origin": "Nhật Bản",
+            "category": "Chăm Sóc Cơ Thể",
+            "ingredient": "Water, Lauric Acid, Myristic Acid, Potassium Hydroxide, Cocamide MEA, Glycerin, Glycol Distearate, Cocamidopropyl Betaine, Sodium Laureth Sulfate, Cocamide DEA, Sodium Chloride, Potassium Cocoyl Glutamate, Sodium Cocoyl Glutamate, Sodium Lauroyl Methylaminopropionate, Coix Lacryma - Jobi ma - Yuen SEED Extract, Butyrospermum Parkii (SHEA) Butter, Sodium Hyaluronate, Butylene Glycol, Propylene Glycol, Polyquaternium - 7, Alcohol Denat, Tetrasodium EDTA, Phenoxyethanol, Ethylparaben, Fragrance.",
+            "id": "10"
+        },
+        {
+            "name": "Kem Tẩy Lông Veet Silk & Fresh Dành Cho Da Nhạy Cảm 50g",
+            "price": 55000,
+            "decription": "Kem Tẩy Lông Veet Silk & Fresh là sản phẩm kem tẩy lông đến từ thương hiệu Veet xuất xứ Anh Quốc, với công nghệ Silk & Fresh giúp làm sạch vùng cạo dễ dàng chỉ trong 3 phút*, bổ sung độ ẩm cho da lên đến 24h, giảm thiểu cảm giác nóng rát, trầy xước da sau khi cạo. Công thức sản phẩm chứa các chiết xuất từ thiên nhiên kết hợp cùng Glycerin giúp làm mềm vùng cạo nhanh chóng, tiết kiệm thời gian và hỗ trợ làm sạch tối ưu vùng cạo.",
+            "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/ChamSocCoThe/KemTayLongVeet.jpg?raw=true",
+            "quantity": 16,
+            "brand": "Veet",
+            "origin": "Anh",
+            "category": "Chăm Sóc Cơ Thể",
+            "ingredient": "Aqua, Urea, Potassium Thioglycolate, Paraffinum Liquidum, Cetearyl Alcohol, Calcium Hydroxide, Talc, Ceteareth-20, Glycerin, Sorbitol, Parfum, Magnesium Trisilicate, Potassium Hydroxide, Propylene Glycol, Lithium Magnesium Sodium Sillicate, Sodium Gluconate, Geraniol, Acrylates Copolymer, Hydrated Silica, Citronellol, Limonene, Butylphenyl Methylpropional, Potassium Carbonate, Propylene Glycol Dicaprylate/Dicaprate, Nelumbo Nucifera Flower Extract, Phenoxyethanol, Potasssium Sorbate, Xanthan Gum, CI 77891",
+            "id": "11"
+        },
+        {
+            "name": "Dao Cạo Râu Gillette Vector Hai Lưỡi Kép (1 Cán + 1 Lưỡi)",
+            "price": 27000,
+            "decription": "Dao Cạo Râu Gillette Vector từ thương hiệu Gillette của Mỹ dịu êm với dải băng bôi trơn hỗ trợ hiệu quả của việc cạo sạch hơn, không tổn thương da cùng lưỡi dao kép cạo sạch tận gốc. Mang lại hiệu quả vượt trội, giúp việc cạo râu nhanh chóng và êm ái hơn.",
+            "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/ChamSocCaNhan/DaoCaoRauGillette.jpg?raw=true",
+            "quantity": 9,
+            "brand": "Gillette",
+            "origin": "Mỹ",
+            "category": "Chăm Sóc Cá Nhân",
+            "ingredient": "Chất liệu thép không gỉ và dải bôi trơn với hoạt chất lô hội dịu êm.",
+            "id": "12"
+        },
+        {
+            "name": "Bao Cao Su Durex Invisible Siêu Mỏng Size 52mm (Hộp 10)",
+            "price": 206000,
+            "decription": "Bao Cao Su Durex Invisible Extra Thin Extra Sensitive là một trong những dòng bao cao su siêu mỏng được yêu thích nhất của thương hiệu Durex hàng đầu thế giới về sản phẩm hỗ trợ tình dục, cho cảm giác chân thực nhất giúp đôi lứa thêm gần gũi và thăng hoa cùng nhau, nhưng vẫn đem lại sự thoải mái nhờ thiết kế rộng rãi với đường kính 52mm, đảm bảo độ bảo vệ và an toàn cao trong suốt cuộc yêu.",
+            "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/ChamSocCaNhan/BaoCaoSuDurexInvisible.jpg?raw=true",
+            "quantity": 69,
+            "brand": "Durex",
+            "origin": "Anh",
+            "category": "Chăm Sóc Cá Nhân",
+            "ingredient": "100% mủ cao su thiên nhiên (Latex)",
+            "id": "13"
+        },
+        {
+            "name": "Bao Cao Su Sagami Superthin Mỏng Kiểu Truyền Thống (Hộp 10)",
+            "price": 77000,
+            "decription": "Bao cao su Sagami Superthin là dòng bao cao su mỏng, không có gân gai của Sagami - thương hiệu sản xuất bao cao su đến từ Nhật Bản.",
+            "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/ChamSocCaNhan/BaoCaoSuSagami.jpg?raw=true",
+            "quantity": 69,
+            "brand": "Sagami",
+            "origin": "Nhật Bản",
+            "category": "Chăm Sóc Cá Nhân",
+            "ingredient": "Mủ cao su tự nhiên tinh chế, gel bôi trơn silicon.",
+            "id": "14"
+        },
+        {
+            "name": "Khẩu Trang Unicharm 3D Mask Siêu Thoáng Khí Hộp 100 Miếng",
+            "price": 289000,
+            "decription": "Khẩu Trang Ngăn Khói Bụi Unicharm 3D Mask Size M Hộp 100 Miếng là sản phẩm khẩu trang đến từ thương hiệu Unicharm, nhà sản xuất khẩu trang số 1 Nhật Bản. Với các tính năng ưu việt và đặc biệt là khả năng siêu bảo vệ người dùng trước bụi mịn PM10, khẩu trang Unicharm 3D Mask Super Fit đang là sự lựa chọn hàng đầu của những người dân thành thị mỗi khi ra đường trước tình trạng ô nhiễm không khí ngày càng nghiêm trọng hiện nay.",
+            "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/ChamSocCaNhan/KhauTrangUnicharm.jpg?raw=true",
+            "quantity": 19,
+            "brand": "Unicharm 3D Mask",
+            "origin": "Nhật Bản",
+            "category": "Chăm Sóc Cá Nhân",
+            "ingredient": "Cấu trúc lọc đa lớp cùng mật độ vải không dệt cao: giúp ngăn khói bụi, bụi mịn PM10.",
+            "id": "15"
+        },
+        {
+            "name": "Nước Hoa Nam Moschino Toy Boy EDP 50ml",
+            "price": 1075000,
+            "decription": "Nước Hoa Nam Moschino Toy Boy EDP là dòng nước hoa Eau De Parfum cho nam giới đến từ thương hiệu nước hoa nổi tiếng trên thế giới Moschino của Ý. Moschino Toy Boy được ra mắt vào năm 2019, thuộc dòng nước hoa Teddy Bear được thiết kế bởi giám đốc sáng tạo Jeremy Scott và tác giả mùi hương này là Yann Vasnier.",
+            "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/NuocHoa/NuocHoaNamMoschino.jpg?raw=true",
+            "quantity": 23,
+            "brand": "Moschino",
+            "origin": "Ý",
+            "category": "Nước Hoa",
+            "ingredient": "Hương đầu: Đá Quý Elemi, Lê Xanh, Nhục Đậu Khấu Indonesian, Bergamot Ý; Hương giữa: Hoa Lanh, Hoa Mộc Lan, Nụ Đinh Hương, Hoa Hồng Trà; Hương cuối: Cỏ Hương Bài, Sylkolide, Hổ Phách",
+            "id": "16"
+        },
+        {
+            "name": "Viên Uống DHC Bổ Sung Vitamin C Gói 60 Viên 30 Ngày",
+            "price": 85000,
+            "decription": "Viên Uống Vitamin C DHC Vitamin C Hard Capsule là dòng thực phẩm chức năng thuộc thương hiệu DHC Nhật Bản, giúp cung cấp hàm lượng 1000mg Vitamin C cần thiết cho cơ thể mỗi ngày, giúp hỗ trợ tăng cường sức đề kháng, kích thích khả năng tự chữa lành vết thương, đồng thời nuôi dưỡng da sáng mịn, làm mờ vết thâm và thúc đẩy tăng sinh Collagen, ngăn ngừa các dấu hiệu lão hóa da.",
+            "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/ThucPhamChucNang/VienUongDHC.jpg?raw=true",
+            "quantity": 10,
+            "brand": "DHC",
+            "origin": "Nhật Bản",
+            "category": "Thực Phẩm Chức Năng",
+            "ingredient": "Chiết xuất từ các loại rau củ tự nhiên có chứa lượng vitamin C dồi dào giúp tăng cường sức đề kháng và miễn dịch hiệu quả cho cơ thể, đồng thời có khả năng dưỡng da ưu việt như kích thích sản sinh collagen, làm sáng các vết thâm và ngăn mụn xuất hiện trên da.",
+            "id": "17"
+        },
+        {
+            "name": "Viên Uống Blackmores Tinh Dầu Hoa Anh Thảo 190 Viên",
+            "price": 769000,
+            "decription": "Blackmores Evening Primrose Oil là sản phẩm thực phẩm chức năng dạng viên uống hỗ trợ làm đẹp da và cải thiện sức khoẻ đến từ thương hiệu BLACKMORES của Úc. Với thành phần chính là tinh dầu hoa anh thảo, viên uống Blackmores giúp cân bằng nội tiết tố cho phụ nữ trong thời kỳ kinh nguyệt, tiền mãn kinh và mãn kinh. Đồng thời, giúp làm đẹp da – tóc, cải thiện tình trạng huyết áp cao, phòng ngừa các bệnh về tim mạch, ngăn ngừa viêm khớp. Viên uống còn có hỗ trợ tăng cường sức khỏe sinh sản, sinh lý cho cả nam và nữ.",
+            "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/ThucPhamChucNang/VienUongBlackmores.jpg?raw=true",
+            "quantity": 5,
+            "brand": "Blackmores",
+            "origin": "Úc",
+            "category": "Thực Phẩm Chức Năng",
+            "ingredient": "Mỗi viên Blackmores Evening Primrose Oil chứa: Evening Primrose oil (EPO) 1g (1000mg) cung cấp gamma-Linolenic acid (GLA) 100mg.",
+            "id": "18"
+        },
+        {
+            "name": "Giảm Béo Vùng Bụng Công Nghệ RF",
+            "price": 4400000,
+            "decription": "Liệu trình Giảm mỡ công nghệ RF cực kỳ phù hợp với các đối tượng muốn cải thiện số đo cơ thể nhanh chóng nhưng vẫn đảm bảo an toàn cho sức khỏe. Đặc biệt: công nghệ RF sẽ giúp các mô mỡ trở nên săn chắc, cải thiện hiệu quả tình trạng chảy xệ, da nhăn nheo.",
+            "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/GiamBeo/GiamBeoVungBungRF.jpg?raw=true",
+            "quantity": 100,
+            "brand": "Hasaki",
+            "origin": "",
+            "category": "Giảm Béo",
+            "ingredient": "",
+            "id": "19"
+        },
+        {
+            "name": "Triệt Lông Diode Laser Vùng Bikini (Bảo Hành 5 Năm)",
+            "price": 2900000,
+            "decription": "Triệt lông Diode Laser là phương pháp triệt lông được ưa chuộng nhất hiện nay với khả năng triệt lông tận gốc, lông mọc lại rất lâu và mảnh. Không chỉ dừng lại ở việc triệt lông, sau khi sử dụng dịch vụ, vùng da của bạn còn được giảm mùi, giảm thâm và hạn chế được tình trạng viêm nang lông hiệu quả. ",
+            "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/TrietLongDiodeLaser/TrietLongVungBikini.jpg?raw=true",
+            "quantity": 100,
+            "brand": "Hasaki",
+            "origin": "",
+            "category": "Triệt Lông Diode Laser",
+            "ingredient": "",
+            "id": "20"
+        },
+        {
+            "name": "Triệt Lông Diode Laser Nguyên Chân (Bảo Hành 5 Năm)",
+            "price": 3000000,
+            "decription": "Triệt lông Diode Laser là phương pháp triệt lông được ưa chuộng nhất hiện nay với khả năng triệt lông tận gốc, lông mọc lại rất lâu và mảnh. Không chỉ dừng lại ở việc triệt lông, sau khi sử dụng dịch vụ, vùng da của bạn còn được giảm mùi, giảm thâm và hạn chế được tình trạng viêm nang lông hiệu quả. ",
+            "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/TrietLongDiodeLaser/TrietLongNguyenChan.jpg?raw=true",
+            "quantity": 100,
+            "brand": "Hasaki",
+            "origin": "",
+            "category": "Triệt Lông Diode Laser",
+            "ingredient": "",
+            "id": "21"
+        },
+        {
+            "name": "Tẩy Da Chết Toàn Thân Cà Phê",
+            "price": 300000,
+            "decription": "Liệu trình tẩy da chết Coffee Body Scrub tẩy da chết giúp da láng mịn, đàn hồi, săn chắc hơn nhờ công dụng dưỡng ẩm rất tốt và đặc biệt còn cực kì hiệu quả trong việc chống lại Cellulite - tác nhân gây rạn da - kẻ thù truyền kiếp của các bà mẹ và các nàng teen dậy thì. Các tế bào già ở lớp sừng cằn cỗi sẽ bị lấy đi thay vào đó là làn da mịn màng, ẩm mượt, trơn láng mịn như vừa chạm tay lên da em bé.",
+            "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/ThuGianChamSoc/TayDaChetToanThan.jpg?raw=true",
+            "quantity": 100,
+            "brand": "Hasaki",
+            "origin": "",
+            "category": "Thư Giãn & Chăm Sóc",
+            "ingredient": "",
+            "id": "22"
+        },
+        {
+            "name": "Chăm Sóc Da Mặt Cơ Bản",
+            "price": 300000,
+            "decription": "Sử dụng các thành phần có nguồn gốc từ thiên nhiên an toàn, lành tính cho da kết hợp với các phương pháp thư giãn nhẹ nhàng, làn da của bạn không chỉ được thanh lọc mà còn được nuôi dưỡng thêm mịn màng, căng mướt từ sâu bên trong.",
+            "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/ThuGianChamSoc/ChamSocDaMatCoBan.jpg?raw=true",
+            "quantity": 100,
+            "brand": "Hasaki",
+            "origin": "",
+            "category": "Thư Giãn & Chăm Sóc",
+            "ingredient": "",
+            "id": "23"
+        },
+        {
+            "name": "Nối Mi Thiên Thần 2d",
+            "price": 310000,
+            "decription": "Hasaki Clinic sử dụng nguyên liệu nhập khẩu từ Úc cùng kỹ thuật nối mi hiện đại không gây cộm, ngứa mắt, đau rát, nặng mắt và đặc biệt không làm rụng mi thật.",
+            "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/ThuGianChamSoc/NoiMiThienThan2D.jpg?raw=true",
+            "quantity": 100,
+            "brand": "Hasaki",
+            "origin": "",
+            "category": "Thư Giãn & Chăm Sóc",
+            "ingredient": "",
+            "id": "24"
+        },
+        {
+            "name": "Bút Kẻ Mắt Nước Maybelline Sắc Mảnh BK1 Đen Sắc Sảo 0.4g",
+            "price": 164000,
+            "decription": "Bút Kẻ Mắt Nước Sắc Mảnh Maybelline Hyper Sharp Liner Extreme 0.4g là sản phẩm kẻ mắt nước đến từ thương hiệu mỹ phẩm Maybelline của Mỹ, áp dụng công nghệ Ink Capsule mới giúp dòng mực ra đều hơn 147% và đậm nét hơn so với phiên bản cũ đồng thời giữ đường eyeliner bền màu suốt 36 giờ. Với đầu cọ sắc mảnh 0,01mm giúp bạn linh hoạt tạo ra những đường kẻ như ý.",
+            "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/TrangDiem/ButKeMatNuocMaybelline.png?raw=true",
+            "quantity": 5,
+            "brand": "Maybelline",
+            "origin": "Mỹ",
+            "category": "Trang Điểm",
+            "ingredient": "Aqua/Water, Ammonium Acrylates Copolymer, Ci 77266/Black 2, Butylene Glycol, 1,2-Hexanediol, Alcohol, Phenoxyethanol, Beheneth-30, Aminomethyl Propanol, Simethicone, Sorbitan Laurate, Sorbitan Palmitate, Hydrogenated Palm Glycerides…",
+            "id": "25"
         }
     ],
     "user": [
@@ -70,6 +334,51 @@
             "address": "address 3",
             "id": "3"
         }
+    ], 
+    "category":[
+        {   
+            "id": 1, 
+            "category": "Hasaki Deals" 
+        },
+        { 
+            "id": 2, 
+            "category": "Chăm Sóc Da Mặt" 
+        },  
+        { 
+            "id": 3, 
+            "category": "Trang Điểm" 
+        },  
+        { 
+            "id": 4, 
+            "category": "Chăm Sóc Tóc Và Da Đầu" 
+        },  
+        { 
+            "id": 5, 
+            "category": "Chăm Sóc Cơ Thể" 
+        },  
+        { 
+            "id": 6, 
+            "category": "Chăm Sóc Cá Nhân" 
+        },  
+        { 
+            "id": 7, 
+            "category": "Nước Hoa" 
+        },  
+        { 
+            "id": 8, 
+            "category": "Thực Phẩm Chức Năng" 
+        },  
+        { 
+            "id": 9, 
+            "category": "Giảm Béo" 
+        },  
+        { 
+            "id": 10, 
+            "category": "Triệt Lông Diode Laser" 
+        },  
+        { 
+            "id": 11, 
+            "category": "Thư Giãn & Chăm Sóc" 
     ],
     "categoryHomepage": [
         {
