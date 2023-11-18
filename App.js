@@ -16,7 +16,7 @@ import Account from './screens/Account';
 import Login from './screens/Login';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ProductDetail from './screens/ProductDetail';
-
+import Signup from './screens/Signup';
 
 function Notifications() {
   return (
@@ -116,16 +116,14 @@ function MyTabs() {
       />
       <Tab.Screen
         name="Account"
-        component={Account}
+        component={AccountStack}
         options={{
+          headerShown: false,
           tabBarLabel: 'Tài khoản',
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="account" color={color} size={size} />
           ),
         }} />
-      
-
-
     </Tab.Navigator>
   );
 }
@@ -134,11 +132,21 @@ function MyTabs() {
 const CategoryStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Category" component={Category} options={{ headerShown: false }}/>
+      <Stack.Screen name="Category" component={Category} options={{ headerShown: false }} />
       <Stack.Screen name="ProductDetail" component={ProductDetail} />
     </Stack.Navigator>
   );
 };
+
+
+
+const AccountStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Account" component={Account} options={{ headerShown: false }} />
+      <Stack.Screen name="Login" component={Login} options={{
+      }} />
+      <Stack.Screen name="Signup" component={Signup} />
 
 const CartStack = () => {
   return (
@@ -153,6 +161,7 @@ const CartStack = () => {
     >
       <Stack.Screen name="Giỏ hàng" component={Cart} />
       <Stack.Screen name="ProductDetail" component={ProductDetail} />
+
     </Stack.Navigator>
   );
 };
