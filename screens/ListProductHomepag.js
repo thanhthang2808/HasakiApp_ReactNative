@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { View, Image, FlatList, StyleSheet, Dimensions, Text } from 'react-native';
 import { ScrollView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { ProgressBar, MD3Colors } from 'react-native-paper';
+
 const CountdownTimer = () => {
     const [seconds, setSeconds] = useState(180);
 
@@ -45,21 +47,65 @@ const CountdownTimer = () => {
     );
 };
 
+const ProgressBarComponent = () => {
+    const [progress, setProgress] = useState(0);
+    const completionTimeInSeconds = 180; // Set the desired completion time in seconds
+    const fillColor = '#fa690f'; // Set the desired fill color for the progress bar
 
 
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setProgress((prevProgress) => {
+                const newProgress = prevProgress + 1 / completionTimeInSeconds;
+                return newProgress > 1 ? 1 : newProgress;
+            });
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, []);
+    return (
+        <View style={{ alignItems: 'center', marginTop: 10 }}>
+            <ProgressBar style={{
+                height: 10,
+                backgroundColor: '#ffc8a6'
+            }} progress={progress} color={fillColor} />
+            <Image
+                source={require('../assets/fire3.png')}
+                style={{
+                    position: 'absolute',
+                    top: -10,
+                    left: progress * 60 + '%',
+                    width: 25,
+                    height: 25,
+                }}
+            />
+        </View>
+    );
+};
 const ItemProduct = (props) => {
-    const { id, name, description, price, img } = props
+    const { id, name, description, price, image } = props
     const windowWidth = Dimensions.get('window').width;
     const imageHeight = (windowWidth - 20) * (9 / 16);
     return (
         <View style={[styles.bannerItem,
         {
             width: windowWidth / 2.5,
-            height: imageHeight + 10
+            height: imageHeight + 20
         }]}>
             {/* <Image source={img} style={styles.bannerImage} /> */}
-            <Text>{price}</Text>
-            <Text>{name}</Text>
+            <Image style={{
+                height: '150px',
+                width: '150px',
+
+            }} source={{ uri: image }} />
+
+            <Text style={{
+                color: '#fa690f',
+                fontWeight: '700'
+            }}>{price} đ </Text>
+
+            <Text numberOfLines={2}>{name}</Text>
+            <ProgressBarComponent />
         </View>
     )
 }
@@ -93,7 +139,7 @@ const ListProduct = () => {
                     name={item.name}
                     description={item.description}
                     price={item.price}
-                    img={item.img}
+                    image={item.image}
                 />
             )
         })
@@ -125,7 +171,7 @@ const ListProduct = () => {
                                         name={item.name}
                                         description={item.description}
                                         price={item.price}
-                                        img={item.img}
+                                        image={item.image}
                                         key={item.id}
                                     />
                                 )
@@ -162,9 +208,10 @@ const styles = StyleSheet.create({
 
     },
     bannerItem: {
-        marginHorizontal: 10,
+        marginHorizontal: 7,
         padding: '10px',
-        border: '1px solid black',
+        borderRadius: '15px',
+        backgroundColor: 'white'
 
     },
     bannerImage: {
