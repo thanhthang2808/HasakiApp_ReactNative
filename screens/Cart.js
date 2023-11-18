@@ -43,7 +43,6 @@ const Cart = ({ navigation }) => {
         dispatch(decrementQuantity(item));
       }
     };
-
     return (
       <View style={styles.itemContainer}>
         <View style={styles.productInfo}>
@@ -101,7 +100,14 @@ const Cart = ({ navigation }) => {
             <Text style={styles.totalAmount}> {formatCurrency(total)} đ</Text>
           </View>
           <TouchableOpacity style={styles.checkoutButton}>
-            <Text style={styles.checkoutButtonText} onPress={console.log(cart)}>Tiến hành đặt hàng</Text>
+            <Text style={styles.checkoutButtonText} onPress={() => {
+              console.log(cart);
+              Toast.show({
+                type: 'success',
+                text1: 'Đặt hàng thành công!',
+                text2: `Đã lưu đơn hàng`
+              });
+            }}>Tiến hành đặt hàng</Text>
           </TouchableOpacity>
         </View>
       )}
