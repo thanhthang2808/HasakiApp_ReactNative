@@ -1,15 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import data from '../data/db.json'
-
-const productsData = data.products;
-const categoryData = data.category;
 
 const Category = () => {
-  const [selectedCategory, setSelectedCategory] = useState(categoryData[0]);
-  const filteredProducts = productsData.filter(productsData => productsData.category === selectedCategory.category);
   const navigation = useNavigation();
+
+  const [productsData, setProducts] = useState([]);
+  useEffect(() => {
+    fetch('http://192.168.0.4:3000/products')
+      .then(response => response.json())
+      .then(data => setProducts(data))
+      .catch(error => console.error(error));
+  }, []);
+
+  const [categoryData, setCategory] = useState([]);
+  useEffect(() => {
+    fetch('http://192.168.0.4:3000/category')
+      .then(response => response.json())
+      .then(data => setCategory(data))
+      .catch(error => console.error(error));
+  }, []);
+
+  const [selectedCategory, setSelectedCategory] = useState("Hasaki Deals");
+  const filteredProducts = productsData.filter(productsData => productsData.category === selectedCategory);
+  
   console.log('selectedCategory:', selectedCategory);
   console.log('filteredProducts:', filteredProducts);
 
@@ -22,16 +36,16 @@ const Category = () => {
   console.log(randomProducts);
 
   const renderCategoryItem = ({ item }) => (
-    <TouchableOpacity onPress={() => setSelectedCategory(item)}>
-      <View style={{ flex: 1, minHeight: 50, justifyContent: 'center', padding: 10, borderLeftWidth: 3, backgroundColor: item.id === selectedCategory.id ? '#FFF' : '#EEEEEE', borderLeftColor: item.id === selectedCategory.id ? '#FF5C00' : '#EEEEEE', borderBottomWidth: 1, borderBottomColor: "#DDD" }}>
-        <Text style={{fontSize: 10, flexWrap: 'wrap', color: item.id === selectedCategory.id ? '#FF5C00' : '#111111'}}>{item.category}</Text>
+    <TouchableOpacity onPress={() => setSelectedCategory(item.category)}>
+      <View style={{ flex: 1, minHeight: 50, justifyContent: 'center', padding: 10, borderLeftWidth: 3, backgroundColor: item.category === selectedCategory ? '#FFF' : '#EEEEEE', borderLeftColor: item.category === selectedCategory ? '#FF5C00' : '#EEEEEE', borderBottomWidth: 1, borderBottomColor: "#DDD" }}>
+        <Text style={{fontSize: 10, flexWrap: 'wrap', color: item.category === selectedCategory ? '#FF5C00' : '#111111'}}>{item.category}</Text>
       </View>
     </TouchableOpacity>
     );
 
   const renderProductItem = ({ item }) => (
     <TouchableOpacity onPress={() => navigation.navigate('ProductDetail', { product: item })} style={{ width: '33%', height: 150, padding: 10, alignItems: 'center'}}>
-      <Image source={item.image} style={{ width: 90, height: 90, resizeMode: 'contain' }} defaultSource={require("../assets/notfound.png")}/>
+      <Image source={{ uri: item.image }} style={{ width: 90, height: 90, resizeMode: 'contain' }} defaultSource={require("../assets/notfound.png")}/>
       <Text numberOfLines={2} ellipsizeMode="tail" style={{ fontSize: 11, textAlign: 'center' }}>{item.name}</Text>
     </TouchableOpacity>
     );
@@ -47,7 +61,7 @@ const Category = () => {
         />
       </View>
       <View style={{ flex: 3 }}>
-        {selectedCategory.category === "Hasaki Deals" ? (
+        {selectedCategory === "Hasaki Deals" ? (
           <FlatList
           data={randomProducts}
           renderItem={renderProductItem}

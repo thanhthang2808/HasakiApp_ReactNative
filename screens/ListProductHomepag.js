@@ -26,7 +26,7 @@ const CountdownTimer = () => {
         const remainingSeconds = seconds % 60;
 
         return (
-            <View style={{ flexDirection: 'row', backgroundColor: 'white', padding: 10 }}>
+            <View style={{ flexDirection: 'row', padding: 10 }}>
                 <Text style={{ color: 'white', backgroundColor: 'black', borderRadius: 3, fontSize: 14, height: 20, width: 20, textAlign: 'center', marginRight: 5 }}>
                     {hours < 10 ? '0' : ''}{hours}
                 </Text>
@@ -111,18 +111,8 @@ const ItemProduct = (props) => {
 }
 
 const ListProduct = () => {
-    const temp = [
-        {
-            id: 1,
-            imageUrl: require('../assets/kemDuongKlair.jpg'),
-            price: '375.000',
-            name: 'Kem duong am'
-
-        }
-    ];
-
     var [dt, setDT] = useState([])
-    var data = [];
+    // var data = [];
     useEffect(() => {
         fetch('http://localhost:3000/products')
             .then(response => response.json())
@@ -130,6 +120,7 @@ const ListProduct = () => {
                 setDT(json)
             });
     }, []);
+    console.log(dt);
 
     const choose = (item) => {
         dt.map((item) => {
@@ -154,7 +145,7 @@ const ListProduct = () => {
                     height: '350px'
                 }}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', marginLeft: 10 }}>
-                        <Text>Flash deals</Text>
+                        <Text style={{ color: 'white' }}>Flash deals</Text>
                         <CountdownTimer />
                     </View>
                     <ScrollView horizontal style={styles.scrollView}>
@@ -171,7 +162,9 @@ const ListProduct = () => {
                                         name={item.name}
                                         description={item.description}
                                         price={item.price}
+
                                         image={item.image}
+
                                         key={item.id}
                                     />
                                 )

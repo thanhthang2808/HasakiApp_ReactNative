@@ -7,7 +7,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "start-json-server": "json-server --watch data/db.json --port 3000"
+    "start-json-server": "json-server --watch data/db.json --port 3000 --host 0.0.0.0"
   },
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
