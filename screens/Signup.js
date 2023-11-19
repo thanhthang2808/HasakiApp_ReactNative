@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useState, useEffect } from "react";
 import { View, Text, Pressable, TextInput, StyleSheet } from "react-native";
 import { Divider, PaperProvider } from 'react-native-paper';
@@ -9,7 +10,9 @@ export default function Signup() {
     const [phone, setPhone] = useState("");
     const [checked, setChecked] = React.useState(true);
 
-    const addUser = () => {
+    const navigation = useNavigation();
+
+    const addUser = (navigation) => {
         fetch("http://localhost:3000/user", {
             method: "POST",
             headers: {
@@ -25,7 +28,10 @@ export default function Signup() {
             .then((response) => response.json())
             .then((responseData) => {
                 console.log("User added:", responseData);
-                // Perform any additional actions after adding the user
+                navigation.push('Login')
+
+
+
             })
             .catch((error) => {
                 console.error("Error adding user:", error);
@@ -100,7 +106,7 @@ export default function Signup() {
                         width: '380px',
                         height: '50px',
                         backgroundColor: '#0d5c37'
-                    }} onPress={addUser}>
+                    }} onPress={() => { addUser(navigation) }}>
                         <Text style={{
                             color: 'white',
                             textAlign: 'center',

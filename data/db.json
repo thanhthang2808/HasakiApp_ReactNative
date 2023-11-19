@@ -25,7 +25,7 @@
       "origin": "Pháp",
       "category": "Chăm Sóc Da Mặt",
       "ingredient": "Aqua / Water, Cyclopentasiloxane, Isohexadecane, Potassium Phosphate, Sodium Chloride, Dipotassium Phosphate, Disodium Edta, Decyl Glucoside, Hexylene Glycol, Polyaminopropyl Biguanide, CI 61565 / Green 6",
-      "rating": 4.0,
+      "rating": 4,
       "reviews": 148,
       "comment": 36,
       "id": "2"
@@ -85,7 +85,7 @@
       "origin": "Việt Nam",
       "category": "Chăm Sóc Tóc Và Da Đầu",
       "ingredient": "Aqua/Water, Sodium Cocoyl Isethionate, Sodium Laurylglucosides Hydroxypropylsulfonate, Glycerin, Disodium Laureth Sulfosuccinate, Cocamidopropyl Betaine, PEG-12 Dimethicone, PEG-7 Glyceryl Cocoate, Dimethicone, Citrus Grandis Peel Oil, Panthenol, Amodimethicone, Epilobium Angustifolium Flower/Leaf/Stem Extract, Thymus Vulgaris (Thyme) Extract, Triticum Vulgare (Wheat) Seed Extract, Cocoyl Methyl Glucamide, Calcium Pantothenate, Pyridoxine Hcl, Sodium PCA, Sodium Lactate, Arginine, Aspartic Acid, PCA, Glycine, Alanine, Serine, Valine, Proline, Threonine, Isoleucine, Histidine, Phenylalanine, Xylitylglucoside, Anhydroxylitol, Maltitol, Xylitol, Pelvetia Canaliculata Extract, Propanediol, Bis-(Isostearoyl/Oleoyl Isopropyl) Dimonium Methosulfate, Trisodium Ethylenediamine Disuccinate, Acrylates/C10-30 Alkyl Acrylate Crosspolymer, Cocamide MEA, Parfum, Polysorbate-20, Xanthan Gum, PEG-120 Methyl Glucose Dioleate, PEG-45M, Laureth-23, Polyquaternium-10, Laureth-4, Trideceth-10, Sodium Hydroxide, Phenoxyethanol, Ethylhexylglycerin.",
-      "rating": 5.0,
+      "rating": 5,
       "reviews": 986,
       "comment": 513,
       "id": "6"
@@ -100,7 +100,7 @@
       "origin": "Mỹ",
       "category": "Chăm Sóc Da Mặt",
       "ingredient": "Water (Aqua), Methylpropanediol (hydration), Butylene Glycol (hydration), Salicylic Acid (beta hydroxy acid/exfoliant), Polysorbate 20 (stabilizer), Camellia Oleifera Leaf Extract (green tea/skin calming/antioxidant), Sodium Hydroxide (pH balancer), Tetrasodium EDTA (stabilizer)",
-      "rating": 4.0,
+      "rating": 4,
       "reviews": 238,
       "comment": 149,
       "id": "7"
@@ -340,7 +340,7 @@
       "origin": "",
       "category": "Thư Giãn & Chăm Sóc",
       "ingredient": "",
-      "rating": 4.0,
+      "rating": 4,
       "reviews": 234,
       "comment": 125,
       "id": "23"
@@ -355,7 +355,7 @@
       "origin": "",
       "category": "Thư Giãn & Chăm Sóc",
       "ingredient": "",
-      "rating": 4.0,
+      "rating": 4,
       "reviews": 983,
       "comment": 523,
       "id": "24"
@@ -370,7 +370,7 @@
       "origin": "Mỹ",
       "category": "Trang Điểm",
       "ingredient": "Aqua/Water, Ammonium Acrylates Copolymer, Ci 77266/Black 2, Butylene Glycol, 1,2-Hexanediol, Alcohol, Phenoxyethanol, Beheneth-30, Aminomethyl Propanol, Simethicone, Sorbitan Laurate, Sorbitan Palmitate, Hydrogenated Palm Glycerides…",
-      "rating": 5.0,
+      "rating": 5,
       "reviews": 586,
       "comment": 441,
       "id": "25"
@@ -379,18 +379,10 @@
   "user": [
     {
       "name": "Vũ Lan Tường",
-      "email": "lantuong@gmail.com",
+      "email": "lan@gmail.com",
       "password": "123",
       "phone": "0794335642",
-      "address": "93 Nguyễn Du, Gò Vấp",
-      "id": 1,
-      "cart": [
-        {
-          "id": "1",
-          "quantity": 2,
-          "productId": "1"
-        }
-      ]
+      "id": 1
     },
     {
       "name": "Mai Thanh Thắng",
@@ -412,7 +404,7 @@
       "email": "locngo@gmail.com",
       "password": "123",
       "phone": "123",
-      "id": 3      
+      "id": 3
     },
     {
       "name": "Ngo La",
@@ -427,6 +419,13 @@
       "password": "123",
       "phone": "0893644247",
       "id": 5
+    },
+    {
+      "name": "Tuong Lan",
+      "email": "tuongtuong@gmail.com",
+      "password": "123",
+      "phone": "0837364527",
+      "id": 6
     }
   ],
   "category": [
@@ -593,64 +592,64 @@
   ],
   "notifications": [
     {
-     "id": 1,
-     "title": "🔥 Khuyến mãi sản phẩm mỹ phẩm 🔥",
-     "content": "💥💥💥Chương trình khuyến mãi đặc biệt cho sản phẩm mỹ phẩm. Mua ngay để nhận ưu đãi hấp dẫn! Đây là cơ hội lớn để bạn trải nghiệm những sản phẩm chất lượng cao với giá ưu đãi. Chúng tôi cam kết mang lại trải nghiệm mua sắm tuyệt vời nhất cho quý khách hàng. Đừng bỏ lỡ cơ hội và hãy ghé thăm cửa hàng của chúng tôi ngay hôm nay!",
-     "date": "2023-11-20"
+      "id": 1,
+      "title": "🔥 Khuyến mãi sản phẩm mỹ phẩm 🔥",
+      "content": "💥💥💥Chương trình khuyến mãi đặc biệt cho sản phẩm mỹ phẩm. Mua ngay để nhận ưu đãi hấp dẫn! Đây là cơ hội lớn để bạn trải nghiệm những sản phẩm chất lượng cao với giá ưu đãi. Chúng tôi cam kết mang lại trải nghiệm mua sắm tuyệt vời nhất cho quý khách hàng. Đừng bỏ lỡ cơ hội và hãy ghé thăm cửa hàng của chúng tôi ngay hôm nay!",
+      "date": "2023-11-20"
     },
     {
-     "id": 2,
-     "title": "🎉️🎉️🎉 Thông báo khai trương cửa hàng mới",
-     "content": "Chúng tôi vô cùng phấn khích thông báo về sự kiện khai trương cửa hàng mới. Hãy đến và trải nghiệm không gian mua sắm hiện đại cùng với những sản phẩm mới nhất. Đội ngũ nhân viên chuyên nghiệp sẽ đồng hành cùng bạn và đảm bảo bạn có trải nghiệm mua sắm đáng nhớ. Đặc biệt, những ưu đãi độc quyền chỉ dành cho những khách hàng đầu tiên!",
-     "date": "2023-11-21"
+      "id": 2,
+      "title": "🎉️🎉️🎉 Thông báo khai trương cửa hàng mới",
+      "content": "Chúng tôi vô cùng phấn khích thông báo về sự kiện khai trương cửa hàng mới. Hãy đến và trải nghiệm không gian mua sắm hiện đại cùng với những sản phẩm mới nhất. Đội ngũ nhân viên chuyên nghiệp sẽ đồng hành cùng bạn và đảm bảo bạn có trải nghiệm mua sắm đáng nhớ. Đặc biệt, những ưu đãi độc quyền chỉ dành cho những khách hàng đầu tiên!",
+      "date": "2023-11-21"
     },
     {
-     "id": 3,
-     "title": "Ưu đãi đặc biệt cho khách hàng thân thiết ️️️💝",
-     "content": "Chúng tôi gửi lời cảm ơn đặc biệt đến khách hàng thân thiết. Nhận ngay những ưu đãi đặc biệt chỉ dành cho bạn! Đồng hành cùng chúng tôi trên hành trình mua sắm và trải nghiệm những dịch vụ tốt nhất. Chương trình khuyến mãi này là một cách nhỏ để chúng tôi bày tỏ lòng biết ơn sâu sắc đến quý khách hàng trung thành của mình.",
-     "date": "2023-11-22"
+      "id": 3,
+      "title": "Ưu đãi đặc biệt cho khách hàng thân thiết ️️️💝",
+      "content": "Chúng tôi gửi lời cảm ơn đặc biệt đến khách hàng thân thiết. Nhận ngay những ưu đãi đặc biệt chỉ dành cho bạn! Đồng hành cùng chúng tôi trên hành trình mua sắm và trải nghiệm những dịch vụ tốt nhất. Chương trình khuyến mãi này là một cách nhỏ để chúng tôi bày tỏ lòng biết ơn sâu sắc đến quý khách hàng trung thành của mình.",
+      "date": "2023-11-22"
     },
     {
-     "id": 4,
-     "title": "👀 Chương trình khám phá sản phẩm mới 👀",
-     "content": "Hãy tham gia chương trình khám phá sản phẩm mới của chúng tôi. Những điều thú vị đang chờ đợi bạn! Tận hưởng những trải nghiệm mua sắm độc đáo và khám phá những xu hướng mới nhất trong thế giới làm đẹp. Chúng tôi cam kết mang lại cho bạn những sản phẩm chất lượng và dịch vụ tốt nhất.",
-     "date": "2023-11-23"
+      "id": 4,
+      "title": "👀 Chương trình khám phá sản phẩm mới 👀",
+      "content": "Hãy tham gia chương trình khám phá sản phẩm mới của chúng tôi. Những điều thú vị đang chờ đợi bạn! Tận hưởng những trải nghiệm mua sắm độc đáo và khám phá những xu hướng mới nhất trong thế giới làm đẹp. Chúng tôi cam kết mang lại cho bạn những sản phẩm chất lượng và dịch vụ tốt nhất.",
+      "date": "2023-11-23"
     },
     {
-     "id": 5,
-     "title": "☃️ Giới thiệu bộ sưu tập mỹ phẩm mùa đông ❄❄❄",
-     "content": "Khám phá bộ sưu tập mỹ phẩm mới dành cho mùa đông. Màu sắc ấm áp và sang trọng. Bạn sẽ trở nên rạng ngời và tự tin hơn với những sản phẩm chăm sóc da hàng đầu. Chúng tôi luôn nỗ lực đem đến những trải nghiệm làm đẹp tốt nhất cho khách hàng của mình. Hãy để chúng tôi chăm sóc vẻ đẹp của bạn trong mùa đông này!",
-     "date": "2023-11-24"
+      "id": 5,
+      "title": "☃️ Giới thiệu bộ sưu tập mỹ phẩm mùa đông ❄❄❄",
+      "content": "Khám phá bộ sưu tập mỹ phẩm mới dành cho mùa đông. Màu sắc ấm áp và sang trọng. Bạn sẽ trở nên rạng ngời và tự tin hơn với những sản phẩm chăm sóc da hàng đầu. Chúng tôi luôn nỗ lực đem đến những trải nghiệm làm đẹp tốt nhất cho khách hàng của mình. Hãy để chúng tôi chăm sóc vẻ đẹp của bạn trong mùa đông này!",
+      "date": "2023-11-24"
     },
     {
-     "id": 6,
-     "title": "Đặc quyền cho thành viên VIP 💎",
-     "content": "Thành viên VIP sẽ nhận được những đặc quyền độc đáo. Đừng bỏ lỡ cơ hội trở thành thành viên VIP để hưởng những ưu đãi và quyền lợi đặc biệt. Chúng tôi cam kết mang lại sự đặc biệt và sang trọng cho những khách hàng đặc biệt nhất của mình. Hãy đăng ký ngay hôm nay và trở thành VIP của chúng tôi!",
-     "date": "2023-11-25"
+      "id": 6,
+      "title": "Đặc quyền cho thành viên VIP 💎",
+      "content": "Thành viên VIP sẽ nhận được những đặc quyền độc đáo. Đừng bỏ lỡ cơ hội trở thành thành viên VIP để hưởng những ưu đãi và quyền lợi đặc biệt. Chúng tôi cam kết mang lại sự đặc biệt và sang trọng cho những khách hàng đặc biệt nhất của mình. Hãy đăng ký ngay hôm nay và trở thành VIP của chúng tôi!",
+      "date": "2023-11-25"
     },
     {
-     "id": 7,
-     "title": "🎁 Chương trình tri ân khách hàng 🎁",
-     "content": "Chúng tôi tri ân sự ủng hộ của bạn. Nhận ngay những phần quà hấp dẫn! Chương trình tri ân khách hàng là cách chúng tôi bày tỏ lòng biết ơn đến tất cả quý khách hàng. Những món quà ý nghĩa đang chờ đợi bạn. Cảm ơn bạn đã đồng hành cùng chúng tôi trên hành trình này!",
-     "date": "2023-11-26"
+      "id": 7,
+      "title": "🎁 Chương trình tri ân khách hàng 🎁",
+      "content": "Chúng tôi tri ân sự ủng hộ của bạn. Nhận ngay những phần quà hấp dẫn! Chương trình tri ân khách hàng là cách chúng tôi bày tỏ lòng biết ơn đến tất cả quý khách hàng. Những món quà ý nghĩa đang chờ đợi bạn. Cảm ơn bạn đã đồng hành cùng chúng tôi trên hành trình này!",
+      "date": "2023-11-26"
     },
     {
-     "id": 8,
-     "title": "📣 Thông báo về chương trình quảng cáo",
-     "content": "Cùng tham gia chương trình quảng cáo của chúng tôi. Những giây phút giải trí và những ưu đãi đặc biệt. Chúng tôi hứa hẹn mang đến cho bạn những trải nghiệm mua sắm độc đáo và thú vị. Đừng bỏ lỡ cơ hội nhận những ưu đãi hấp dẫn!",
-     "date": "2023-11-27"
+      "id": 8,
+      "title": "📣 Thông báo về chương trình quảng cáo",
+      "content": "Cùng tham gia chương trình quảng cáo của chúng tôi. Những giây phút giải trí và những ưu đãi đặc biệt. Chúng tôi hứa hẹn mang đến cho bạn những trải nghiệm mua sắm độc đáo và thú vị. Đừng bỏ lỡ cơ hội nhận những ưu đãi hấp dẫn!",
+      "date": "2023-11-27"
     },
     {
-     "id": 9,
-     "title": "Khám phá xu hướng làm đẹp mới 💄👄",
-     "content": "Đừng bỏ lỡ xu hướng làm đẹp mới nhất. Bí quyết để tự tin và rạng ngời! Chúng tôi sẽ giới thiệu những xu hướng làm đẹp mới nhất, từ trang điểm đến chăm sóc da. Hãy để chúng tôi giúp bạn tỏa sáng trong mọi dịp!",
-     "date": "2023-11-28"
+      "id": 9,
+      "title": "Khám phá xu hướng làm đẹp mới 💄👄",
+      "content": "Đừng bỏ lỡ xu hướng làm đẹp mới nhất. Bí quyết để tự tin và rạng ngời! Chúng tôi sẽ giới thiệu những xu hướng làm đẹp mới nhất, từ trang điểm đến chăm sóc da. Hãy để chúng tôi giúp bạn tỏa sáng trong mọi dịp!",
+      "date": "2023-11-28"
     },
     {
-     "id": 10,
-     "title": "Chia sẻ niềm vui với chương trình khuyến mãi 🔖",
-     "content": "Chương trình khuyến mãi lớn đang diễn ra. Hãy chia sẻ niềm vui mua sắm cùng chúng tôi! Những ưu đãi đặc biệt đang chờ đợi bạn. Đến và trải nghiệm không gian mua sắm thú vị và đầy năng động. Hãy là một phần của chúng tôi ngay hôm nay!",
-     "date": "2023-11-29"
+      "id": 10,
+      "title": "Chia sẻ niềm vui với chương trình khuyến mãi 🔖",
+      "content": "Chương trình khuyến mãi lớn đang diễn ra. Hãy chia sẻ niềm vui mua sắm cùng chúng tôi! Những ưu đãi đặc biệt đang chờ đợi bạn. Đến và trải nghiệm không gian mua sắm thú vị và đầy năng động. Hãy là một phần của chúng tôi ngay hôm nay!",
+      "date": "2023-11-29"
     }
   ]
 }

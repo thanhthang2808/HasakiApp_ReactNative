@@ -36,17 +36,26 @@ export default function Account({ navigation, route }) {
 
     console.log(user)
     const componentWhenUserFound = () => (<>
-        <Image style={{
-            height: 30,
-            width: 30,
-            marginLeft: 5,
-            marginTop: 5,
-        }} source={require('../assets/user.png')} />
-        <Text style={{
-            color: 'white',
-            marginLeft: 5,
-            marginTop: 10,
-        }}>{user.name}</Text>
+        <Pressable style={{
+            display: 'flex',
+            flexDirection: 'row',
+        }} onPress={() => {
+            navigation.push('UserInformation', { user: user })
+
+        }}>
+            <Image style={{
+                height: 30,
+                width: 30,
+                marginLeft: 5,
+                marginTop: 5,
+                tintColor: 'white'
+            }} source={require('../assets/user.png')} />
+            <Text style={{
+                color: 'white',
+                marginLeft: 5,
+                marginTop: 10,
+            }}>{user.name}</Text>
+        </Pressable>
     </>);
 
     const componentWhenUserNotFound = () => (<>
@@ -55,10 +64,8 @@ export default function Account({ navigation, route }) {
             flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',
-            border: '1px solid white',
-
-            paddingLeft: 12,
-            paddingRight: 12,
+            paddingLeft: 8,
+            paddingRight: 8,
 
             paddingTop: 8,
             paddingBottom: 8
@@ -78,10 +85,10 @@ export default function Account({ navigation, route }) {
             flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',
-            border: '1px solid white',
 
-            paddingLeft: 12,
-            paddingRight: 12,
+
+            paddingLeft: 8,
+            paddingRight: 8,
 
             paddingTop: 8,
             paddingBottom: 8
@@ -114,12 +121,12 @@ export default function Account({ navigation, route }) {
                         flexDirection: 'row',
                         flex: 1
                     }}>
-                        <Image
+                        {/* <Image
                             style={{
                                 width: 40, height: 40,
                             }}
                             source={require('../assets/logo.png')}
-                        />
+                        /> */}
 
                         <Text style={
                             {
