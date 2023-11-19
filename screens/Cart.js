@@ -49,7 +49,15 @@ const Cart = ({ navigation }) => {
           <Image style={styles.productImage} source={{ uri: item.image }} />
           <View style={styles.productDetails}>
             <View style={{ height: '70%', paddingTop: 1 }}>
-              <Text style={{ fontSize: 12, color: '#306E51', fontWeight: 'bold' }}>{item.brand}</Text>
+              <View style={{ flexDirection: 'row' }}>
+              <Text style={{ fontSize: 12, color: '#306E51', fontWeight: 'bold', flex: 1 }}>{item.brand}</Text>
+              <TouchableOpacity onPress={removeItemFromCart}>
+                <AntDesign
+                    name="closesquare"
+                    style={{ fontSize: 10, padding: 5, marginLeft: 20, color: 'gray' }}
+                />
+              </TouchableOpacity>
+              </View>
               <Text style={styles.productName}>{item.name}</Text>
             </View>
             <View style={styles.priceContainer}>

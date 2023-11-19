@@ -71,7 +71,7 @@ const formatCurrency = (amount) => {
     return (
         <View style={{ alignItems: 'center', marginTop: 10, width: '100%', justifyContent: 'center' }}>
             <ProgressBar
-                style={{ height: 10, width: '100%', backgroundColor: '#FFC8A6' }}
+                style={{ height: 10, width: 130, backgroundColor: '#FFC8A6' }}
                 progress={progress}
                 color={fillColor}
             />
