@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { View, Image, FlatList, StyleSheet, Dimensions, Text } from 'react-native';
 import { ScrollView } from 'react-native';
 import fetchProducts from '../fetchData/fetchProducts';
+import fetchCategoryHomepage from '../fetchData/fetchCategoryHomepage';
 
 
 const ItemBanner = (props) => {
@@ -37,7 +38,7 @@ const ItemBanner = (props) => {
 }
 
 export default function CategoryHomepage() {
-    const data = fetchProducts();
+    const data = fetchCategoryHomepage();
 
     return (
         <View style={{
@@ -46,6 +47,7 @@ export default function CategoryHomepage() {
             <ScrollView horizontal>
                 <FlatList
                     data={data}
+                    numColumns={10}
                     renderItem={({ item }) => {
                         return (
                             <View style={{
@@ -54,7 +56,7 @@ export default function CategoryHomepage() {
                                 justifyContent: 'center',
                             }}>
                                 <ItemBanner name={item.name}
-                                    image={item.image} color={'#C7D9DC'} />
+                                    image={item.image} color={item.color} />
 
                             </View>
 
@@ -62,8 +64,7 @@ export default function CategoryHomepage() {
                     }
                     }
                     
-                    keyExtractor={item => item.id}
-                    horizontal={true}>                    
+                    keyExtractor={item => item.id}>                    
                 </FlatList>
             </ScrollView>
         </View >
