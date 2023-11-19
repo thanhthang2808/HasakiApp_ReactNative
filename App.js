@@ -18,16 +18,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ProductDetail from './screens/ProductDetail';
 import Signup from './screens/Signup';
 import SearchEngine from './screens/SearchEngine';
-
-function Notifications() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Notifications!</Text>
-    </View>
-  );
-}
-
-
+import Notifications from './screens/Notification';
 
 function LogoTitle() {
   return (
@@ -111,17 +102,18 @@ function MyTabs() {
         }}
       />
       <Tab.Screen
-        name="Notifications"
-        component={Notifications}
+        name="NotificationsStack"
+        component={NotificationStack}
         options={{
           tabBarLabel: 'Thông báo',
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="bell" color={color} size={size} />
           ),
+          headerShown: false,
         }}
       />
       <Tab.Screen
-        name="Account"
+        name="AccountStack"
         component={AccountStack}
         options={{
           headerShown: false,
@@ -154,6 +146,22 @@ const CategoryStack = () => {
   );
 };
 
+const NotificationStack = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#306E51',
+        },
+        headerTitleStyle: { color: '#FFF' },
+        headerTitleAlign: 'center',
+      }}
+    >
+      <Stack.Screen name="Thông báo" component={Notifications}  />
+      
+    </Stack.Navigator>
+  );
+};
 
 
 const AccountStack = () => {

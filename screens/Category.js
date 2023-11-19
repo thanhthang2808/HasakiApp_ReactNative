@@ -1,26 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import fetchProducts from '../fetchData/fetchProducts';
+import fetchCategory from '../fetchData/fetchCategory';
 
 const Category = () => {
   const navigation = useNavigation();
 
-  const [productsData, setProducts] = useState([]);
-  useEffect(() => {
-    //local host dum cai
-    fetch('http://192.168.0.22:3000/products')
-      .then(response => response.json())
-      .then(data => setProducts(data))
-      .catch(error => console.error(error));
-  }, []);
-
-  const [categoryData, setCategory] = useState([]);
-  useEffect(() => {
-    fetch('http://192.168.0.22:3000/category')
-      .then(response => response.json())
-      .then(data => setCategory(data))
-      .catch(error => console.error(error));
-  }, []);
+  const productsData = fetchProducts();
+  const categoryData = fetchCategory();
 
   const [selectedCategory, setSelectedCategory] = useState("Hasaki Deals");
   const filteredProducts = productsData.filter(productsData => productsData.category === selectedCategory);

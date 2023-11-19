@@ -10,19 +10,21 @@ const Menu = () => {
         { id: 5, name: 'Bảng giá', imageUrl: require('../assets/menu5.png') },
         { id: 6, name: 'Tra cứu đơn hàng', imageUrl: require('../assets/menu6.png') },
         { id: 7, name: 'High end', imageUrl: require('../assets/menu7.png') },
-        { id: 8, name: ' Mua 1      tặng 1', imageUrl: require('../assets/menu8.png') },
-        { id: 9, name: 'Đặt hẹn', imageUrl: '../assets/menu9.png' },
+        { id: 8, name: ' Mua 1 tặng 1', imageUrl: require('../assets/menu8.png') },
+        { id: 9, name: 'Đặt hẹn', imageUrl: require('../assets/menu9.png') },
         { id: 10, name: 'Cẩm nang', imageUrl: require('../assets/menu10.png') },
     ];
 
     const renderMenuItems = () => {
         return data.map((item) => (
             <View style={styles.menuItem} key={item.id}>
-                <Image source={{ uri: item.imageUrl }} style={styles.menuImage} />
+                <Image source={item.imageUrl} style={styles.menuImage} />
                 <Text style={{
-                    fontSize: '11px',
-                    width: '50px',
+                    fontSize: 11,
+                    
                     margin: 'auto',
+                    alignItems: 'center',
+                    textAlign: 'center',
                     color: 'white'
                 }}>{item.name}</Text>
             </View>
@@ -48,7 +50,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         width: '100%',
-        marginTop: '10px',
+        marginTop: 10,
         backgroundColor: 'rgb(48, 110, 81)'
     },
     row: {
@@ -60,14 +62,15 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     menuItem: {
-        width: '19%',
-        marginBottom: 10,
+        flex: 1,
+        alignItems: 'center',
+        
     },
     menuImage: {
-        width: '45px',
-        height: '45px',
-        resizeMode: 'cover',
-        marginLeft: '5px'
-
+        width: 40,
+        height: 40,
+        resizeMode: 'contain',
+        alignItems: 'baseline',
+        marginBottom: 5
     },
 });
