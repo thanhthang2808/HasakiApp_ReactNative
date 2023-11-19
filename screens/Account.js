@@ -35,93 +35,129 @@ export default function Account({ navigation, route }) {
     );
 
     console.log(user)
-    const componentWhenUserFound = () => <View style={{
-        display: 'flex',
-        flexDirection: 'row',
-        backgroundColor: '#306E51',
-        height: '40px'
+    const componentWhenUserFound = () => (<>
+        <Pressable style={{
+            display: 'flex',
+            flexDirection: 'row',
+        }} onPress={() => {
+            navigation.push('UserInformation', { user: user })
 
-    }}>
-        <Image style={{
-            height: '30px',
-            width: '30px',
-            marginLeft: '5px',
-            marginTop: '5px',
-        }} source={require('../assets/user.png')} />
-        <Text style={{
-            color: 'white',
-            marginLeft: '5px',
-            marginTop: '10px',
-        }}>{user.name}</Text>
-    </View>
-
-    const componentWhenUserNotFound = () => <View style={{
-        backgroundColor: '#306E51',
-        display: "flex",
-        flexDirection: 'row',
-        gap: '20px',
-        height: '40px'
-    }}>
-        <Pressable style={{}} onPress={() => navigation.navigate('Login')}>
+        }}>
+            <Image style={{
+                height: 30,
+                width: 30,
+                marginLeft: 5,
+                marginTop: 5,
+                tintColor: 'white'
+            }} source={require('../assets/user.png')} />
             <Text style={{
                 color: 'white',
-                marginTop: '5px',
-                marginLeft: '10px'
+                marginLeft: 5,
+                marginTop: 10,
+            }}>{user.name}</Text>
+        </Pressable>
+    </>);
+
+    const componentWhenUserNotFound = () => (<>
+        <Pressable style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+            paddingLeft: 8,
+            paddingRight: 8,
+
+            paddingTop: 8,
+            paddingBottom: 8
+        }} onPress={() => navigation.navigate('Login')}>
+            <Text style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                color: 'white',
             }}>Login</Text>
         </Pressable>
 
-        <Divider leftInset='true' />
+        <Divider style={{ width: 1, height: '100%' }} />
 
-        <Pressable style={{}} onPress={() => {
+        <Pressable style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+
+
+            paddingLeft: 8,
+            paddingRight: 8,
+
+            paddingTop: 8,
+            paddingBottom: 8
+
+        }} onPress={() => {
             navigation.push('Signup')
         }}>
             <Text style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
                 color: 'white',
-                marginTop: '5px',
             }}>Sign up</Text>
         </Pressable>
-    </View>
+    </>);
 
     return (
         <PaperProvider>
             <SafeAreaView style={{
-                backgroundColor: '#306E51'
+                backgroundColor: '#306E51',
+
             }}>
                 <View style={{
-                    flexDirection: 'row', alignItems: 'center',
-                    justifyContent: 'center',
-
-                    backgroundColor: '#306E51', height: '64px', width: '428px',
+                    flexDirection: 'row',
+                    backgroundColor: '#306E51',
+                    marginTop: 10
                 }}>
-                    <Image
-                        style={{
-                            width: '40px', height: '40px',
-                            marginRight: '20px'
-                        }}
-                        source={require('../assets/logo.png')}
-                    />
+                    <View style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        flex: 1
+                    }}>
+                        {/* <Image
+                            style={{
+                                width: 40, height: 40,
+                            }}
+                            source={require('../assets/logo.png')}
+                        /> */}
 
-                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', marginRight: 15 }}>
-                        <View style={{
-                            flexDirection: 'row', alignItems: 'center', backgroundColor: "#FFF",
-                            borderRadius: 20, marginLeft: 10,
-                            paddingVertical: 8, paddingHorizontal: 10, width: "60%", height: "10%"
-                        }}>
-                            <MaterialCommunityIcons name="magnify" color="gray" size={18} />
-                            <TextInput
-                                placeholder="Tìm kiếm"
-                                placeholderTextColor="gray"
-                                style={{ flex: 1, height: 25, fontSize: 11, marginLeft: 5, width: "80%" }}
-                            />
-                        </View>
+                        <Text style={
+                            {
+
+                                flex: 1,
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                textAlign: 'center',
+                                color: 'white',
+                                fontSize: 18,
+                                fontWeight: 700,
+                                marginRight: 25,
+                                marginTop: 15
+                            }
+                        }>QUẢN LÍ TÀI KHOẢN</Text>
+
                     </View>
 
                 </View>
-                {user ? componentWhenUserFound() : componentWhenUserNotFound()}
-                <View>
-                    {/* <Render /> */}
+                <View style={{
+                    display: "flex",
+                    flexDirection: 'row',
+                    gap: 20,
 
+                    marginTop: 16,
+                    marginLeft: 16,
+                    marginBottom: 16,
 
+                    backgroundColor: '#306E51',
+                }}>
+                    {user ? componentWhenUserFound() : componentWhenUserNotFound()}
                 </View>
             </SafeAreaView>
         </PaperProvider>

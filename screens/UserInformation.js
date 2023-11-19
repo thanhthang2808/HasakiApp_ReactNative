@@ -1,0 +1,130 @@
+import { useNavigation } from "@react-navigation/native";
+import React, { useState, useEffect } from "react";
+import { View, Text, Pressable, TextInput, StyleSheet } from "react-native";
+import { Divider, PaperProvider } from 'react-native-paper';
+import { Checkbox } from 'react-native-paper';
+
+export default function UserInformation({ route, navigation }) {
+    const { user } = route.params
+
+    const [name, setName] = useState(user?.name || "");
+    const [email, setEmail] = useState(user?.email || "");
+    const [password, setPassword] = useState(user?.password || "");
+    const [phone, setPhone] = useState(user?.phone || "");
+
+    const [id, setId] = useState(user.id);
+
+    console.log(user)
+
+
+
+    navigation = useNavigation();
+
+    const update = (navigation) => {
+        //http://localhost:3000/user/1
+        fetch(`http://localhost:3000/user/${user.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                password: password,
+                phone: phone,
+            }),
+        })
+            .then((response) => response.json())
+            .then((responseData) => {
+                console.log("User added:", responseData);
+                navigation.push('Login')
+
+            })
+            .catch((error) => {
+                console.error("Error adding user:", error);
+            });
+    };
+
+
+
+    return (
+        <View style={{
+            display: 'flex',
+            gap: '15px',
+            padding: '15px'
+        }}>
+            <View style={{
+                display: 'flex',
+                flexDirection: 'row',
+                gap: 5,
+
+            }}>
+                <Text>Name</Text>
+                <TextInput
+                    value={name}
+                    onChangeText={(text) => setName(text)}
+                />
+            </View>
+
+            <Divider />
+            <View style={{
+                display: 'flex',
+                flexDirection: 'row',
+                gap: 5,
+
+            }}>
+                <Text>Email</Text>
+                <TextInput
+                    value={email}
+                    editable={true}
+                    onChangeText={(text) => setEmail(text)}
+
+                />
+            </View>
+            <Divider />
+            <View style={{
+                display: 'flex',
+                flexDirection: 'row',
+                gap: 5,
+
+            }}>
+                <Text>Phone</Text>
+                <TextInput
+                    value={phone}
+                    editable={true}
+                    onChangeText={(text) => setPhone(text)}
+
+                />
+            </View>
+            <Divider />
+            <View style={{
+                display: 'flex',
+                flexDirection: 'row',
+                gap: 5,
+
+            }}>
+                <Text>Password</Text>
+                <TextInput
+
+                    value={password}
+                    editable={true}
+                    onChangeText={(text) => setPassword(text)}
+
+                />
+            </View>
+
+            <Pressable style={{
+                width: '380px',
+                height: '50px',
+                border: '1px solid #0d5c37',
+                backgroundColor: '#0d5c37'
+            }} onPress={() => { update(navigation) }}>
+                <Text style={{
+                    color: 'white',
+                    textAlign: 'center',
+                    marginTop: '15px'
+                }}>Cập nhật thông tin</Text>
+            </Pressable>
+        </View>
+    )
+}
