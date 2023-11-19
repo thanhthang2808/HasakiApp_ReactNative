@@ -4,7 +4,6 @@
 Dự án ứng dụng bán hàng online Hasaki chuyên kinh doanh các mặt hàng mỹ phẩm.
 
 
-![Logo](https://magiamgia247.vn/wp-content/uploads/2023/06/img_64941ba35e935.jpg)
 
 
 ## Công nghệ và công cụ sử dụng
