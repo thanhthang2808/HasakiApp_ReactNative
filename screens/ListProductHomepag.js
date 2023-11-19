@@ -3,6 +3,7 @@ import { View, Image, FlatList, StyleSheet, Dimensions, Text } from 'react-nativ
 import { ScrollView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ProgressBar, MD3Colors } from 'react-native-paper';
+import fetchProducts from '../fetchData/fetchProducts';
 
 const CountdownTimer = () => {
     const [seconds, setSeconds] = useState(180);
@@ -47,34 +48,39 @@ const CountdownTimer = () => {
     );
 };
 
-const ProgressBarComponent = () => {
-    const [progress, setProgress] = useState(0);
-    const completionTimeInSeconds = 180; // Set the desired completion time in seconds
-    const fillColor = '#fa690f'; // Set the desired fill color for the progress bar
+const formatCurrency = (amount) => {
+    return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  };
 
+  const ProgressBarComponent = () => {
+    const [progress, setProgress] = useState(0);
+    const completionTimeInSeconds = 180; // Thời gian hoàn thành mong muốn trong giây
+    const fillColor = "#FA690F"; // Màu sắc cho thanh tiến trình
 
     useEffect(() => {
         const interval = setInterval(() => {
             setProgress((prevProgress) => {
                 const newProgress = prevProgress + 1 / completionTimeInSeconds;
-                return newProgress > 1 ? 1 : newProgress;
+                return newProgress > 1 ? 0 : newProgress; // Nếu tiến trình vượt quá 1, đặt lại về 0
             });
         }, 1000);
 
         return () => clearInterval(interval);
     }, []);
+
     return (
-        <View style={{ alignItems: 'center', marginTop: 10 }}>
-            <ProgressBar style={{
-                height: 10,
-                backgroundColor: '#ffc8a6'
-            }} progress={progress} color={fillColor} />
+        <View style={{ alignItems: 'center', marginTop: 10, width: '100%', justifyContent: 'center' }}>
+            <ProgressBar
+                style={{ height: 10, width: '100%', backgroundColor: '#FFC8A6' }}
+                progress={progress}
+                color={fillColor}
+            />
             <Image
                 source={require('../assets/fire3.png')}
                 style={{
                     position: 'absolute',
                     top: -10,
-                    left: progress * 60 + '%',
+                    left: progress * 81 + '%',
                     width: 25,
                     height: 25,
                 }}
@@ -82,27 +88,25 @@ const ProgressBarComponent = () => {
         </View>
     );
 };
+// Flash Deals
 const ItemProduct = (props) => {
     const { id, name, description, price, image } = props
-    const windowWidth = Dimensions.get('window').width;
-    const imageHeight = (windowWidth - 20) * (9 / 16);
     return (
         <View style={[styles.bannerItem,
         {
-            width: windowWidth / 2.5,
-            height: imageHeight + 20
+            width: 150,
+            height: 260,
         }]}>
-            {/* <Image source={img} style={styles.bannerImage} /> */}
             <Image style={{
-                height: '150px',
-                width: '150px',
+                height: 150,
+                
 
             }} source={{ uri: image }} />
 
             <Text style={{
                 color: '#fa690f',
-                fontWeight: '700'
-            }}>{price} đ </Text>
+                fontWeight: '700',
+            }}>{formatCurrency(price)} ₫</Text>
 
             <Text numberOfLines={2}>{name}</Text>
             <ProgressBarComponent />
@@ -111,16 +115,7 @@ const ItemProduct = (props) => {
 }
 
 const ListProduct = () => {
-    var [dt, setDT] = useState([])
-    // var data = [];
-    useEffect(() => {
-        fetch('http://localhost/products')
-            .then(response => response.json())
-            .then(json => {
-                setDT(json)
-            });
-    }, []);
-    console.log(dt);
+    const dt = fetchProducts();
 
     const choose = (item) => {
         dt.map((item) => {
@@ -142,7 +137,7 @@ const ListProduct = () => {
                 colors={['#FF8E4D', '#fff']}>
                 <View style={{
                     backgroundColor: 'linear-gradient(#FFFFFF, #FF8E4D)',
-                    height: '350px'
+                    height: 350,
                 }}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', marginLeft: 10 }}>
                         <Text style={{ color: 'white' }}>Flash deals</Text>
@@ -151,8 +146,7 @@ const ListProduct = () => {
                     <ScrollView horizontal style={styles.scrollView}>
                         <View style={{
                             flexDirection: 'row',
-                            marginTop: '10px'
-
+                            marginBottom: 10,                            
                         }}>
 
                             {dt.map((item) => {
@@ -181,7 +175,7 @@ const ListProduct = () => {
             <View style={{
                 flexDirection: 'row',
                 justifyContent: 'space-between',
-                marginTop: '20px'
+                marginTop: 10,
             }}>
                 <Image style={styles
                     .midBanner} source={require('../assets/banner_mid1.jpg')}></Image>
@@ -196,26 +190,28 @@ const ListProduct = () => {
 };
 const styles = StyleSheet.create({
     container: {
-        gap: '10px',
-
+        gap: 10,
 
     },
     bannerItem: {
         marginHorizontal: 7,
-        padding: '10px',
-        borderRadius: '15px',
-        backgroundColor: 'white'
+        padding: 10,
+        borderRadius: 10,
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        
 
     },
     bannerImage: {
         flex: 1,
-        resizeMode: 'cover',
-        height: '25px'
+        resizeMode: 'contain',
+        height: 25,
+        alignItems: 'center',
     },
 
     itemProduct: {
         marginHorizontal: 10,
-        padding: '10px',
+        padding: 10,
         border: '1px solid black',
         display: 'flex',
 
@@ -229,9 +225,9 @@ const styles = StyleSheet.create({
     },
 
     midBanner: {
-        width: '125px',
-        height: '125px',
-        borderRadius: '20px'
+        width: 125,
+        height: 125,
+        borderRadius: 20
     }
 
 });

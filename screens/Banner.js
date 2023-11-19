@@ -1,86 +1,106 @@
-import React, { useRef, useEffect } from 'react';
-import { View, Image, FlatList, StyleSheet, Dimensions } from 'react-native';
-import Menu from './Menu';
+import React, { useState, useEffect } from "react";
+import { View, StyleSheet, Dimensions, FlatList, Animated } from "react-native";
+import Slide from "./Slide";
 
-export default function Banner() {
-    const data = [
-        { id: 1, imageUrl: require('../assets/banner1.jpg') },
-        { id: 2, imageUrl: require('../assets/banner2.jpg') },
-        { id: 3, imageUrl: require('../assets/banner3.jpg') },
-        { id: 4, imageUrl: require('../assets/banner4.jpg') },
-        { id: 5, imageUrl: require('../assets/banner5.jpg') },
-    ];
+const { width } = Dimensions.get("window");
 
-    const flatListRef = useRef(null);
-    const windowWidth = Dimensions.get('window').width;
+const data = [
+    { id: 1, imageUrl: require('../assets/banner1.jpg') },
+    { id: 2, imageUrl: require('../assets/banner2.jpg') },
+    { id: 3, imageUrl: require('../assets/banner3.jpg') },
+    { id: 4, imageUrl: require('../assets/banner4.jpg') },
+    { id: 5, imageUrl: require('../assets/banner5.jpg') },
+];
 
-    useEffect(() => {
-        const timer = setInterval(() => {
-            if (flatListRef.current) {
-                const nextIndex = Math.floor(flatListRef.current._listRef._scrollMetrics.offset / (windowWidth - 20)) + 1;
-                flatListRef.current.scrollToIndex({ animated: true, index: nextIndex });
-            }
-        }, 3000); // Scroll every 1 second
+const Banner = () => {
+  const scrollX = new Animated.Value(0);
+  const position = Animated.divide(scrollX, width);
+  const [dataList, setDataList] = useState(data);
 
-        return () => {
-            clearInterval(timer);
-        };
-    }, []);
+  useEffect(() => {
+    setDataList(data);
+    const cleanup = infiniteScroll();
+    return cleanup;
+  }, [data]);
 
-    const renderItem = ({ item }) => {
-        const imageHeight = (windowWidth) * (9 / 16);
+  let flatListRef;
 
-        return (
-            <View style={[styles.bannerItem, { width: windowWidth - 20, height: imageHeight - 40 }]}>
-                <Image source={item.imageUrl} style={styles.bannerImage} />
-            </View>
-        );
-    };
+  function infiniteScroll() {
+    const numberOfData = dataList.length;
+    let scrollValue = 0,
+      scrolled = 0;
 
+    const intervalId = setInterval(function () {
+      scrolled++;
+      if (scrolled < numberOfData) {
+        scrollValue = scrollValue + width;
+      } else {
+        // Đã chuyển qua tất cả ảnh, quay lại ảnh đầu tiên
+        scrollValue = 0;
+        scrolled = 0;
+      }
+
+      flatListRef?.scrollToOffset({ animated: true, offset: scrollValue });
+    }, 3000);
+
+    return () => clearInterval(intervalId);
+  }
+
+  if (dataList && dataList.length) {
     return (
-        <View style={styles.container}>
-            <FlatList
-                ref={flatListRef}
-                data={data}
-                keyExtractor={(item) => item.id.toString()}
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                renderItem={renderItem}
-                onScroll={event => {
-                    const currentIndex = Math.floor(event.nativeEvent.contentOffset.x / (windowWidth + 10));
+      <View>
+        <FlatList
+          data={dataList}
+          ref={(flatList) => {
+            flatListRef = flatList;
+          }}
+          keyExtractor={(item, index) => "key" + index}
+          horizontal
+          pagingEnabled
+          scrollEnabled
+          snapToAlignment="center"
+          scrollEventThrottle={16}
+          decelerationRate="fast"
+          showsHorizontalScrollIndicator={false}
+          renderItem={({ item }) => {
+            return <Slide item={item} />;
+          }}
+          onScroll={Animated.event([{ nativeEvent: { contentOffset: { x: scrollX } } }], { useNativeDriver: false })}
 
+        />
+
+        <View style={styles.dotView}>
+          {dataList.map((_, i) => {
+            let opacity = position.interpolate({
+              inputRange: [i - 1, i, i + 1],
+              outputRange: [0.3, 1, 0.3],
+              extrapolate: "clamp",
+            });
+            return (
+              <Animated.View
+                key={i}
+                style={{
+                  opacity,
+                  height: 8,
+                  width: 8,
+                  backgroundColor: "#FFF",
+                  marginTop: 5,
+                  marginHorizontal: 5,
+                  borderRadius: 5,
                 }}
-                getItemLayout={(_, index) => ({
-                    length: windowWidth - 20,
-                    offset: (windowWidth - 20) * index,
-                    index,
-                })}
-                initialNumToRender={data.length}
-                onEndReached={() => {
-                    flatListRef.current?.scrollToIndex({ animated: true, index: 0 });
-                }}
-                onEndReachedThreshold={0.5}
-                removeClippedSubviews
-            />
+              />
+            );
+          })}
         </View>
+      </View>
     );
-}
+  }
+
+  return null;
+};
 
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: 'rgb(48, 110, 81)'
-    },
-    bannerItem: {
-        justifyContent: 'center',
-        marginHorizontal: 1,
-        padding: 7,
-        width: '100%',
-        backgroundColor: 'rgb(48, 110, 81)'
-
-    },
-    bannerImage: {
-        flex: 1,
-        resizeMode: 'cover',
-        borderRadius: '15px'
-    },
+  dotView: { flexDirection: "row", justifyContent: "center" },
 });
+
+export default Banner;

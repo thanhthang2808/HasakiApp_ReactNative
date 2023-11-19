@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, TextInput, FlatList, TouchableOpacity, Text, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import RatingStars from './RatingStars';
+import fetchProducts from '../fetchData/fetchProducts';
 
 const SearchEngine = ({ route }) => {
   const navigation = useNavigation();
@@ -9,14 +10,9 @@ const SearchEngine = ({ route }) => {
   const formatCurrency = (amount) => {
     return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   };
-  const [productsData, setProducts] = useState([]);
   console.log(keyword);
-  useEffect(() => {
-    fetch('http://192.168.0.4:3000/products')
-      .then(response => response.json())
-      .then(data => setProducts(data))
-      .catch(error => console.error(error));
-  }, []);
+
+  const productsData = fetchProducts();
   const filteredResults = productsData.filter(product => product.name.toLowerCase().includes(keyword.toLowerCase()));
   console.log(filteredResults);
 
@@ -41,9 +37,6 @@ const SearchEngine = ({ route }) => {
     <View style={{ flex: 1 }}>
       <View style={{ justifyContent: 'center', padding: 10, backgroundColor: '#FFF' }}>
         <Text style={{ color: '#306E51', fontSize: 12 }}>Kết quả tìm kiếm cho: '{keyword}'</Text>
-      </View>
-      <View style={{  }}>
-      
       </View>
       <View style={{ flex: 1, flexDirection: 'row' }}>
         {filteredResults.length === 0 ? (

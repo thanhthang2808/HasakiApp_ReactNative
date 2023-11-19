@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { View, Image, FlatList, StyleSheet, Dimensions, Text } from 'react-native';
 import { ScrollView } from 'react-native';
+import fetchProducts from '../fetchData/fetchProducts';
 
 
 const ItemBanner = (props) => {
@@ -10,96 +11,61 @@ const ItemBanner = (props) => {
     return (
         <View style={
             {
-                width: '100px',
+                width: 100,
                 height: 135,
                 backgroundColor: color,
-                borderRadius: '15px',
-                padding: '6px'
-
+                borderRadius: 15,
+                padding: 6,
+                alignItems: 'center',
+                justifyContent: 'center',
             }}>
 
             <Image style={{
-                width: '80px',
-                height: '80px',
+                width: 80,
+                height: 80,
                 margin: 'auto',
-                borderRadius: '15px',
+                borderRadius: 15,
                 alignItems: 'center',
                 justifyContent: 'center'
             }} source={{ uri: image }} />
-            <Text style={{
-                textAlign: 'center'
+            <Text numberOfLines={2} style={{
+                textAlign: 'center',
+                paddingTop: 5,                
             }}>{name}</Text>
         </View>
     )
 }
 
 export default function CategoryHomepage() {
-    var [dt, setDT] = useState([])
-    var data = [];
-    useEffect(() => {
-        fetch('http://localhost:3000/categoryHomepage')
-            .then(response => response.json())
-            .then(json => {
-                setDT(json)
-            });
-    }, []);
+    const data = fetchProducts();
 
-    const choose = (item) => {
-        dt.map((item) => {
-            return (
-                <ItemBanner
-                    name={item.name}
-                    image={item.image}
-                    color={item.color}
-                />
-            )
-        })
-    }
     return (
         <View style={{
-            marginTop: '30px',
+            marginTop: 30,
         }}>
             <ScrollView horizontal>
                 <FlatList
-                    numColumns={'10'}
-                    data={dt}
+                    data={data}
                     renderItem={({ item }) => {
                         return (
                             <View style={{
-                                margin: '5px'
+                                margin: 5,
+                                alignItems: 'center',
+                                justifyContent: 'center',
                             }}>
-
                                 <ItemBanner name={item.name}
-                                    image={item.image} color={item.color} />
+                                    image={item.image} color={'#C7D9DC'} />
 
                             </View>
 
                         )
                     }
                     }
-
-                    keyExtractor={item => item.id}>
-                    {/* <View style={{
-                        flexDirection: 'row',
-                        marginTop: '10px'
-
-                    }}>
-
-                        {dt.map((item) => {
-                            return (
-                                <ItemBanner
-                                    name={item.name}
-                                    image={item.image}
-                                    key={item.id}
-                                />
-                            )
-                        })}
-
-                    </View> */}
+                    
+                    keyExtractor={item => item.id}
+                    horizontal={true}>                    
                 </FlatList>
             </ScrollView>
-
-
         </View >
     )
 }
