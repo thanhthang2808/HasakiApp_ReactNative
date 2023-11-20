@@ -4,8 +4,6 @@
 Dự án ứng dụng bán hàng online Hasaki chuyên kinh doanh các mặt hàng mỹ phẩm.
 
 
-
-
 ## Công nghệ và công cụ sử dụng
 
 ![JavaScript](https://img.shields.io/badge/JavaScript-222222?logo=JavaScript) ![NPM](https://img.shields.io/badge/NPM-222222?logo=npm) ![Expo](https://img.shields.io/badge/Expo-222222?logo=expo) ![React Native](https://img.shields.io/badge/ReactNative-222222?logo=React)  ![Node.js](https://img.shields.io/badge/Node.js-222222?logo=node.js) ![JsonServer](https://img.shields.io/badge/JsonServer-222222?logo=Json) ![Redux](https://img.shields.io/badge/Redux-222222?logo=redux) ![Figma](https://img.shields.io/badge/Figma-222222?logo=Figma) ![Trello](https://img.shields.io/badge/Trello-222222?logo=Trello) ![GitHub](https://img.shields.io/badge/GitHub-222222?logo=github)  ![ChatGPT](https://img.shields.io/badge/ChatGPT-222222?logo=openai)
@@ -15,9 +13,9 @@ Dự án ứng dụng bán hàng online Hasaki chuyên kinh doanh các mặt hà
 
 Ứng dụng này được thiết kế để có thể hoạt động tốt ở cả môi trường web và App Expo Go trên điện thoại. Vui lòng thực hiện đủ các bước sau để có thể đảm bảo ứng dụng hoạt động đúng.
 
-Bước 1: Mở cmd và chạy lệnh ipconfig, sau đó ở phần Wireless LAN adapter Wi-Fi -> ta lấy IPv4 Address của thiết bị có dạng '192.168.x.x'.
+Bước 1: Mở cmd và chạy lệnh ipconfig, sau đó ở phần Wireless LAN adapter Wi-Fi -> ta lấy IPv4 Address của thiết bị có dạng 'xxx.xxx.x.x'.
 
-Bước 2: Mở project lên và vào thư mục fetchData, trong đó có 2 file fetchProducts và fetchCategory. Sửa địa chỉ ip trong đường dẫn ở cả 2 file có dạng 'http://192.168.x.x:3000/products' thành địa chỉ ip của mình đã lấy ở bước 1.
+Bước 2: Mở project lên và vào thư mục ipAddress, trong đó có file IPv4Address.js. Sửa địa chỉ ip chuỗi ipaddress thành địa chỉ ip của mình đã lấy ở bước 1.
 
 Bước 3: Khởi động json-server bằng cách chạy lệnh sau trong Terminal.
 ```bash

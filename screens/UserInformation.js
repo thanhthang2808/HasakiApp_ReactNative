@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { View, Text, Pressable, TextInput, StyleSheet } from "react-native";
 import { Divider, PaperProvider } from 'react-native-paper';
 import { Checkbox } from 'react-native-paper';
-
+import Toast from 'react-native-toast-message';
 export default function UserInformation({ route, navigation }) {
     const { user } = route.params
 
@@ -37,11 +37,18 @@ export default function UserInformation({ route, navigation }) {
             .then((response) => response.json())
             .then((responseData) => {
                 console.log("User added:", responseData);
+                Toast.show({
+                    type: 'success',
+                    text1: 'Cập nhật thông tin thành công!',
+                });
                 navigation.push('Login')
 
             })
             .catch((error) => {
-                console.error("Error adding user:", error);
+                Toast.show({
+                    type: 'error',
+                    text1: 'Cập nhật thông tin không thành công!',
+                });
             });
     };
 
@@ -105,7 +112,7 @@ export default function UserInformation({ route, navigation }) {
             }}>
                 <Text>Password</Text>
                 <TextInput
-
+                    secureTextEntry
                     value={password}
                     editable={true}
                     onChangeText={(text) => setPassword(text)}

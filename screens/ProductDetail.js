@@ -14,6 +14,7 @@ const ProductDetail = ({ route }) => {
     return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   };
 
+
   const updateCart = (cart) => {
     console.log(sessionStorage.getItem("id"));
       const ip = IPv4Address();
@@ -34,6 +35,7 @@ const ProductDetail = ({ route }) => {
           console.error("Error adding cart:", error);
         });
   }
+
 
   const addItemToCart = (product) => {
     Toast.show({

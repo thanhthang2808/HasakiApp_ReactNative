@@ -3,15 +3,24 @@ import { Divider, PaperProvider } from 'react-native-paper';
 import { useEffect, useState } from 'react';
 import Signup from './Signup';
 import React, { createContext } from 'react';
+
+import Toast from 'react-native-toast-message';
+
 import IPv4Address from '../ipAddress/IPv4Address';
 import { loadCart, updateCart } from '../redux/CartReducer';
 import { useDispatch } from 'react-redux';
 
-export const AuthContext = createContext();
 
+export const AuthContext = createContext();
 
 export default function Login({ navigation }) {
     const ip = IPv4Address();
+  
+   const validateEmail = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
     const saveData = () => {
         //saving username to session storage
         sessionStorage.setItem("id", user.id);
@@ -41,21 +50,30 @@ export default function Login({ navigation }) {
                 if (foundUser) {
                     setUserInfo(foundUser)
                     setLoggedIn(true);
-                    Alert.alert('Login Successful');
+                    Toast.show({
+                        type: 'success',
+                        text1: 'Đăng nhập thành công!',
+                    });
                     console.log('Login Successful', foundUser);
                     sessionStorage.setItem("id", foundUser.id);                    
                                         
                     navigation.push('Account', { username: foundUser.email })
                 } else {
-                    Alert.alert('Invalid credentials');
-                    console.log('Invalid credentials');
+                    Toast.show({
+                        type: 'error',
+                        text1: 'Email và password chưa chính xác!',
+                    });
                 }
             })
             .catch((error) => {
                 console.log('Error:', error);
-                Alert.alert('An error occurred. Please try again.');
-            });                 
-       
+
+                Toast.show({
+                    type: 'failed',
+                    text1: 'Email và password chưa chính xác!',
+                });
+            });
+
     };
 
     const dispatch = useDispatch();

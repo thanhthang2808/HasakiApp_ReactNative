@@ -53,7 +53,66 @@ export default function Account({ navigation, route }) {
 
     const componentWhenUserFound = () => (
         <>
-            <Pressable style={{
+            <View style={{
+                display: 'flex',
+                flexDirection: 'row'
+            }}>
+                <View style={{
+                    width: '100%'
+                }}>
+                    <Pressable style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                    }} onPress={() => {
+                        navigation.push('UserInformation', { user: user })
+
+                    }}>
+                        <Image style={{
+                            height: 30,
+                            width: 30,
+                            marginLeft: 5,
+                            marginTop: 5,
+                            tintColor: 'white'
+                        }} source={require('../assets/user.png')} />
+                        <Text style={{
+                            color: 'white',
+                            marginLeft: 5,
+                            marginTop: 10,
+                        }}>{user.name}</Text>
+                    </Pressable>
+                </View>
+
+                <View style={{
+                    display: 'flex',
+                    justifyContent: 'flex-end',
+                    alignItems: 'flex-end'
+                }}>
+                    <Pressable style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        marginLeft: 50
+                    }} onPress={() => {
+                        navigation.navigate('Login')
+
+                    }}>
+
+                        <Text style={{
+                            color: 'white',
+                            marginLeft: 5,
+                            marginTop: 10,
+                        }}>Logout</Text>
+                        <Image style={{
+                            height: 30,
+                            width: 30,
+                            marginLeft: 5,
+                            marginTop: 5,
+                            tintColor: 'white'
+                        }} source={require('../assets/logout.png')} />
+                    </Pressable>
+                </View>
+
+            </View>
+            {/* <Pressable style={{
                 display: 'flex',
                 flexDirection: 'row',
             }} onPress={() => {
@@ -72,7 +131,25 @@ export default function Account({ navigation, route }) {
                     marginLeft: 5,
                     marginTop: 10,
                 }}>{user.name}</Text>
-            </Pressable>
+                <View style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    flex: 1,
+                    justifyContent: 'flex-end',
+                    alignItems: 'flex-end'
+
+                }}>
+                    <Pressable style={{
+                        justifyContent: 'flex-end',
+                        alignItems: 'flex-end'
+                    }}>
+                        <Text style={{
+                            color: 'white',
+                        }}>Logout</Text>
+                    </Pressable>
+                </View>
+
+            </Pressable> */}
         </>);
 
     const componentWhenUserNotFound = () => (<>

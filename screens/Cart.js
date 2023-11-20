@@ -78,6 +78,7 @@ const Cart = ({ navigation }) => {
   const total = cart.reduce((acc, item) => acc + item.quantityInCart * item.price, 0);
 
   // Component con để hiển thị thông tin từng sản phẩm trong giỏ hàng
+
   const Item = ({ item }) => {
     // Các hàm xử lý sự kiện
     const removeItemFromCart = () => {
@@ -85,7 +86,9 @@ const Cart = ({ navigation }) => {
     }
 
     const removeAllItemFromCart = () => dispatch(removeAllItem());
+
     const increaseQuantity = async () => {    
+
       if (parseInt(item.quantityInCart) >= item.quantity) {
         Toast.show({
           type: 'error',

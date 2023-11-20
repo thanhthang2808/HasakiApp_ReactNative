@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { View, Image, FlatList, StyleSheet, Dimensions, Text } from 'react-native';
+import { View, Image, FlatList, StyleSheet, Dimensions, Text, Pressable } from 'react-native';
 import { ScrollView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ProgressBar, MD3Colors } from 'react-native-paper';
 import fetchProducts from '../fetchData/fetchProducts';
+import { useNavigation } from '@react-navigation/native';
 
 const CountdownTimer = () => {
     const [seconds, setSeconds] = useState(180);
@@ -50,9 +51,9 @@ const CountdownTimer = () => {
 
 const formatCurrency = (amount) => {
     return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  };
+};
 
-  const ProgressBarComponent = () => {
+const ProgressBarComponent = () => {
     const [progress, setProgress] = useState(0);
     const completionTimeInSeconds = 180; // Thời gian hoàn thành mong muốn trong giây
     const fillColor = "#FA690F"; // Màu sắc cho thanh tiến trình
@@ -89,27 +90,44 @@ const formatCurrency = (amount) => {
     );
 };
 // Flash Deals
-const ItemProduct = (props) => {
+const ItemProduct = (props, navigation) => {
     const { id, name, description, price, image } = props
+
+    console.log(id)
+
+    const productsData = fetchProducts();
+
+    const productFound = productsData.find(
+        (product) => product.id === `${id}`
+    );
+
+    console.log(productFound)
+
+    navigation = useNavigation();
     return (
         <View style={[styles.bannerItem,
         {
             width: 150,
             height: 260,
         }]}>
-            <Image style={{
-                height: 150,
-                
+            <Pressable onPress={() => {
+                navigation.push('ProductDetail', { product: productFound })
+            }}>
 
-            }} source={{ uri: image }} />
+                <Image style={{
+                    height: 150,
 
-            <Text style={{
-                color: '#fa690f',
-                fontWeight: '700',
-            }}>{formatCurrency(price)} ₫</Text>
 
-            <Text numberOfLines={2}>{name}</Text>
-            <ProgressBarComponent />
+                }} source={{ uri: image }} />
+
+                <Text style={{
+                    color: '#fa690f',
+                    fontWeight: '700',
+                }}>{formatCurrency(price)} ₫</Text>
+
+                <Text numberOfLines={2}>{name}</Text>
+                <ProgressBarComponent />
+            </Pressable>
         </View>
     )
 }
@@ -146,7 +164,7 @@ const ListProduct = () => {
                     <ScrollView horizontal style={styles.scrollView}>
                         <View style={{
                             flexDirection: 'row',
-                            marginBottom: 10,                            
+                            marginBottom: 10,
                         }}>
 
                             {dt.map((item) => {
@@ -156,9 +174,7 @@ const ListProduct = () => {
                                         name={item.name}
                                         description={item.description}
                                         price={item.price}
-
                                         image={item.image}
-
                                         key={item.id}
                                     />
                                 )
@@ -199,7 +215,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         backgroundColor: 'white',
         justifyContent: 'center',
-        
+
 
     },
     bannerImage: {
