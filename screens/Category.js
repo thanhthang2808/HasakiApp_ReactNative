@@ -15,7 +15,7 @@ const Category = () => {
 
   console.log('selectedCategory:', selectedCategory);
   console.log('filteredProducts:', filteredProducts);
-
+  console.log(categoryData);
   const getRandomProducts = (productsData, count) => {
     const shuffled = productsData.sort(() => 0.5 - Math.random());
     return shuffled.slice(0, count);

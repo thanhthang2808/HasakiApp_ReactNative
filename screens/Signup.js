@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { View, Text, Pressable, TextInput, StyleSheet } from "react-native";
 import { Divider, PaperProvider } from 'react-native-paper';
 import { Checkbox } from 'react-native-paper';
+import IPv4Address from "../ipAddress/IPv4Address";
 export default function Signup() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -13,7 +14,9 @@ export default function Signup() {
     const navigation = useNavigation();
 
     const addUser = (navigation) => {
-        fetch("http://localhost:3000/user", {
+        const ip = IPv4Address();
+        const url = `http://${ip}:3000/user`;
+        fetch(url, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -28,7 +31,7 @@ export default function Signup() {
             .then((response) => response.json())
             .then((responseData) => {
                 console.log("User added:", responseData);
-                navigation.push(Login)
+                navigation.push('Login')
             })
             .catch((error) => {
                 console.error("Error adding user:", error);
@@ -82,25 +85,25 @@ export default function Signup() {
                     flexDirection: 'row'
                 }}>
                     <Checkbox
-                        status={checked ? checked : unchecked}
+                        status={checked ? 'checked' : 'unchecked'}
                         onPress={() => {
                             setChecked(!checked);
                         }}
                         color="#306E51"
 
                     />
-                    <Text>Tôi đã đọc và đồng ý với Điều kiện giao dịch chung và
-                        {'\n'}  Chính sách bảo mật thông tin của Hasaki</Text>
+                    <Text style={{ flexWrap: 'wrap' }}>Tôi đã đọc và đồng ý với Điều kiện giao dịch chung và Chính sách bảo mật thông tin của Hasaki</Text>
 
                 </View>
 
 
                 <View style={{
                     display: 'flex',
+                    alignItems: 'center',
                     gap: 20
                 }}>
                     <Pressable style={{
-                        width: 380,
+                        width: '90%',
                         height: 50,
                         backgroundColor: '#0d5c37'
                     }} onPress={() => { addUser(navigation) }}>
