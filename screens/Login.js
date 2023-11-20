@@ -3,6 +3,7 @@ import { Divider, PaperProvider } from 'react-native-paper';
 import { useEffect, useState } from 'react';
 import Signup from './Signup';
 import React, { createContext } from 'react';
+import IPv4Address from '../ipAddress/IPv4Address';
 
 export const AuthContext = createContext();
 
@@ -26,7 +27,9 @@ export default function Login(
     const [loggedIn, setLoggedIn] = useState(false);
     const [userInfo, setUserInfo] = useState(null);
     const handleLogin = () => {
-        fetch('http://localhost:3000/user')
+        const ip = IPv4Address();
+        const url = `http://${ip}:3000/user`;
+        fetch(url)
             .then((response) => response.json())
             .then((users) => {
                 const foundUser = users.find(

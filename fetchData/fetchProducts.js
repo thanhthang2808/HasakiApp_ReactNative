@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react"
+import IPv4Address from "../ipAddress/IPv4Address";
 
 const fetchProducts = () => {
     const [productsData, setProducts] = useState([]);
+    const ip = IPv4Address();
+    const url = `http://${ip}:3000/products`;
     useEffect(() => {
-        // Mở cmd -> ipconfig
-        // Đổi url bên dưới thành địa chỉ ip của máy mình http://192.168.x.x:3000/products trong phần Wifi để có thể truy cập data từ Expo Go
-        fetch('http://172.16.1.142:3000/products')
+        fetch(url)
         .then(response => response.json())
         .then(data => setProducts(data))
         .catch(error => console.error(error));
