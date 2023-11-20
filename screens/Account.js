@@ -34,28 +34,43 @@ export default function Account({ navigation, route }) {
         }, [])
     );
     console.log(user)
-    const componentWhenUserFound = () => (<>
-        <Pressable style={{
-            display: 'flex',
-            flexDirection: 'row',
-        }} onPress={() => {
-            navigation.push('UserInformation', { user: user })
 
-        }}>
-            <Image style={{
-                height: 30,
-                width: 30,
-                marginLeft: 5,
-                marginTop: 5,
-                tintColor: 'white'
-            }} source={require('../assets/user.png')} />
-            <Text style={{
-                color: 'white',
-                marginLeft: 5,
-                marginTop: 10,
-            }}>{user.name}</Text>
-        </Pressable>
-    </>);
+    const saveData = () => {
+        //saving username to session storage
+        sessionStorage.setItem("id", user.id);
+
+        setIsSaved(true);
+        setTimeout(() => {
+            setIsSaved(false);
+        }, 2000);
+    };
+
+
+    console.log(sessionStorage.getItem("id"))
+
+    const componentWhenUserFound = () => (
+        <>
+            <Pressable style={{
+                display: 'flex',
+                flexDirection: 'row',
+            }} onPress={() => {
+                navigation.push('UserInformation', { user: user })
+
+            }}>
+                <Image style={{
+                    height: 30,
+                    width: 30,
+                    marginLeft: 5,
+                    marginTop: 5,
+                    tintColor: 'white'
+                }} source={require('../assets/user.png')} />
+                <Text style={{
+                    color: 'white',
+                    marginLeft: 5,
+                    marginTop: 10,
+                }}>{user.name}</Text>
+            </Pressable>
+        </>);
 
     const componentWhenUserNotFound = () => (<>
         <Pressable style={{

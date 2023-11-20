@@ -28,7 +28,7 @@ export default function Signup() {
             .then((response) => response.json())
             .then((responseData) => {
                 console.log("User added:", responseData);
-                navigation.push(Login)
+                navigation.push('Login')
             })
             .catch((error) => {
                 console.error("Error adding user:", error);
@@ -37,8 +37,6 @@ export default function Signup() {
 
     return (
         <PaperProvider>
-
-
             <View style={{
                 display: 'flex',
                 gap: 15,
@@ -82,7 +80,7 @@ export default function Signup() {
                     flexDirection: 'row'
                 }}>
                     <Checkbox
-                        status={checked ? checked : unchecked}
+                        status={checked ? 'checked ' : 'unchecked'}
                         onPress={() => {
                             setChecked(!checked);
                         }}
