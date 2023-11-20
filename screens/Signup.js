@@ -6,8 +6,8 @@ import { Checkbox } from 'react-native-paper';
 
 import Toast from 'react-native-toast-message';
 
-
 import IPv4Address from "../ipAddress/IPv4Address";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Signup() {
     const [name, setName] = useState("");
@@ -46,11 +46,17 @@ export default function Signup() {
         return true;
     };
 
-    const addUser = (navigation) => {
-        const ip = IPv4Address();
-        const url = `http://${ip}:3000/user`;
-        if (checkTextInput() == true) {
-            fetch(url, {
+    const addUser = async (navigation) => {
+        try {
+            const ip = IPv4Address();
+            const url = `http://${ip}:3000/user`;
+
+            if (!checkTextInput()) {
+                console.error('invalid input')
+                return;
+            }
+
+            const response = await fetch(url, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -61,70 +67,58 @@ export default function Signup() {
                     password: password,
                     phone: phone,
                 }),
-            })
-                .then((response) => response.json())
-                .then((responseData) => {
-                    sessionStorage.setItem("id", responseData.id)
-                    addCart()
-                    console.log("User added:", responseData);
-                    Toast.show({
-                        type: 'success',
-                        text1: 'Đăng kí thành công!',
-                    });
-                    navigation.push('Login')
-                })
-                .catch((error) => {
-                    console.error("Error adding user:", error);
-                });
+            });
+
+            const data = await response.json()
+
+            await AsyncStorage.setItem("id", data.id);
+
+            addCart()
+
+            Toast.show({
+                type: 'success',
+                text1: 'Đăng kí thành công!',
+            });
+
+            console.log("User added:", data);
+
+            navigation.push('Login')
+        } catch (error) {
+            console.error("Error adding user:", error);
         }
     };
 
+    const addCart = async () => {
+        try {
+            const userId = await AsyncStorage.getItem('id');
 
+            console.log(userId);
 
-    const addCart = (navigation) => {
-        console.log(sessionStorage.getItem("id"))
-        const ip = IPv4Address();
-        const url = `http://${ip}:3000/carts`;
-        fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                productList: [],
-                id: sessionStorage.getItem("id")
-            }),
-        })
-            .then((response) => response.json())
-            .then((responseData) => {
-                console.log("Cart added:", responseData);
+            if (!userId) {
+                console.error('Error adding cart: userId undefined');
+                return;
+            }
+
+            const ip = IPv4Address();
+            const url = `http://${ip}:3000/carts`;
+
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    productList: [],
+                    id: userId
+                }),
             })
-            .catch((error) => {
-                console.error("Error adding cart:", error);
-            });
-    };
 
-    const addOrder = (navigation) => {
-        console.log(sessionStorage.getItem("id"))
-        const ip = IPv4Address();
-        const url = `http://${ip}:3000/orders`;
-        fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                orderOfUser: [],
-                id: sessionStorage.getItem("id")
-            }),
-        })
-            .then((response) => response.json())
-            .then((responseData) => {
-                console.log("Order added:", responseData);
-            })
-            .catch((error) => {
-                console.error("Error adding order:", error);
-            });
+            const data = await response.json()
+
+            console.log("Cart added:", data);
+        } catch (error) {
+            console.error("Error adding cart:", error);
+        }
     };
 
     return (
@@ -229,10 +223,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     textInput: {
-
-
-
-
     }
 }
 )

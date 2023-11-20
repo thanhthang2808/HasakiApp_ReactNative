@@ -4,6 +4,7 @@ import { View, Text, Pressable, TextInput, StyleSheet } from "react-native";
 import { Divider, PaperProvider } from 'react-native-paper';
 import { Checkbox } from 'react-native-paper';
 import Toast from 'react-native-toast-message';
+import IPv4Address from "../ipAddress/IPv4Address";
 export default function UserInformation({ route, navigation }) {
     const { user } = route.params
 
@@ -21,8 +22,8 @@ export default function UserInformation({ route, navigation }) {
     navigation = useNavigation();
 
     const update = (navigation) => {
-        //http://localhost:3000/user/1
-        fetch(`http://localhost:3000/user/${user.id}`, {
+        const ip = IPv4Address();
+        fetch(`http://${ip}:3000/user/${user.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

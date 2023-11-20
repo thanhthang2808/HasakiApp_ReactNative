@@ -9,12 +9,13 @@ import Toast from 'react-native-toast-message';
 import IPv4Address from '../ipAddress/IPv4Address';
 import { loadCart, updateCart } from '../redux/CartReducer';
 import { useDispatch } from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export const AuthContext = createContext();
 
 export default function Login({ navigation }) {
-    const ip = IPv4Address();
+    const dispatch = useDispatch();
 
     const validateEmail = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -27,76 +28,49 @@ export default function Login({ navigation }) {
     const [userInfo, setUserInfo] = useState(null);
     const [checked, setChecked] = React.useState(true);
 
+    const handleLogin = async () => {
+        const ip = IPv4Address();
 
+        try {
+            const response = await fetch(`http://${ip}:3000/user`);
 
+            const users = await response.json();
 
-    const handleLogin = () => {
-        const url = `http://${ip}:3000/user`;
-        fetch(url)
-            .then((response) => response.json())
-            .then((users) => {
-                const foundUser = users.find(
-                    (user) => user.email === username && user.password === password
-                );
-                if (foundUser) {
-                    setUserInfo(foundUser)
-                    setLoggedIn(true);
-                    Toast.show({
-                        type: 'success',
-                        text1: 'Đăng nhập thành công!',
-                    });
-                    console.log('Login Successful', foundUser);
-                    sessionStorage.setItem("id", foundUser.id);
+            const foundUser = users.find(
+                (user) => user.email === username && user.password === password
+            );
 
-                    navigation.push('Account', { username: foundUser.email })
-                } else {
-                    Toast.show({
-                        type: 'error',
-                        text1: 'Email và password chưa chính xác!',
-                    });
-                }
-            })
-            .catch((error) => {
-                console.log('Error:', error);
-
+            if (!foundUser) {
                 Toast.show({
-                    type: 'failed',
+                    type: 'error',
                     text1: 'Email và password chưa chính xác!',
                 });
+                return;
+            }
+
+            setUserInfo(foundUser);
+
+            setLoggedIn(true);
+
+            await AsyncStorage.setItem('id', foundUser.id);
+
+            console.log('Login Successful', foundUser);
+
+            Toast.show({
+                type: 'success',
+                text1: 'Đăng nhập thành công!',
             });
 
+            navigation.push('Account', { username: foundUser.email });
+        } catch (error) {
+            console.log('Error:', error);
+
+            Toast.show({
+                type: 'failed',
+                text1: 'Email và password chưa chính xác!',
+            });
+        }
     };
-
-    const userId = sessionStorage.getItem("id");
-    const dispatch = useDispatch();
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch(`http://${ip}:3000/carts/${userId ?? ''}`);
-if (!response.ok) {
-    // Handle non-success status
-    console.error(`Request failed with status: ${response.status}`);
-    dispatch(loadCart([]));
-    return;
-}
-const data = await response.json();
-dispatch(loadCart(data.productList));
-
-            } catch (error) {
-                console.error(error);
-                Alert.alert('An error occurred. Please try again.');
-            }
-        };
-
-        fetchData();
-
-    }, [dispatch, ip, userId]);
-
-    
-
-    
-
-
 
     return (
         <PaperProvider>

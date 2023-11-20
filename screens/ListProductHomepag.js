@@ -133,6 +133,7 @@ const ItemProduct = (props, navigation) => {
 }
 
 const ListProduct = () => {
+    const navigation = useNavigation();
     const dt = fetchProducts();
 
     const choose = (item) => {
@@ -193,12 +194,23 @@ const ListProduct = () => {
                 justifyContent: 'space-between',
                 marginTop: 10,
             }}>
-                <Image style={styles
-                    .midBanner} source={require('../assets/banner_mid1.jpg')}></Image>
-                <Image style={styles
-                    .midBanner} source={require('../assets/banner_mid2.jpg')}></Image>
-                <Image style={styles
-                    .midBanner} source={require('../assets/banner_mid3.png')}></Image>
+                <Pressable style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    marginTop: 10,
+                    gap: 20
+
+                }} onPress={() => {
+                    navigation.navigate('CategoryStack')
+                }}>
+                    <Image style={styles
+                        .midBanner} source={require('../assets/banner_mid1.jpg')}></Image>
+                    <Image style={styles
+                        .midBanner} source={require('../assets/banner_mid2.jpg')}></Image>
+                    <Image style={styles
+                        .midBanner} source={require('../assets/banner_mid3.png')}></Image>
+                </Pressable>
+
             </View>
         </View>
     );
