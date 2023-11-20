@@ -419,6 +419,20 @@
       "password": "123",
       "phone": "0837364527",
       "id": 6
+    },
+    {
+      "name": "Huy Vo",
+      "email": "huy@gmail.com",
+      "password": "123",
+      "phone": "0984453758",
+      "id": 7
+    },
+    {
+      "name": "Huy Vo",
+      "email": "huy@gmail.com",
+      "password": "123",
+      "phone": "0984453758",
+      "id": 8
     }
   ],
   "category": [
@@ -471,12 +485,12 @@
     {
       "id": "1",
       "name": "Trang điểm môi",
-      "image": "https://github.com/VuLanTuong/TH_LTTBDD/blob/main/img_week7/image1.png?raw=true",
+      "image": "https://github.com/thanhthang2808/B/blob/main/React%20Native/ProductImg/TrangDiem/SonKemLiBlackRouge.jpg?raw=true",
       "color": "#FACBCB"
     },
     {
       "id": "2",
-      "name": "Trang điểm môi",
+      "name": "Trang điểm mặt",
       "image": "https://github.com/VuLanTuong/TH_LTTBDD/blob/main/img_week7/image1.png?raw=true",
       "color": "#9ADCFF"
     },
@@ -651,6 +665,12 @@
       "quantity": 2,
       "productId": "2",
       "userId": 1
+    },
+    {
+      "productId": "15",
+      "quantity": 1,
+      "userId": "1",
+      "id": 2
     }
   ]
 }

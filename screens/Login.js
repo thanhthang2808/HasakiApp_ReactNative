@@ -5,9 +5,22 @@ import Signup from './Signup';
 import React, { createContext } from 'react';
 
 export const AuthContext = createContext();
+
+
 export default function Login(
     { navigation }
 ) {
+
+    const saveData = () => {
+        //saving username to session storage
+        sessionStorage.setItem("id", user.id);
+
+        setIsSaved(true);
+        setTimeout(() => {
+            setIsSaved(false);
+        }, 2000);
+    };
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
@@ -24,6 +37,7 @@ export default function Login(
                     setLoggedIn(true);
                     Alert.alert('Login Successful');
                     console.log('Login Successful', foundUser);
+                    sessionStorage.setItem("id", foundUser.id);
                     navigation.push('Account', { username: foundUser.email })
                 } else {
                     Alert.alert('Invalid credentials');
@@ -64,11 +78,11 @@ export default function Login(
                     <Text>Hoặc tài khoản Hasaki.vn</Text>
 
                     <View style={{
-                        marginTop: 1000,
+                        marginTop: 100,
                         width: 380,
                         gap: 15,
                         display: 'flex',
-                        flex: 1
+
                     }}>
                         <TextInput value={username}
                             onChangeText={setUsername} placeholderTextColor="gray" placeholder='Email'></TextInput>
