@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, Image, Pressable, ScrollView, TouchableOpacity } from 'react-native';
 import { useDispatch, useSelector } from "react-redux";
 import Toast from 'react-native-toast-message';
@@ -17,6 +17,7 @@ const ProductDetail = ({ route }) => {
 
   const updateCart = (cart) => {
     console.log(sessionStorage.getItem("id"));
+    if (sessionStorage.getItem("id") != undefined) {
       const ip = IPv4Address();
       fetch(`http://${ip}:3000/carts/${sessionStorage.getItem("id")}`, {
         method: "PUT",
@@ -34,7 +35,12 @@ const ProductDetail = ({ route }) => {
         .catch((error) => {
           console.error("Error adding cart:", error);
         });
+    }
   }
+
+  useEffect(() => {
+    updateCart(cart);
+  },[cart]);
 
 
   const addItemToCart = (product) => {

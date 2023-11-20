@@ -6,9 +6,12 @@ import Menu from './Menu';
 import Banner from './Banner';
 import ListProduct from './ListProductHomepag';
 import CategoryHomepage from './CategoryHomepage';
+import { useSelector } from 'react-redux';
 
 
 export default function Homepage() {
+  const cart = useSelector((state) => state.cart.cart);
+  console.log(cart);
   
   return (
     <ScrollView>

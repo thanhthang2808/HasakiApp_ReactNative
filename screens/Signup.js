@@ -104,6 +104,29 @@ export default function Signup() {
             });
     };
 
+    const addOrder = (navigation) => {
+        console.log(sessionStorage.getItem("id"))
+        const ip = IPv4Address();
+        const url = `http://${ip}:3000/orders`;
+        fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                orderOfUser: [],
+                id: sessionStorage.getItem("id")
+            }),
+        })
+            .then((response) => response.json())
+            .then((responseData) => {
+                console.log("Order added:", responseData);
+            })
+            .catch((error) => {
+                console.error("Error adding order:", error);
+            });
+    };
+
     return (
         <PaperProvider>
             <View style={{

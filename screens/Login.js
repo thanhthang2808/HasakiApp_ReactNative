@@ -21,16 +21,6 @@ export default function Login({ navigation }) {
         return emailRegex.test(email);
     };
 
-    // const saveData = () => {
-    //     //saving username to session storage
-    //     sessionStorage.setItem("id", user.id);
-
-    //     setIsSaved(true);
-    //     setTimeout(() => {
-    //         setIsSaved(false);
-    //     }, 2000);
-    // };
-
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
@@ -77,18 +67,21 @@ export default function Login({ navigation }) {
 
     };
 
-    const dispatch = useDispatch();
-
     const userId = sessionStorage.getItem("id");
-    const [cartUpdate, setCartUpdate] = useState([]);
-
+    const dispatch = useDispatch();
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://${ip}:3000/carts/${userId}`);
-                const data = await response.json();
-                setCartUpdate(data.productList);
-                dispatch(loadCart(data.productList));
+                const response = await fetch(`http://${ip}:3000/carts/${userId ?? ''}`);
+if (!response.ok) {
+    // Handle non-success status
+    console.error(`Request failed with status: ${response.status}`);
+    dispatch(loadCart([]));
+    return;
+}
+const data = await response.json();
+dispatch(loadCart(data.productList));
+
             } catch (error) {
                 console.error(error);
                 Alert.alert('An error occurred. Please try again.');
@@ -98,6 +91,10 @@ export default function Login({ navigation }) {
         fetchData();
 
     }, [dispatch, ip, userId]);
+
+    
+
+    
 
 
 

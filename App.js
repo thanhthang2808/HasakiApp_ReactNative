@@ -20,6 +20,7 @@ import Signup from './screens/Signup';
 import SearchEngine from './screens/SearchEngine';
 import Notifications from './screens/Notification';
 import UserInformation from './screens/UserInformation';
+import OrderList from './screens/Order';
 
 function LogoTitle() {
   return (
@@ -65,7 +66,7 @@ function MyTabs() {
             <View style={{ flexDirection: 'row', alignItems: 'center', paddingLeft: 10 }}>
               <MaterialCommunityIcons name="barcode-scan" color="#fff" size={25} style={{ marginRight: 15 }} />
               <MaterialCommunityIcons name="map-marker" color="#fff" size={25} style={{ marginRight: 15 }} />
-              <MaterialCommunityIcons name="package-variant-closed" color="#fff" size={25} />
+              <MaterialCommunityIcons name="package-variant-closed" color="#fff" size={25} onPress={() => navigation.navigate('OrderList')}/>
             </View>
           </View>
         ),
@@ -133,6 +134,7 @@ const HomepageStack = () => {
       <Stack.Screen name="Homepage" component={Homepage} options={{ headerShown: false }} />
       <Stack.Screen name="SearchEngine" component={SearchEngine} options={{ headerShown: false }} />
       <Stack.Screen name="ProductDetail" component={ProductDetail} />
+      <Stack.Screen name="OrderList" component={OrderList} />
     </Stack.Navigator>
   );
 };

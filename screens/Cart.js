@@ -23,7 +23,6 @@ const Cart = ({ navigation }) => {
   // "userId": 1
   console.log(cart);
 
-
   const updateCart = (cart) => {
     console.log(sessionStorage.getItem("id"));
     if (sessionStorage.getItem("id") != undefined) {
@@ -39,16 +38,66 @@ const Cart = ({ navigation }) => {
       })
         .then((response) => response.json())
         .then((responseData) => {
-          console.log("Add cart success:", responseData);
-          navigation.push('Homepage')
+          console.log("Update cart success:", responseData);
 
         })
         .catch((error) => {
           console.error("Error adding cart:", error);
         });
-    }
+    } 
   }
   // addCart(cart);
+  const addOrder = async (cart) => {
+    const userId = sessionStorage.getItem("id");
+    const order = cart.map((item) => ({
+        idProduct: item.id,
+        nameProduct: item.name,
+        quantity: item.quantityInCart,
+        price: item.price
+    }));
+
+    try {
+        // Thêm trường orderId vào mỗi đối tượng trong mảng orderOfUser
+        const ordersWithOrderId = order.map((orderItem) => ({
+            ...orderItem
+             // Hàm generateOrderId() tạo một orderId duy nhất
+        }));
+
+        if (userId) {
+            const ip = IPv4Address();
+            const response = await fetch(`http://${ip}:3000/orders`, {
+                method: "POST", // Sử dụng method "POST" thay vì "PUT"
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    userId: userId,
+                    orderOfUser: ordersWithOrderId,
+                    orderId: generateOrderId()
+                }),
+            });
+
+            const responseData = await response.json();
+            console.log("Add order success:", responseData);
+        }
+    } catch (error) {
+        console.error("Error adding order:", error);
+    }
+};
+
+
+  const generateOrderId = () => {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const orderIdLength = 10;
+    let orderId = '';
+  
+    for (let i = 0; i < orderIdLength; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      orderId += characters.charAt(randomIndex);
+    }
+  
+    return orderId;
+  };
 
 
   // const addItemToDatabase = (navigation) => {
@@ -72,27 +121,31 @@ const Cart = ({ navigation }) => {
   //       console.error("Error adding user:", error);
   //     });
   // };
+  useEffect(() => {
+    updateCart(cart);
+  }, [cart]);
 
   const dispatch = useDispatch();
   const formatCurrency = (amount) => {
     return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   };
   // Tính tổng tiền sử dụng reduce
-  const total = cart.reduce((acc, item) => acc + item.quantityInCart * item.price, 0);
+  console.log(cart);
+  const total = cart ? cart.reduce((acc, item) => acc + item.quantityInCart * item.price, 0) : 0;
+
 
   // Component con để hiển thị thông tin từng sản phẩm trong giỏ hàng
+  const removeAllItemFromCart = () => dispatch(removeAllItem());
 
   const Item = ({ item }) => {
     // Các hàm xử lý sự kiện
     const removeItemFromCart = async () => {
       await dispatch(removeFromCart(item));
-      updateCart(cart);
     }
 
-    const removeAllItemFromCart = () => dispatch(removeAllItem());
+    
 
     const increaseQuantity = async () => {
-
       if (parseInt(item.quantityInCart) >= item.quantity) {
         Toast.show({
           type: 'error',
@@ -100,19 +153,14 @@ const Cart = ({ navigation }) => {
           text2: 'Số lượng đã đạt tới giới hạn trong kho',
         });
       } else {
-        await dispatch(incrementQuantity(item));
-        console.log(cart);
-        updateCart(cart);
+        await dispatch(incrementQuantity(item));        
       }
-
     };
     const decreaseQuantity = async () => {
       if (parseInt(item.quantityInCart) === 1) {
         await dispatch(removeFromCart(item));
-        updateCart(cart);
       } else {
         await dispatch(decrementQuantity(item));
-        updateCart(cart);
       }
     };
     return (
@@ -187,7 +235,9 @@ const Cart = ({ navigation }) => {
                 text1: 'Đặt hàng thành công!',
                 text2: `Đã lưu đơn hàng`
               });
-              removeAllItem
+              addOrder(cart);
+              removeAllItemFromCart();
+
             }}>Tiến hành đặt hàng</Text>
           </TouchableOpacity>
         </View>
