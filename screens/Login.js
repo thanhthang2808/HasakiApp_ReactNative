@@ -4,14 +4,14 @@ import { useEffect, useState } from 'react';
 import Signup from './Signup';
 import React, { createContext } from 'react';
 import IPv4Address from '../ipAddress/IPv4Address';
+import { loadCart, updateCart } from '../redux/CartReducer';
+import { useDispatch } from 'react-redux';
 
 export const AuthContext = createContext();
 
 
-export default function Login(
-    { navigation }
-) {
-
+export default function Login({ navigation }) {
+    const ip = IPv4Address();
     const saveData = () => {
         //saving username to session storage
         sessionStorage.setItem("id", user.id);
@@ -26,8 +26,11 @@ export default function Login(
     const [password, setPassword] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
     const [userInfo, setUserInfo] = useState(null);
+    
+
+    
+
     const handleLogin = () => {
-        const ip = IPv4Address();
         const url = `http://${ip}:3000/user`;
         fetch(url)
             .then((response) => response.json())
@@ -40,7 +43,8 @@ export default function Login(
                     setLoggedIn(true);
                     Alert.alert('Login Successful');
                     console.log('Login Successful', foundUser);
-                    sessionStorage.setItem("id", foundUser.id);
+                    sessionStorage.setItem("id", foundUser.id);                    
+                                        
                     navigation.push('Account', { username: foundUser.email })
                 } else {
                     Alert.alert('Invalid credentials');
@@ -50,8 +54,33 @@ export default function Login(
             .catch((error) => {
                 console.log('Error:', error);
                 Alert.alert('An error occurred. Please try again.');
-            });
+            });                 
+       
     };
+
+    const dispatch = useDispatch();
+
+    const userId = sessionStorage.getItem("id");
+    const [cartUpdate, setCartUpdate] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`http://${ip}:3000/carts/${userId}`);
+                const data = await response.json();
+                setCartUpdate(data.productList);
+                dispatch(loadCart(data.productList));
+            } catch (error) {
+                console.error(error);
+                Alert.alert('An error occurred. Please try again.');
+            }
+        };
+    
+        fetchData(); // Call the async function immediately
+    
+    }, [dispatch, ip, userId]);
+    
+
 
     return (
         <PaperProvider>
