@@ -23,8 +23,10 @@ const Cart = ({ navigation }) => {
   // "userId": 1
   console.log(cart);
 
+
   const updateCart = (cart) => {
     console.log(sessionStorage.getItem("id"));
+    if (sessionStorage.getItem("id") != undefined) {
       const ip = IPv4Address();
       fetch(`http://${ip}:3000/carts/${sessionStorage.getItem("id")}`, {
         method: "PUT",
@@ -44,6 +46,7 @@ const Cart = ({ navigation }) => {
         .catch((error) => {
           console.error("Error adding cart:", error);
         });
+    }
   }
   // addCart(cart);
 
@@ -87,7 +90,7 @@ const Cart = ({ navigation }) => {
 
     const removeAllItemFromCart = () => dispatch(removeAllItem());
 
-    const increaseQuantity = async () => {    
+    const increaseQuantity = async () => {
 
       if (parseInt(item.quantityInCart) >= item.quantity) {
         Toast.show({
@@ -100,7 +103,7 @@ const Cart = ({ navigation }) => {
         console.log(cart);
         updateCart(cart);
       }
-      
+
     };
     const decreaseQuantity = () => {
       if (parseInt(item.quantityInCart) === 1) {

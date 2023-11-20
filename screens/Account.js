@@ -38,18 +38,27 @@ export default function Account({ navigation, route }) {
     );
     console.log(user)
 
-    const saveData = () => {
-        //saving username to session storage
-        sessionStorage.setItem("id", user.id);
+    // const saveData = () => {
+    //     //saving username to session storage
+    //     sessionStorage.setItem("id", user.id);
 
-        setIsSaved(true);
-        setTimeout(() => {
-            setIsSaved(false);
-        }, 2000);
-    };
+    //     setIsSaved(true);
+    //     setTimeout(() => {
+    //         setIsSaved(false);
+    //     }, 2000);
+    // };
 
 
-    console.log(sessionStorage.getItem("id"))
+    // if (user === undefined) {
+    //     sessionStorage.setItem("id", undefined)
+    // }
+
+    // if (user) {
+    //     sessionStorage.setItem("id", user.id)
+    // }
+
+
+    // console.log(sessionStorage.getItem("id"))
 
     const componentWhenUserFound = () => (
         <>
@@ -92,6 +101,7 @@ export default function Account({ navigation, route }) {
                         flexDirection: 'row',
                         marginLeft: 50
                     }} onPress={() => {
+                        sessionStorage.setItem("id", undefined)
                         navigation.navigate('Login')
 
                     }}>
