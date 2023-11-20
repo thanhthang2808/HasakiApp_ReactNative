@@ -84,8 +84,9 @@ const Cart = ({ navigation }) => {
 
   const Item = ({ item }) => {
     // Các hàm xử lý sự kiện
-    const removeItemFromCart = () => {
-      dispatch(removeFromCart(item));
+    const removeItemFromCart = async () => {
+      await dispatch(removeFromCart(item));
+      updateCart(cart);
     }
 
     const removeAllItemFromCart = () => dispatch(removeAllItem());
@@ -105,11 +106,13 @@ const Cart = ({ navigation }) => {
       }
 
     };
-    const decreaseQuantity = () => {
+    const decreaseQuantity = async () => {
       if (parseInt(item.quantityInCart) === 1) {
-        dispatch(removeFromCart(item));
+        await dispatch(removeFromCart(item));
+        updateCart(cart);
       } else {
-        dispatch(decrementQuantity(item));
+        await dispatch(decrementQuantity(item));
+        updateCart(cart);
       }
     };
     return (
