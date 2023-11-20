@@ -378,7 +378,7 @@
   ],
   "user": [
     {
-      "name": "Vũ Lan Tường",
+      "name": "Vũ Lan Thang",
       "email": "lan@gmail.com",
       "password": "123",
       "phone": "0794335642",
@@ -390,14 +390,7 @@
       "password": "123",
       "phone": "0794334265",
       "address": "Cầu Bình Lợi",
-      "id": 2,
-      "cart": [
-        {
-          "id": "1",
-          "quantity": 2,
-          "productId": "2"
-        }
-      ]
+      "id": 2
     },
     {
       "name": "Ngo Dinh Loc",
@@ -650,6 +643,14 @@
       "title": "Chia sẻ niềm vui với chương trình khuyến mãi 🔖",
       "content": "Chương trình khuyến mãi lớn đang diễn ra. Hãy chia sẻ niềm vui mua sắm cùng chúng tôi! Những ưu đãi đặc biệt đang chờ đợi bạn. Đến và trải nghiệm không gian mua sắm thú vị và đầy năng động. Hãy là một phần của chúng tôi ngay hôm nay!",
       "date": "2023-11-29"
+    }
+  ],
+  "carts": [
+    {
+      "id": 1,
+      "quantity": 2,
+      "productId": "2",
+      "userId": 1
     }
   ]
 }

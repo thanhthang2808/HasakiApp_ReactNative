@@ -45,14 +45,14 @@ export default function Login(
             }>
                 <View style={styles.container}>
                     <View style={{
-                        height: '80px'
+                        height: 80
                     }}>
                         <Image style={styles.img} source={'https://hasaki.vn/images/graphics/img_login_fb_2.jpg'} />
 
                     </View>
                     <View style={
                         {
-                            height: '50px'
+                            height: 50
                         }
                     }>
                         <Image style={styles.img} source={'https://hasaki.vn/images/graphics/img_login_gg_2.jpg'} />
@@ -64,11 +64,11 @@ export default function Login(
                     <Text>Hoặc tài khoản Hasaki.vn</Text>
 
                     <View style={{
-                        marginTop: '100px',
-                        width: '380px',
-                        gap: '15px',
+                        marginTop: 1000,
+                        width: 380,
+                        gap: 15,
                         display: 'flex',
-                        flex: '1'
+                        flex: 1
                     }}>
                         <TextInput value={username}
                             onChangeText={setUsername} placeholderTextColor="gray" placeholder='Email'></TextInput>
@@ -85,10 +85,10 @@ export default function Login(
                             <Text style={{
                                 display: 'flex',
                                 color: '#0d5c37',
-                                fontWeight: '600',
+                                fontWeight: 600,
                                 justifyContent: 'flex-end',
                                 alignItems: 'flex-end',
-                                width: '120px'
+                                width: 120
 
                             }}>Forgot password?</Text>
 
@@ -97,23 +97,23 @@ export default function Login(
                     </View>
                     <View style={{
                         display: 'flex',
-                        gap: '20px'
+                        gap: 20
                     }}>
                         <Pressable style={{
-                            width: '380px',
-                            height: '50px',
+                            width: 380,
+                            height: 50,
                             backgroundColor: '#0d5c37'
                         }} onPress={handleLogin}>
                             <Text style={{
                                 color: 'white',
                                 textAlign: 'center',
-                                marginTop: '15px'
+                                marginTop: 15
                             }}>LOGIN</Text>
                         </Pressable>
 
                         <Pressable style={{
-                            width: '380px',
-                            height: '50px',
+                            width: 380,
+                            height: 50,
                             border: '1px solid #0d5c37'
                         }} onPress={() => {
                             navigation.push('Signup')
@@ -121,7 +121,7 @@ export default function Login(
                             <Text style={{
                                 color: '#0d5c37',
                                 textAlign: 'center',
-                                marginTop: '15px'
+                                marginTop: 15
                             }}>SIGNUP</Text>
                         </Pressable>
                     </View>
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: '#FFF',
         flexDirection: 'row',
-        gap: '10px',
+        gap: 10,
         justifyContent: 'center',
     },
     center: {
@@ -143,13 +143,13 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#FFF',
         flexDirection: 'column',
-        gap: '10px',
+        gap: 10,
         justifyContent: 'flex-start',
         alignItems: 'center'
     },
     img: {
-        height: '45px',
-        width: '200px',
+        height: 45,
+        width: 200,
     },
 
 }

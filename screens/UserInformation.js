@@ -50,8 +50,8 @@ export default function UserInformation({ route, navigation }) {
     return (
         <View style={{
             display: 'flex',
-            gap: '15px',
-            padding: '15px'
+            gap: 15,
+            padding: 15
         }}>
             <View style={{
                 display: 'flex',
@@ -114,15 +114,15 @@ export default function UserInformation({ route, navigation }) {
             </View>
 
             <Pressable style={{
-                width: '380px',
-                height: '50px',
-                border: '1px solid #0d5c37',
+                width: 380,
+                height: 50,
+                border: '1  solid #0d5c37',
                 backgroundColor: '#0d5c37'
             }} onPress={() => { update(navigation) }}>
                 <Text style={{
                     color: 'white',
                     textAlign: 'center',
-                    marginTop: '15px'
+                    marginTop: 15
                 }}>Cập nhật thông tin</Text>
             </Pressable>
         </View>
