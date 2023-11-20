@@ -8,6 +8,7 @@ import {
   decrementQuantity,
   incrementQuantity,
   removeFromCart,
+  removeAllItem,
 } from "../redux/CartReducer";
 
 const Cart = ({ navigation }) => {
@@ -24,6 +25,7 @@ const Cart = ({ navigation }) => {
   const Item = ({ item }) => {
     // Các hàm xử lý sự kiện
     const removeItemFromCart = () => dispatch(removeFromCart(item));
+    const removeAllItemFromCart = () => dispatch(removeAllItem());
     const increaseQuantity = () => {    
       if (parseInt(item.quantityInCart) >= item.quantity) {
         Toast.show({
@@ -115,6 +117,7 @@ const Cart = ({ navigation }) => {
                 text1: 'Đặt hàng thành công!',
                 text2: `Đã lưu đơn hàng`
               });
+              removeAllItem
             }}>Tiến hành đặt hàng</Text>
           </TouchableOpacity>
         </View>
