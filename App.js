@@ -21,7 +21,7 @@ import SearchEngine from './screens/SearchEngine';
 import Notifications from './screens/Notification';
 import UserInformation from './screens/UserInformation';
 import OrderList from './screens/Order';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 function LogoTitle() {
   return (
     <Image
@@ -37,6 +37,22 @@ const Stack = createStackNavigator();
 function MyTabs() {
   const navigation = useNavigation();
   const [searchKeyword, setSearchKeyword] = React.useState();
+
+  React.useEffect(() => {
+    const cleanUserId = async (navigation) => {
+      try {
+        await AsyncStorage.removeItem("id");
+
+
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    cleanUserId();
+  }, [])
+
+
+  console.log(AsyncStorage.getItem("id"));
   return (
     <Tab.Navigator
       initialRouteName="Homepage"

@@ -418,6 +418,13 @@
       "password": "1234567",
       "phone": "0393238017",
       "id": 6
+    },
+    {
+      "name": "TuongVu",
+      "email": "tuongvu@gmail.com",
+      "password": "1234567",
+      "phone": "0987654321",
+      "id": 7
     }
   ],
   "category": [
@@ -685,6 +692,10 @@
     {
       "productList": [],
       "id": "6"
+    },
+    {
+      "productList": [],
+      "id": "7"
     }
   ],
   "orders": [
@@ -1025,6 +1036,19 @@
       ],
       "orderId": "EGSCgHGjpj",
       "id": 20
+    },
+    {
+      "userId": "6",
+      "orderOfUser": [
+        {
+          "idProduct": "4",
+          "nameProduct": "Son Kem Lì Black Rouge A12 Dashed Brown Nâu Gạch 4.5g",
+          "quantity": 1,
+          "price": 164000
+        }
+      ],
+      "orderId": "hEd7nNdhze",
+      "id": 21
     }
   ]
 }
