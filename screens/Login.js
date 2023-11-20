@@ -3,17 +3,20 @@ import { Divider, PaperProvider } from 'react-native-paper';
 import { useEffect, useState } from 'react';
 import Signup from './Signup';
 import React, { createContext } from 'react';
+
 import Toast from 'react-native-toast-message';
+
+import IPv4Address from '../ipAddress/IPv4Address';
+import { loadCart, updateCart } from '../redux/CartReducer';
+import { useDispatch } from 'react-redux';
+
 
 export const AuthContext = createContext();
 
-
-
-export default function Login(
-    { navigation }
-) {
-
-    const validateEmail = (email) => {
+export default function Login({ navigation }) {
+    const ip = IPv4Address();
+  
+   const validateEmail = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     };
@@ -32,8 +35,13 @@ export default function Login(
     const [password, setPassword] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
     const [userInfo, setUserInfo] = useState(null);
+    
+
+    
+
     const handleLogin = () => {
-        fetch('http://localhost:3000/user')
+        const url = `http://${ip}:3000/user`;
+        fetch(url)
             .then((response) => response.json())
             .then((users) => {
                 const foundUser = users.find(
@@ -47,7 +55,8 @@ export default function Login(
                         text1: 'Đăng nhập thành công!',
                     });
                     console.log('Login Successful', foundUser);
-                    sessionStorage.setItem("id", foundUser.id);
+                    sessionStorage.setItem("id", foundUser.id);                    
+                                        
                     navigation.push('Account', { username: foundUser.email })
                 } else {
                     Toast.show({
@@ -58,12 +67,38 @@ export default function Login(
             })
             .catch((error) => {
                 console.log('Error:', error);
+
                 Toast.show({
                     type: 'failed',
                     text1: 'Email và password chưa chính xác!',
                 });
             });
+
     };
+
+    const dispatch = useDispatch();
+
+    const userId = sessionStorage.getItem("id");
+    const [cartUpdate, setCartUpdate] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`http://${ip}:3000/carts/${userId}`);
+                const data = await response.json();
+                setCartUpdate(data.productList);
+                dispatch(loadCart(data.productList));
+            } catch (error) {
+                console.error(error);
+                Alert.alert('An error occurred. Please try again.');
+            }
+        };
+    
+        fetchData(); // Call the async function immediately
+    
+    }, [dispatch, ip, userId]);
+    
+
 
     return (
         <PaperProvider>

@@ -10,6 +10,7 @@ import {
   removeFromCart,
   removeAllItem,
 } from "../redux/CartReducer";
+import IPv4Address from '../ipAddress/IPv4Address';
 
 const Cart = ({ navigation }) => {
   // Sử dụng useSelector để lấy dữ liệu từ Redux store
@@ -22,21 +23,16 @@ const Cart = ({ navigation }) => {
   // "userId": 1
   console.log(cart);
 
-  const addCart = (cart) => {
-    for (let i = 0; i < cart.length; i++) {
-
-      console.log(cart[i].id);
-      console.log(cart[i].quantityInCart);
-      console.log(sessionStorage.getItem("id"));
-      fetch(`http://localhost:3000/carts/`, {
-        method: "POST",
+  const updateCart = (cart) => {
+    console.log(sessionStorage.getItem("id"));
+      const ip = IPv4Address();
+      fetch(`http://${ip}:3000/carts/${sessionStorage.getItem("id")}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          productId: cart[i].id,
-          quantity: cart[i].quantityInCart,
-          userId: sessionStorage.getItem("id")
+          productList: cart
         }),
       })
         .then((response) => response.json())
@@ -46,41 +42,33 @@ const Cart = ({ navigation }) => {
 
         })
         .catch((error) => {
-          console.error("Error adding user:", error);
+          console.error("Error adding cart:", error);
         });
-    }
-
-
   }
-  addCart(cart);
-
-  const getSessionData = () => {
-
-    return sessionStorage.getItem("id");
-  };
+  // addCart(cart);
 
 
-  const addItemToDatabase = (navigation) => {
-    fetch(`http://localhost:3000/carts/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        productId: product.id,
-        quantity: 1,
-      }),
-    })
-      .then((response) => response.json())
-      .then((responseData) => {
-        console.log("User added:", responseData);
-        navigation.push('Login')
+  // const addItemToDatabase = (navigation) => {
+  //   fetch(`http://localhost:3000/carts/`, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       productId: product.id,
+  //       quantity: 1,
+  //     }),
+  //   })
+  //     .then((response) => response.json())
+  //     .then((responseData) => {
+  //       console.log("User added:", responseData);
+  //       navigation.push('Login')
 
-      })
-      .catch((error) => {
-        console.error("Error adding user:", error);
-      });
-  };
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error adding user:", error);
+  //     });
+  // };
 
   const dispatch = useDispatch();
   const formatCurrency = (amount) => {
@@ -93,10 +81,14 @@ const Cart = ({ navigation }) => {
 
   const Item = ({ item }) => {
     // Các hàm xử lý sự kiện
-    const removeItemFromCart = () => dispatch(removeFromCart(item));
+    const removeItemFromCart = () => {
+      dispatch(removeFromCart(item));
+    }
 
     const removeAllItemFromCart = () => dispatch(removeAllItem());
-    const increaseQuantity = () => {
+
+    const increaseQuantity = async () => {    
+
       if (parseInt(item.quantityInCart) >= item.quantity) {
         Toast.show({
           type: 'error',
@@ -104,9 +96,11 @@ const Cart = ({ navigation }) => {
           text2: 'Số lượng đã đạt tới giới hạn trong kho',
         });
       } else {
-        dispatch(incrementQuantity(item));
+        await dispatch(incrementQuantity(item));
         console.log(cart);
+        updateCart(cart);
       }
+      
     };
     const decreaseQuantity = () => {
       if (parseInt(item.quantityInCart) === 1) {

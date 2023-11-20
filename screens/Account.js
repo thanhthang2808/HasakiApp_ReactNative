@@ -7,6 +7,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Divider, PaperProvider } from 'react-native-paper';
 import Login from './Login';
+import IPv4Address from '../ipAddress/IPv4Address';
 
 
 export default function Account({ navigation, route }) {
@@ -20,7 +21,9 @@ export default function Account({ navigation, route }) {
             console.log('Hello 0-0', route)
             if (route.params) {
                 const { username } = route.params;
-                fetch('http://localhost:3000/user')
+                const ip = IPv4Address();
+                const url = `http://${ip}:3000/user`;
+                fetch(url)
                     .then((response) => response.json())
                     .then((users) => {
                         const foundUser = users.find(

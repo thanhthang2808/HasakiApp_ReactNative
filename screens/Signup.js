@@ -3,8 +3,11 @@ import React, { useState, useEffect } from "react";
 import { View, Text, Pressable, TextInput, StyleSheet } from "react-native";
 import { Divider, PaperProvider } from 'react-native-paper';
 import { Checkbox } from 'react-native-paper';
+
 import Toast from 'react-native-toast-message';
 
+
+import IPv4Address from "../ipAddress/IPv4Address";
 
 export default function Signup() {
     const [name, setName] = useState("");
@@ -44,18 +47,25 @@ export default function Signup() {
     };
 
     const addUser = (navigation) => {
-        if (checkTextInput() == true) {
-            fetch("http://localhost:3000/user", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    name: name,
-                    email: email,
-                    password: password,
-                    phone: phone,
-                }),
+        const ip = IPv4Address();
+        const url = `http://${ip}:3000/user`;
+          if (checkTextInput() == true) {
+        fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                password: password,
+                phone: phone,
+            }),
+        })
+            .then((response) => response.json())
+            .then((responseData) => {
+                console.log("User added:", responseData);
+                navigation.push('Login')
             })
                 .then((response) => response.json())
                 .then((responseData) => {
@@ -126,18 +136,18 @@ export default function Signup() {
                         color="#306E51"
 
                     />
-                    <Text>Tôi đã đọc và đồng ý với Điều kiện giao dịch chung và
-                        {'\n'}  Chính sách bảo mật thông tin của Hasaki</Text>
+                    <Text style={{ flexWrap: 'wrap' }}>Tôi đã đọc và đồng ý với Điều kiện giao dịch chung và Chính sách bảo mật thông tin của Hasaki</Text>
 
                 </View>
 
 
                 <View style={{
                     display: 'flex',
+                    alignItems: 'center',
                     gap: 20
                 }}>
                     <Pressable style={{
-                        width: 380,
+                        width: '90%',
                         height: 50,
                         backgroundColor: '#0d5c37'
                     }} onPress={() => { addUser(navigation) }}>
