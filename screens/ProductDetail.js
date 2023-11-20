@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Toast from 'react-native-toast-message';
 import { addToCart } from '../redux/CartReducer';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import IPv4Address from '../ipAddress/IPv4Address';
 
 const ProductDetail = ({ route }) => {
   const { product } = route.params;
@@ -13,8 +14,26 @@ const ProductDetail = ({ route }) => {
     return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   };
 
-
-
+  const updateCart = (cart) => {
+    console.log(sessionStorage.getItem("id"));
+      const ip = IPv4Address();
+      fetch(`http://${ip}:3000/carts/${sessionStorage.getItem("id")}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          productList: cart
+        }),
+      })
+        .then((response) => response.json())
+        .then((responseData) => {
+          console.log("Add cart success:", responseData);
+        })
+        .catch((error) => {
+          console.error("Error adding cart:", error);
+        });
+  }
 
   const addItemToCart = (product) => {
     Toast.show({
@@ -24,6 +43,7 @@ const ProductDetail = ({ route }) => {
     });
     dispatch(addToCart(product));
     console.log(cart);
+    updateCart(cart);
   };
 
   return (
