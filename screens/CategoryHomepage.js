@@ -30,7 +30,7 @@ const ItemBanner = (props) => {
             }} source={{ uri: image }} />
             <Text numberOfLines={2} style={{
                 textAlign: 'center',
-                paddingTop: 5,                
+                paddingTop: 5,
             }}>{name}</Text>
         </View>
     )
@@ -43,6 +43,9 @@ export default function CategoryHomepage() {
         <View style={{
             marginTop: 30,
         }}>
+            <Text style={{
+
+            }}>Danh mục</Text>
             <ScrollView horizontal>
                 <FlatList
                     data={data}
@@ -62,8 +65,8 @@ export default function CategoryHomepage() {
                         )
                     }
                     }
-                    
-                    keyExtractor={item => item.id}>                    
+
+                    keyExtractor={item => item.id}>
                 </FlatList>
             </ScrollView>
         </View >

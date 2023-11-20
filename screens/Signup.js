@@ -40,8 +40,6 @@ export default function Signup() {
 
     return (
         <PaperProvider>
-
-
             <View style={{
                 display: 'flex',
                 gap: 15,

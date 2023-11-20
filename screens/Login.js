@@ -6,9 +6,22 @@ import React, { createContext } from 'react';
 import IPv4Address from '../ipAddress/IPv4Address';
 
 export const AuthContext = createContext();
+
+
 export default function Login(
     { navigation }
 ) {
+
+    const saveData = () => {
+        //saving username to session storage
+        sessionStorage.setItem("id", user.id);
+
+        setIsSaved(true);
+        setTimeout(() => {
+            setIsSaved(false);
+        }, 2000);
+    };
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
@@ -27,6 +40,7 @@ export default function Login(
                     setLoggedIn(true);
                     Alert.alert('Login Successful');
                     console.log('Login Successful', foundUser);
+                    sessionStorage.setItem("id", foundUser.id);
                     navigation.push('Account', { username: foundUser.email })
                 } else {
                     Alert.alert('Invalid credentials');
@@ -71,7 +85,7 @@ export default function Login(
                         width: 380,
                         gap: 15,
                         display: 'flex',
-                        flex: 1
+
                     }}>
                         <TextInput value={username}
                             onChangeText={setUsername} placeholderTextColor="gray" placeholder='Email'></TextInput>

@@ -14,6 +14,74 @@ import {
 const Cart = ({ navigation }) => {
   // Sử dụng useSelector để lấy dữ liệu từ Redux store
   const cart = useSelector((state) => state.cart.cart);
+
+
+  // "id": 1,
+  // "quantity": 2,
+  // "productId": "2",
+  // "userId": 1
+  console.log(cart);
+
+  const addCart = (cart) => {
+    for (let i = 0; i < cart.length; i++) {
+
+      console.log(cart[i].id);
+      console.log(cart[i].quantityInCart);
+      console.log(sessionStorage.getItem("id"));
+      fetch(`http://localhost:3000/carts/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          productId: cart[i].id,
+          quantity: cart[i].quantityInCart,
+          userId: sessionStorage.getItem("id")
+        }),
+      })
+        .then((response) => response.json())
+        .then((responseData) => {
+          console.log("Add cart success:", responseData);
+          navigation.push('Homepage')
+
+        })
+        .catch((error) => {
+          console.error("Error adding user:", error);
+        });
+    }
+
+
+  }
+  addCart(cart);
+
+  const getSessionData = () => {
+
+    return sessionStorage.getItem("id");
+  };
+
+
+  const addItemToDatabase = (navigation) => {
+    fetch(`http://localhost:3000/carts/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        productId: product.id,
+        quantity: 1,
+      }),
+    })
+      .then((response) => response.json())
+      .then((responseData) => {
+        console.log("User added:", responseData);
+        navigation.push('Login')
+
+      })
+      .catch((error) => {
+        console.error("Error adding user:", error);
+      });
+  };
+
   const dispatch = useDispatch();
   const formatCurrency = (amount) => {
     return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -25,6 +93,7 @@ const Cart = ({ navigation }) => {
   const Item = ({ item }) => {
     // Các hàm xử lý sự kiện
     const removeItemFromCart = () => dispatch(removeFromCart(item));
+
     const removeAllItemFromCart = () => dispatch(removeAllItem());
     const increaseQuantity = () => {    
       if (parseInt(item.quantityInCart) >= item.quantity) {
@@ -52,13 +121,13 @@ const Cart = ({ navigation }) => {
           <View style={styles.productDetails}>
             <View style={{ height: '70%', paddingTop: 1 }}>
               <View style={{ flexDirection: 'row' }}>
-              <Text style={{ fontSize: 12, color: '#306E51', fontWeight: 'bold', flex: 1 }}>{item.brand}</Text>
-              <TouchableOpacity onPress={removeItemFromCart}>
-                <AntDesign
+                <Text style={{ fontSize: 12, color: '#306E51', fontWeight: 'bold', flex: 1 }}>{item.brand}</Text>
+                <TouchableOpacity onPress={removeItemFromCart}>
+                  <AntDesign
                     name="closesquare"
                     style={{ fontSize: 10, padding: 5, marginLeft: 20, color: 'gray' }}
-                />
-              </TouchableOpacity>
+                  />
+                </TouchableOpacity>
               </View>
               <Text style={styles.productName}>{item.name}</Text>
             </View>
@@ -74,8 +143,8 @@ const Cart = ({ navigation }) => {
               </View>
               <TouchableOpacity onPress={increaseQuantity}>
                 <AntDesign
-                    name="plus"
-                    style={styles.quantityButton}
+                  name="plus"
+                  style={styles.quantityButton}
                 />
               </TouchableOpacity>
               <Text style={styles.productPrice}>x  {formatCurrency(item.price)} ₫</Text>
@@ -91,7 +160,7 @@ const Cart = ({ navigation }) => {
       <View style={styles.cartContent}>
         {cart.length === 0 ? (
           <View style={styles.emptyCartView}>
-            <Image style={{ width: 150, height: 200 }} source={require('../assets/cart_empty.png')}/>
+            <Image style={{ width: 150, height: 200 }} source={require('../assets/cart_empty.png')} />
             <Text style={styles.emptyCartText}>Giỏ hàng của bạn chưa có sản phẩm nào</Text>
             <TouchableOpacity style={styles.contShoppingBtn} onPress={() => navigation.navigate('Homepage')}>
               <Text style={styles.contShoppingText}>Tiếp tục mua sắm</Text>
@@ -123,7 +192,7 @@ const Cart = ({ navigation }) => {
         </View>
       )}
     </View>
-  );  
+  );
 };
 
 const styles = StyleSheet.create({
@@ -211,12 +280,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#FFF',
-    shadowColor: '#000', 
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 1,
     },
-    shadowOpacity: 0.25, 
+    shadowOpacity: 0.25,
     shadowRadius: 3.84,
   },
   totalAmount: {
