@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { View, Image, FlatList, StyleSheet, Dimensions, Text } from 'react-native';
 import { ScrollView } from 'react-native';
-import fetchProducts from '../fetchData/fetchProducts';
 import fetchCategoryHomepage from '../fetchData/fetchCategoryHomepage';
 
 
