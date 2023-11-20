@@ -19,6 +19,7 @@ export default function Account({ navigation, route }) {
     useFocusEffect(
         React.useCallback(() => {
             console.log('Hello 0-0', route)
+            console.log(sessionStorage.getItem("id"));
             if (route.params) {
                 const { username } = route.params;
                 const ip = IPv4Address();
@@ -36,7 +37,7 @@ export default function Account({ navigation, route }) {
             }
         }, [])
     );
-    console.log(user)
+    
 
     // const saveData = () => {
     //     //saving username to session storage
@@ -98,10 +99,11 @@ export default function Account({ navigation, route }) {
                 }}>
                     <Pressable style={{
                         display: 'flex',
+                        flex:1,
                         flexDirection: 'row',
-                        marginLeft: 50
+                        marginLeft: 30
                     }} onPress={() => {
-                        sessionStorage.setItem("id", undefined)
+                        sessionStorage.setItem("id", undefined);
                         navigation.navigate('Login')
 
                     }}>
