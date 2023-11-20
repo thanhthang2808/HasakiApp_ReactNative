@@ -21,15 +21,15 @@ export default function Login({ navigation }) {
         return emailRegex.test(email);
     };
 
-    const saveData = () => {
-        //saving username to session storage
-        sessionStorage.setItem("id", user.id);
+    // const saveData = () => {
+    //     //saving username to session storage
+    //     sessionStorage.setItem("id", user.id);
 
-        setIsSaved(true);
-        setTimeout(() => {
-            setIsSaved(false);
-        }, 2000);
-    };
+    //     setIsSaved(true);
+    //     setTimeout(() => {
+    //         setIsSaved(false);
+    //     }, 2000);
+    // };
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
