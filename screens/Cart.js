@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { View, StyleSheet, FlatList, Text, Image, TouchableOpacity } from 'react-native';
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Toast from 'react-native-toast-message';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   addToCart,
   decrementQuantity,
@@ -23,11 +24,21 @@ const Cart = ({ navigation }) => {
   // "userId": 1
   console.log(cart);
 
-  const updateCart = (cart) => {
-    console.log(sessionStorage.getItem("id"));
-    if (sessionStorage.getItem("id") != undefined) {
+
+  const updateCart = async (cart) => {
+    try {
+      const userId = await AsyncStorage.getItem('id');
+
+      console.log(userId);
+
+      if (!userId) {
+        console.error('Error adding cart: userId undefined');
+        return;
+      }
+
       const ip = IPv4Address();
-      fetch(`http://${ip}:3000/carts/${sessionStorage.getItem("id")}`, {
+
+      const response = await fetch(`http://${ip}:3000/carts/${userId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -35,92 +46,74 @@ const Cart = ({ navigation }) => {
         body: JSON.stringify({
           productList: cart
         }),
-      })
-        .then((response) => response.json())
-        .then((responseData) => {
-          console.log("Update cart success:", responseData);
+      });
 
-        })
-        .catch((error) => {
-          console.error("Error adding cart:", error);
-        });
-    } 
+      const responseData = await response.json();
+
+      console.log("Add cart success:", responseData);
+      navigation.push('Homepage');
+    } catch (error) {
+      console.error("Error adding cart:", error);
+    }
   }
   // addCart(cart);
   const addOrder = async (cart) => {
-    const userId = sessionStorage.getItem("id");
-    const order = cart.map((item) => ({
+    try {
+      const userId = await AsyncStorage.getItem("id");
+
+      if (!userId) {
+        console.error('Error add order: userId undefined');
+        return;
+      }
+
+      const order = cart.map((item) => ({
         idProduct: item.id,
         nameProduct: item.name,
         quantity: item.quantityInCart,
         price: item.price
-    }));
+      }));
 
-    try {
-        // Thêm trường orderId vào mỗi đối tượng trong mảng orderOfUser
-        const ordersWithOrderId = order.map((orderItem) => ({
-            ...orderItem
-             // Hàm generateOrderId() tạo một orderId duy nhất
-        }));
+      // Thêm trường orderId vào mỗi đối tượng trong mảng orderOfUser
+      const ordersWithOrderId = order.map((orderItem) => ({
+        ...orderItem
+        // Hàm generateOrderId() tạo một orderId duy nhất
+      }));
 
-        if (userId) {
-            const ip = IPv4Address();
-            const response = await fetch(`http://${ip}:3000/orders`, {
-                method: "POST", // Sử dụng method "POST" thay vì "PUT"
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    userId: userId,
-                    orderOfUser: ordersWithOrderId,
-                    orderId: generateOrderId()
-                }),
-            });
+      const ip = IPv4Address();
 
-            const responseData = await response.json();
-            console.log("Add order success:", responseData);
-        }
+      const response = await fetch(`http://${ip}:3000/orders`, {
+        method: "POST", // Sử dụng method "POST" thay vì "PUT"
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: userId,
+          orderOfUser: ordersWithOrderId,
+          orderId: generateOrderId()
+        }),
+      });
+
+      const responseData = await response.json();
+      console.log("Add order success:", responseData);
     } catch (error) {
-        console.error("Error adding order:", error);
+      console.log(error);
     }
-};
+  };
 
 
   const generateOrderId = () => {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     const orderIdLength = 10;
     let orderId = '';
-  
+
     for (let i = 0; i < orderIdLength; i++) {
       const randomIndex = Math.floor(Math.random() * characters.length);
       orderId += characters.charAt(randomIndex);
     }
-  
+
     return orderId;
   };
 
-
-  // const addItemToDatabase = (navigation) => {
-  //   fetch(`http://localhost:3000/carts/`, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       productId: product.id,
-  //       quantity: 1,
-  //     }),
-  //   })
-  //     .then((response) => response.json())
-  //     .then((responseData) => {
-  //       console.log("User added:", responseData);
-  //       navigation.push('Login')
-
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error adding user:", error);
-  //     });
-  // };
   useEffect(() => {
     updateCart(cart);
   }, [cart]);
@@ -130,9 +123,7 @@ const Cart = ({ navigation }) => {
     return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   };
   // Tính tổng tiền sử dụng reduce
-  console.log(cart);
   const total = cart ? cart.reduce((acc, item) => acc + item.quantityInCart * item.price, 0) : 0;
-
 
   // Component con để hiển thị thông tin từng sản phẩm trong giỏ hàng
   const removeAllItemFromCart = () => dispatch(removeAllItem());
@@ -143,8 +134,6 @@ const Cart = ({ navigation }) => {
       await dispatch(removeFromCart(item));
     }
 
-    
-
     const increaseQuantity = async () => {
       if (parseInt(item.quantityInCart) >= item.quantity) {
         Toast.show({
@@ -153,7 +142,7 @@ const Cart = ({ navigation }) => {
           text2: 'Số lượng đã đạt tới giới hạn trong kho',
         });
       } else {
-        await dispatch(incrementQuantity(item));        
+        await dispatch(incrementQuantity(item));
       }
     };
     const decreaseQuantity = async () => {
@@ -204,10 +193,12 @@ const Cart = ({ navigation }) => {
     );
   };
 
+  const isCartEmpty = !cart || cart.length === 0
+
   return (
     <View style={styles.container}>
       <View style={styles.cartContent}>
-        {cart.length === 0 ? (
+        {isCartEmpty ? (
           <View style={styles.emptyCartView}>
             <Image style={{ width: 150, height: 200 }} source={require('../assets/cart_empty.png')} />
             <Text style={styles.emptyCartText}>Giỏ hàng của bạn chưa có sản phẩm nào</Text>
@@ -221,7 +212,7 @@ const Cart = ({ navigation }) => {
           </>
         )}
       </View>
-      {cart.length > 0 && (
+      {!isCartEmpty > 0 && (
         <View style={styles.footer}>
           <View style={{ flexDirection: 'row', padding: 10 }}>
             <Text style={{ fontSize: 16, textAlignVertical: 'bottom' }}>Tổng thanh toán:</Text>
@@ -237,7 +228,6 @@ const Cart = ({ navigation }) => {
               });
               addOrder(cart);
               removeAllItemFromCart();
-
             }}>Tiến hành đặt hàng</Text>
           </TouchableOpacity>
         </View>

@@ -5,6 +5,7 @@ import Toast from 'react-native-toast-message';
 import { addToCart } from '../redux/CartReducer';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import IPv4Address from '../ipAddress/IPv4Address';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ProductDetail = ({ route }) => {
   const { product } = route.params;
@@ -15,11 +16,20 @@ const ProductDetail = ({ route }) => {
   };
 
 
-  const updateCart = (cart) => {
-    console.log(sessionStorage.getItem("id"));
-    if (sessionStorage.getItem("id") != undefined) {
+  const updateCart = async (cart) => {
+    try {
+      const userId = await AsyncStorage.getItem('id');
+
+      console.log(userId);
+
+      if (!userId) {
+        console.error('Error adding cart: userId undefined');
+        return;
+      }
+
       const ip = IPv4Address();
-      fetch(`http://${ip}:3000/carts/${sessionStorage.getItem("id")}`, {
+
+      const response = await fetch(`http://${ip}:3000/carts/${userId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -27,21 +37,15 @@ const ProductDetail = ({ route }) => {
         body: JSON.stringify({
           productList: cart
         }),
-      })
-        .then((response) => response.json())
-        .then((responseData) => {
-          console.log("Add cart success:", responseData);
-        })
-        .catch((error) => {
-          console.error("Error adding cart:", error);
-        });
+      });
+
+      const responseData = await response.json();
+
+      console.log("Add cart success:", responseData);
+    } catch (error) {
+      console.error("Error adding cart:", error);
     }
   }
-
-  useEffect(() => {
-    updateCart(cart);
-  },[cart]);
-
 
   const addItemToCart = (product) => {
     Toast.show({
@@ -49,8 +53,8 @@ const ProductDetail = ({ route }) => {
       text1: 'Thêm thành công vào giỏ hàng!',
       text2: `${product.name}`
     });
-    dispatch(addToCart(product));
     console.log(cart);
+    dispatch(addToCart(product));
     updateCart(cart);
   };
 

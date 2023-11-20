@@ -66,7 +66,7 @@ function MyTabs() {
             <View style={{ flexDirection: 'row', alignItems: 'center', paddingLeft: 10 }}>
               <MaterialCommunityIcons name="barcode-scan" color="#fff" size={25} style={{ marginRight: 15 }} />
               <MaterialCommunityIcons name="map-marker" color="#fff" size={25} style={{ marginRight: 15 }} />
-              <MaterialCommunityIcons name="package-variant-closed" color="#fff" size={25} onPress={() => navigation.navigate('OrderList')}/>
+              <MaterialCommunityIcons name="package-variant-closed" color="#fff" size={25} onPress={() => navigation.navigate('OrderList')} />
             </View>
           </View>
         ),

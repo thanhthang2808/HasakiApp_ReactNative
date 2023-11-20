@@ -1,13 +1,10 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { Text, View, Image, TextInput, StyleSheet, Pressable, SafeAreaView } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
-import { NavigationContainer, useFocusEffect } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Text, View, Image, Pressable, SafeAreaView } from 'react-native';
 import { Divider, PaperProvider } from 'react-native-paper';
-import Login from './Login';
 import IPv4Address from '../ipAddress/IPv4Address';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useFocusEffect } from '@react-navigation/native';
 
 
 export default function Account({ navigation, route }) {
@@ -18,8 +15,6 @@ export default function Account({ navigation, route }) {
 
     useFocusEffect(
         React.useCallback(() => {
-            console.log('Hello 0-0', route)
-            console.log(sessionStorage.getItem("id"));
             if (route.params) {
                 const { username } = route.params;
                 const ip = IPv4Address();
@@ -37,29 +32,15 @@ export default function Account({ navigation, route }) {
             }
         }, [])
     );
-    
 
-    // const saveData = () => {
-    //     //saving username to session storage
-    //     sessionStorage.setItem("id", user.id);
-
-    //     setIsSaved(true);
-    //     setTimeout(() => {
-    //         setIsSaved(false);
-    //     }, 2000);
-    // };
-
-
-    // if (user === undefined) {
-    //     sessionStorage.setItem("id", undefined)
-    // }
-
-    // if (user) {
-    //     sessionStorage.setItem("id", user.id)
-    // }
-
-
-    // console.log(sessionStorage.getItem("id"))
+    const handleLogout = async (navigation) => {
+        try {
+            await AsyncStorage.removeItem("id");
+            navigation.navigate('Login')
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     const componentWhenUserFound = () => (
         <>
@@ -99,14 +80,10 @@ export default function Account({ navigation, route }) {
                 }}>
                     <Pressable style={{
                         display: 'flex',
-                        flex:1,
+                        flex: 1,
                         flexDirection: 'row',
                         marginLeft: 30
-                    }} onPress={() => {
-                        sessionStorage.setItem("id", undefined);
-                        navigation.navigate('Login')
-
-                    }}>
+                    }} onPress={() => handleLogout(navigation)}>
 
                         <Text style={{
                             color: 'white',

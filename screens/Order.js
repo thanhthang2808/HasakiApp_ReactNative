@@ -1,20 +1,68 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { View, Text, FlatList } from 'react-native';
 import IPv4Address from '../ipAddress/IPv4Address';
+import { useFocusEffect } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const OrderList = () => {
   const [ordersData, setOrders] = useState([]);
   const [orderTotals, setOrderTotals] = useState({}); // Đối tượng để lưu trữ tổng tiền cho mỗi orderId
   const ip = IPv4Address();
-  const userId = sessionStorage.getItem("id");
   const url = `http://${ip}:3000/orders`;
 
-  useEffect(() => {
-    fetch(url)
-      .then(response => response.json())
-      .then(data => setOrders(data))
-      .catch(error => console.error(error));
-  }, [ordersData]);
+  useFocusEffect(
+    useCallback(() => {
+      const fetchOrderData = async () => {
+        try {
+          const response = await fetch(url);
+          const data = await response.json();
+
+          const userId = await AsyncStorage.getItem('id');
+
+          console.log(userId);
+
+          if (!userId) {
+            console.error('Error adding cart: userId undefined');
+            return;
+          }
+
+          const filteredOrders = data.filter(order => order.userId === userId);
+
+          setOrders(filteredOrders);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
+      fetchOrderData();
+    }, [])
+  );
+
+  // useEffect(() => {
+  //   const fetchOrderData = async () => {
+  //     try {
+  //       const response = await fetch(url);
+  //       const data = await response.json();
+
+  //       const userId = await AsyncStorage.getItem('id');
+
+  //       console.log(userId);
+
+  //       if (!userId) {
+  //         console.error('Error adding cart: userId undefined');
+  //         return;
+  //       }
+
+  //       const filteredOrders = data.filter(order => order.userId === userId);
+
+  //       setOrders(filteredOrders);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   }
+
+  //   fetchOrderData();
+  // }, []);
 
   // Tính tổng tiền cho mỗi orderId khi có sự thay đổi trong danh sách đơn hàng
   useEffect(() => {
@@ -29,9 +77,7 @@ const OrderList = () => {
     };
 
     calculateOrderTotals();
-  }, [ordersData]);
-
-  const filteredOrders = ordersData.filter(order => order.userId === userId);
+  }, []);
 
   const renderItem = ({ item }) => (
     <View style={{ marginBottom: 20, padding: 10, borderWidth: 3, borderColor: 'orange', borderStyle: 'dashed' }}>
@@ -56,7 +102,7 @@ const OrderList = () => {
   return (
     <View style={{ flex: 1, padding: 20 }}>
       <FlatList
-        data={filteredOrders}
+        data={ordersData}
         keyExtractor={(order) => order.orderId}
         renderItem={renderItem}
       />
