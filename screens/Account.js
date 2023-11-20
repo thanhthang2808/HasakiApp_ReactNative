@@ -33,7 +33,6 @@ export default function Account({ navigation, route }) {
             }
         }, [])
     );
-
     console.log(user)
     const componentWhenUserFound = () => (<>
         <Pressable style={{
