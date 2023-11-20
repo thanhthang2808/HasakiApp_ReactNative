@@ -93,7 +93,7 @@ const ProgressBarComponent = () => {
 const ItemProduct = (props, navigation) => {
     const { id, name, description, price, image } = props
 
-    console.log(id)
+
 
     const productsData = fetchProducts();
 
@@ -101,7 +101,7 @@ const ItemProduct = (props, navigation) => {
         (product) => product.id === `${id}`
     );
 
-    console.log(productFound)
+
 
     navigation = useNavigation();
     return (

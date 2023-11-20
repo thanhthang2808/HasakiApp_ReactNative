@@ -49,38 +49,59 @@ export default function Signup() {
     const addUser = (navigation) => {
         const ip = IPv4Address();
         const url = `http://${ip}:3000/user`;
-          if (checkTextInput() == true) {
-        fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                name: name,
-                email: email,
-                password: password,
-                phone: phone,
-            }),
-        })
-            .then((response) => response.json())
-            .then((responseData) => {
-                console.log("User added:", responseData);
-                navigation.push('Login')
+        if (checkTextInput() == true) {
+            fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    password: password,
+                    phone: phone,
+                }),
             })
                 .then((response) => response.json())
                 .then((responseData) => {
+                    sessionStorage.setItem("id", responseData.id)
+                    addCart()
                     console.log("User added:", responseData);
                     Toast.show({
                         type: 'success',
                         text1: 'Đăng kí thành công!',
                     });
-                    checkTextInput();
                     navigation.push('Login')
                 })
                 .catch((error) => {
                     console.error("Error adding user:", error);
                 });
         }
+    };
+
+
+
+    const addCart = (navigation) => {
+        console.log(sessionStorage.getItem("id"))
+        const ip = IPv4Address();
+        const url = `http://${ip}:3000/carts`;
+        fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                productList: [],
+                id: sessionStorage.getItem("id")
+            }),
+        })
+            .then((response) => response.json())
+            .then((responseData) => {
+                console.log("Cart added:", responseData);
+            })
+            .catch((error) => {
+                console.error("Error adding cart:", error);
+            });
     };
 
     return (

@@ -3,7 +3,7 @@ import { Divider, PaperProvider } from 'react-native-paper';
 import { useEffect, useState } from 'react';
 import Signup from './Signup';
 import React, { createContext } from 'react';
-
+import { Checkbox } from 'react-native-paper';
 import Toast from 'react-native-toast-message';
 
 import IPv4Address from '../ipAddress/IPv4Address';
@@ -15,8 +15,8 @@ export const AuthContext = createContext();
 
 export default function Login({ navigation }) {
     const ip = IPv4Address();
-  
-   const validateEmail = (email) => {
+
+    const validateEmail = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     };
@@ -35,9 +35,10 @@ export default function Login({ navigation }) {
     const [password, setPassword] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
     const [userInfo, setUserInfo] = useState(null);
-    
+    const [checked, setChecked] = React.useState(true);
 
-    
+
+
 
     const handleLogin = () => {
         const url = `http://${ip}:3000/user`;
@@ -55,8 +56,8 @@ export default function Login({ navigation }) {
                         text1: 'Đăng nhập thành công!',
                     });
                     console.log('Login Successful', foundUser);
-                    sessionStorage.setItem("id", foundUser.id);                    
-                                        
+                    sessionStorage.setItem("id", foundUser.id);
+
                     navigation.push('Account', { username: foundUser.email })
                 } else {
                     Toast.show({
@@ -93,11 +94,11 @@ export default function Login({ navigation }) {
                 Alert.alert('An error occurred. Please try again.');
             }
         };
-    
-        fetchData(); // Call the async function immediately
-    
+
+        fetchData();
+
     }, [dispatch, ip, userId]);
-    
+
 
 
     return (
@@ -155,6 +156,22 @@ export default function Login({ navigation }) {
                                 width: 120
 
                             }}>Forgot password?</Text>
+
+                            <View style={{
+                                flexDirection: 'row'
+                            }}>
+                                <Checkbox
+                                    status={checked ? 'checked' : 'unchecked'}
+                                    onPress={() => {
+                                        setChecked(!checked);
+                                    }}
+                                    color="#306E51"
+
+                                />
+                                <Text style={{ flexWrap: 'wrap' }}>Nhớ tài khoản của tôi</Text>
+
+                            </View>
+
 
                         </View>
 
