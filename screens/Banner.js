@@ -5,11 +5,11 @@ import Slide from "./Slide";
 const { width } = Dimensions.get("window");
 
 const data = [
-    { id: 1, imageUrl: require('../assets/banner1.jpg') },
-    { id: 2, imageUrl: require('../assets/banner2.jpg') },
-    { id: 3, imageUrl: require('../assets/banner3.jpg') },
-    { id: 4, imageUrl: require('../assets/banner4.jpg') },
-    { id: 5, imageUrl: require('../assets/banner5.jpg') },
+  { id: 1, imageUrl: require('../assets/banner1.jpg') },
+  { id: 2, imageUrl: require('../assets/banner2.jpg') },
+  { id: 3, imageUrl: require('../assets/banner3.jpg') },
+  { id: 4, imageUrl: require('../assets/banner4.jpg') },
+  { id: 5, imageUrl: require('../assets/banner5.jpg') },
 ];
 
 const Banner = () => {
@@ -18,8 +18,11 @@ const Banner = () => {
   const [dataList, setDataList] = useState(data);
 
   useEffect(() => {
+
     setDataList(data);
     const cleanup = infiniteScroll();
+
+
     return cleanup;
   }, [data]);
 
