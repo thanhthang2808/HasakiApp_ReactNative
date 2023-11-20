@@ -10,7 +10,7 @@ const fetchProducts = () => {
         .then(data => setProducts(data))
         .catch(error => console.error(error));
   }, []);
-  return productsData;  
+  return productsData;
 }
 
 export default fetchProducts;

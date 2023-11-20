@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useState, useEffect } from "react";
 import { View, Text, Pressable, TextInput, StyleSheet } from "react-native";
 import { Divider, PaperProvider } from 'react-native-paper';
@@ -9,7 +10,9 @@ export default function Signup() {
     const [phone, setPhone] = useState("");
     const [checked, setChecked] = React.useState(true);
 
-    const addUser = () => {
+    const navigation = useNavigation();
+
+    const addUser = (navigation) => {
         fetch("http://localhost:3000/user", {
             method: "POST",
             headers: {
@@ -25,7 +28,7 @@ export default function Signup() {
             .then((response) => response.json())
             .then((responseData) => {
                 console.log("User added:", responseData);
-                // Perform any additional actions after adding the user
+                navigation.push(Login)
             })
             .catch((error) => {
                 console.error("Error adding user:", error);
@@ -38,8 +41,8 @@ export default function Signup() {
 
             <View style={{
                 display: 'flex',
-                gap: '15px',
-                padding: '15px'
+                gap: 15,
+                padding: 15
             }}>
                 <TextInput
                     placeholder="Name"
@@ -79,7 +82,7 @@ export default function Signup() {
                     flexDirection: 'row'
                 }}>
                     <Checkbox
-                        status={checked ? 'checked' : 'unchecked'}
+                        status={checked ? checked : unchecked}
                         onPress={() => {
                             setChecked(!checked);
                         }}
@@ -94,31 +97,31 @@ export default function Signup() {
 
                 <View style={{
                     display: 'flex',
-                    gap: '20px'
+                    gap: 20
                 }}>
                     <Pressable style={{
-                        width: '380px',
-                        height: '50px',
+                        width: 380,
+                        height: 50,
                         backgroundColor: '#0d5c37'
-                    }} onPress={addUser}>
+                    }} onPress={() => { addUser(navigation) }}>
                         <Text style={{
                             color: 'white',
                             textAlign: 'center',
-                            marginTop: '15px'
+                            marginTop: 15
                         }}>SIGNUP</Text>
                     </Pressable>
 
                     <Pressable style={{
-                        width: '380px',
-                        height: '50px',
-                        border: '1px solid #0d5c37'
+                        width: 380,
+                        height: 50,
+                        border: '1  solid #0d5c37'
                     }} onPress={() => {
-                        navigation.push('Login')
+                        navigation.push(Login)
                     }}>
                         <Text style={{
                             color: '#0d5c37',
                             textAlign: 'center',
-                            marginTop: '15px'
+                            marginTop: 15
                         }}>LOGIN</Text>
                     </Pressable>
                 </View>
@@ -130,7 +133,7 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: '#FFF',
         flexDirection: 'row',
-        gap: '10px',
+        gap: 10,
         justifyContent: 'center',
     },
     textInput: {

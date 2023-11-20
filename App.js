@@ -19,6 +19,7 @@ import ProductDetail from './screens/ProductDetail';
 import Signup from './screens/Signup';
 import SearchEngine from './screens/SearchEngine';
 import Notifications from './screens/Notification';
+import UserInformation from './screens/UserInformation';
 
 function LogoTitle() {
   return (
@@ -130,7 +131,7 @@ const HomepageStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Homepage" component={Homepage} options={{ headerShown: false }} />
-      <Stack.Screen name="SearchEngine" component={SearchEngine} options={{ headerShown: false }}/>
+      <Stack.Screen name="SearchEngine" component={SearchEngine} options={{ headerShown: false }} />
       <Stack.Screen name="ProductDetail" component={ProductDetail} />
     </Stack.Navigator>
   );
@@ -157,8 +158,8 @@ const NotificationStack = () => {
         headerTitleAlign: 'center',
       }}
     >
-      <Stack.Screen name="Thông báo" component={Notifications}  />
-      
+      <Stack.Screen name="Thông báo" component={Notifications} />
+
     </Stack.Navigator>
   );
 };
@@ -168,8 +169,9 @@ const AccountStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Account" component={Account} options={{ headerShown: false }} />
-      <Stack.Screen name="Login" component={Login} options={{   }} />
+      <Stack.Screen name="Login" component={Login} options={{}} />
       <Stack.Screen name="Signup" component={Signup} />
+      <Stack.Screen name="UserInformation" component={UserInformation} />
     </Stack.Navigator>
   );
 };

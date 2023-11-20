@@ -10,7 +10,7 @@ const fetchCategory = () => {
         .then(data => setCategory(data))
         .catch(error => console.error(error));
   }, []);
-  return categoryData;  
+  return categoryData;
 }
 
 export default fetchCategory;

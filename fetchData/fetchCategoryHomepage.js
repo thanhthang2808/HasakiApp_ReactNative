@@ -10,7 +10,7 @@ const fetchCategoryHomepage = () => {
         .then(data => setCateHomepage(data))
         .catch(error => console.error(error));
   }, []);
-  return cateHomepageData;  
+  return cateHomepageData;
 }
 
 export default fetchCategoryHomepage;
