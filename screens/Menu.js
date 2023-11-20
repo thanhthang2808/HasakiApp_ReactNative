@@ -1,5 +1,6 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, View, Image, Text } from 'react-native';
+import { StyleSheet, View, Image, Text, Pressable } from 'react-native';
 
 const Menu = () => {
     const data = [
@@ -15,18 +16,29 @@ const Menu = () => {
         { id: 10, name: 'Cẩm nang', imageUrl: require('../assets/menu10.png') },
     ];
 
-    const renderMenuItems = () => {
+
+    const renderMenuItems = (navigation) => {
+        navigation = useNavigation();
+
+        console.log(navigation)
         return data.map((item) => (
             <View style={styles.menuItem} key={item.id}>
-                <Image source={item.imageUrl} style={styles.menuImage} />
-                <Text style={{
-                    fontSize: 11,
-                    
-                    margin: 'auto',
-                    alignItems: 'center',
-                    textAlign: 'center',
-                    color: 'white'
-                }}>{item.name}</Text>
+                <Pressable style={styles.menuItem}
+                    onPress={() => {
+                        navigation.navigate('CategoryStack')
+
+                    }}
+                >
+                    <Image source={item.imageUrl} style={styles.menuImage} />
+                    <Text style={{
+                        fontSize: 11,
+
+                        margin: 'auto',
+                        alignItems: 'center',
+                        textAlign: 'center',
+                        color: 'white'
+                    }}>{item.name}</Text>
+                </Pressable>
             </View>
         ));
     };
@@ -64,7 +76,7 @@ const styles = StyleSheet.create({
     menuItem: {
         flex: 1,
         alignItems: 'center',
-        
+
     },
     menuImage: {
         width: 40,

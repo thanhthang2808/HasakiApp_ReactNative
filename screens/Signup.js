@@ -3,6 +3,9 @@ import React, { useState, useEffect } from "react";
 import { View, Text, Pressable, TextInput, StyleSheet } from "react-native";
 import { Divider, PaperProvider } from 'react-native-paper';
 import { Checkbox } from 'react-native-paper';
+import Toast from 'react-native-toast-message';
+
+
 export default function Signup() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -12,27 +15,62 @@ export default function Signup() {
 
     const navigation = useNavigation();
 
+    const validateEmail = (email) => {
+        return email.includes('@');
+    };
+
+    function checkTextInput() {
+        //Check for the Name TextInput
+        const nameRegex = /^[a-zA-Z\s]+$/;
+        if (!(nameRegex.test(name))) {
+            alert('Please Enter Name Correctly!');
+            return false;
+        }
+        //Check for the Email TextInput
+        if (!(email.includes('@'))) {
+            alert('Please Enter Email');
+            return false;
+        }
+        if (password.length < 6) {
+            alert('Please Enter Password > 6 character');
+            return false;
+        }
+        if (phone.length < 10) {
+            alert('Please Enter Phone Number Correctly!');
+            return false;
+        }
+
+        return true;
+    };
+
     const addUser = (navigation) => {
-        fetch("http://localhost:3000/user", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                name: name,
-                email: email,
-                password: password,
-                phone: phone,
-            }),
-        })
-            .then((response) => response.json())
-            .then((responseData) => {
-                console.log("User added:", responseData);
-                navigation.push('Login')
+        if (checkTextInput() == true) {
+            fetch("http://localhost:3000/user", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    password: password,
+                    phone: phone,
+                }),
             })
-            .catch((error) => {
-                console.error("Error adding user:", error);
-            });
+                .then((response) => response.json())
+                .then((responseData) => {
+                    console.log("User added:", responseData);
+                    Toast.show({
+                        type: 'success',
+                        text1: 'Đăng kí thành công!',
+                    });
+                    checkTextInput();
+                    navigation.push('Login')
+                })
+                .catch((error) => {
+                    console.error("Error adding user:", error);
+                });
+        }
     };
 
     return (
@@ -62,6 +100,7 @@ export default function Signup() {
                     placeholder="Phone"
                     placeholderTextColor="gray"
                     value={phone}
+                    keyboardType="numeric"
                     onChangeText={(text) => setPhone(text)}
                     mode="outlined"
                 />
@@ -80,7 +119,7 @@ export default function Signup() {
                     flexDirection: 'row'
                 }}>
                     <Checkbox
-                        status={checked ? 'checked ' : 'unchecked'}
+                        status={checked ? 'checked' : 'unchecked'}
                         onPress={() => {
                             setChecked(!checked);
                         }}
@@ -106,7 +145,8 @@ export default function Signup() {
                             color: 'white',
                             textAlign: 'center',
                             marginTop: 15
-                        }}>SIGNUP</Text>
+                        }}
+                        >SIGNUP</Text>
                     </Pressable>
 
                     <Pressable style={{

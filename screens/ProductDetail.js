@@ -13,7 +13,7 @@ const ProductDetail = ({ route }) => {
     return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   };
 
-
+  console.log(route);
 
 
   const addItemToCart = (product) => {
