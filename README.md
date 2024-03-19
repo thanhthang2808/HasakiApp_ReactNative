@@ -1,13 +1,16 @@
 
-# HasakiApp_ReactNative
+# HasakiApp_ReactNative - Lập trình thiết bị di dộng
 
 Dự án ứng dụng bán hàng online Hasaki chuyên kinh doanh các mặt hàng mỹ phẩm.
-
-
 ## Công nghệ và công cụ sử dụng
 
 ![JavaScript](https://img.shields.io/badge/JavaScript-222222?logo=JavaScript) ![NPM](https://img.shields.io/badge/NPM-222222?logo=npm) ![Expo](https://img.shields.io/badge/Expo-222222?logo=expo) ![React Native](https://img.shields.io/badge/ReactNative-222222?logo=React)  ![Node.js](https://img.shields.io/badge/Node.js-222222?logo=node.js) ![JsonServer](https://img.shields.io/badge/JsonServer-222222?logo=Json) ![Redux](https://img.shields.io/badge/Redux-222222?logo=redux) ![Figma](https://img.shields.io/badge/Figma-222222?logo=Figma) ![Trello](https://img.shields.io/badge/Trello-222222?logo=Trello) ![GitHub](https://img.shields.io/badge/GitHub-222222?logo=github)  ![ChatGPT](https://img.shields.io/badge/ChatGPT-222222?logo=openai)
 
+## Link figma của dự án
+https://www.figma.com/file/tbMl9Pj1rvDVXJivXdybTi/Hasaki-App?type=design&node-id=0-1&mode=design&t=JJrUOFcVEc8ofhk8-0
+
+## Link Trello
+https://trello.com/b/eWlAoJDS/react-native
 
 ## Các bước triển khai ứng dụng
 
